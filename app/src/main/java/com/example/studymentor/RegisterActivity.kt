@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -43,18 +45,12 @@ class RegisterActivity : AppCompatActivity() {
         }
 
 
-        val radioGroupGender = findViewById<RadioGroup>(R.id.radioGroupGender)
-        radioGroupGender.setOnCheckedChangeListener { group, checkedId ->
-            // Aquí manejas la lógica de la selección del género
-            when (checkedId) {
-                R.id.radioButtonMale -> {
-                    // Se ha seleccionado Masculino
-                }
+        val genderRadioGroup = findViewById<RadioGroup>(R.id.genderRadioGroup)
 
-                R.id.radioButtonFemale -> {
-                    // Se ha seleccionado Femenino
-                }
-            }
+        genderRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            val radioButton = findViewById<RadioButton>(checkedId)
+            val gender = radioButton.text
+            Toast.makeText(this, "Género seleccionado: $gender", Toast.LENGTH_SHORT).show()
         }
     }
 
