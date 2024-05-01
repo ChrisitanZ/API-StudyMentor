@@ -1,4 +1,4 @@
-package com.example.studymentor
+package com.example.studymentor.UI
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -12,6 +12,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.studymentor.R
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
