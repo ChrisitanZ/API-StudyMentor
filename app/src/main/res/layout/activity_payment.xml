@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    app:layout_constraintCircleRadius="2dp"
+    tools:context=".UI.PaymentActivity">
+
+    <TextView
+        android:id="@+id/tvPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Realizar pago"
+        android:textColor="#004330"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/ivStudyMentor"
+        app:layout_constraintTop_toBottomOf="@+id/ivStudyMentor" />
+
+    <TextView
+        android:id="@+id/tvDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Detalles del pago"
+        android:textColor="#004330"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvPayment"
+        app:layout_constraintTop_toBottomOf="@+id/tvPayment" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etCardHolderName"
+        android:layout_width="178dp"
+        android:layout_height="wrap_content"
+        android:background="#004330"
+        android:hint="ombre del Titular"
+        android:padding="8sp"
+        android:textColor="#70988C"
+        android:textColorHint="#DDFBF2"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvCardHolderName"
+        app:layout_constraintTop_toBottomOf="@+id/tvCardHolderName"
+        tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etCVV"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:background="#004330"
+        android:hint="123"
+        android:padding="8sp"
+        android:textColorHint="#DDFBF2"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/etDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvCVV"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvCVV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:text="CVV"
+        android:textColor="#004330"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tvExpirationDate"
+        app:layout_constraintTop_toBottomOf="@+id/etCardNumber"
+        tools:ignore="TextContrastCheck" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etCardNumber"
+        android:layout_width="178dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="#004330"
+        android:hint="XXXX XXXX XXXX XXXX"
+        android:padding="8sp"
+        android:textColorHint="#DDFBF2"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvCardNumber"
+        app:layout_constraintTop_toBottomOf="@+id/tvCardNumber"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvCardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Número de Tarjeta"
+        android:textColor="#004330"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/etCardHolderName"
+        app:layout_constraintTop_toBottomOf="@+id/etCardHolderName"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvExpirationDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Fecha Venc."
+        android:textColor="#004330"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/etCardNumber"
+        app:layout_constraintTop_toBottomOf="@+id/etCardNumber"
+        tools:ignore="TextContrastCheck" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etDate"
+        android:layout_width="69dp"
+        android:layout_height="wrap_content"
+        android:background="#004330"
+        android:hint="MM/YY"
+        android:padding="8sp"
+        android:textAlignment="viewStart"
+        android:textColorHint="#DDFBF2"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvExpirationDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvExpirationDate"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvCardHolderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Titular de la Tarjeta"
+        android:textColor="#004330"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvDetails"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetails"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/ivCardType"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="230dp"
+        android:contentDescription="TODO"
+        app:layout_constraintEnd_toEndOf="@+id/tvStudyMentor"
+        app:layout_constraintTop_toBottomOf="@+id/tvStudyMentor"
+        tools:ignore="ImageContrastCheck"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvAmount"
+        android:layout_width="83dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Total amount"
+        android:textColor="#004330"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/etDate"
+        app:layout_constraintTop_toBottomOf="@+id/etDate"
+        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#004330"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/etDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmount"
+        tools:ignore="SmallSp,TextContrastCheck"
+        tools:text="PEN 20.00" />
+
+    <CheckBox
+        android:id="@+id/cbSaveCardDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="100dp"
+        android:buttonTint="#004330"
+        android:text="Guardar datos para futuras compras"
+        android:textColor="#004330"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SmallSp,TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="#004330"
+        android:text="Pagar"
+        android:textColor="#DDFBF2"
+        app:cornerRadius="2sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cbSaveCardDetails" />
+
+    <ImageView
+        android:id="@+id/ivStudyMentor"
+        android:layout_width="87dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="TODO"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvStudyMentor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="StudyMentor"
+        android:textColor="#004330"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivStudyMentor"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/bottomOptionsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="645dp"
+        android:background="#68A86B"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btHome"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bthome" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btTutor"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 2"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bttutor" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btProfile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 3"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btprofile" />
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btCalendar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="16dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 4"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btcalendar" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
