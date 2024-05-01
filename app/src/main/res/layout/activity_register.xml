@@ -147,8 +147,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioButtonFemale" />
 
-    <RadioButton
-        android:id="@+id/radioButtonMale"
+    <RadioGroup
+        android:id="@+id/genderRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -166,5 +166,32 @@
         android:text="@string/rbFemenino_RegisterActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDateOfBirth" />
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
+        tools:layout_editor_absoluteX="-14dp">
 
+        <RadioButton
+            android:id="@+id/maleRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:checked="true"
+            android:text="Masculino"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="503dp" />
+
+        <RadioButton
+            android:id="@+id/femaleRadioButton"
+            android:layout_width="124dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginEnd="156dp"
+            android:layout_marginRight="120dp"
+            android:text="Femenino"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="503dp" />
+    </RadioGroup>
+  
 </androidx.constraintlayout.widget.ConstraintLayout>
