@@ -12,9 +12,7 @@
         android:id="@+id/txRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="sans-serif"
         android:text="@string/tvRegister_RegisterActivity"
         android:textAlignment="center"
@@ -22,7 +20,6 @@
         android:textSize="34sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,17 +27,11 @@
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="50dp"
-        android:autofillHints=""
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="@string/etName_RegisterActivity"
         android:inputType="text"
-        android:minHeight="48dp"
-        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txRegister" />
 
@@ -48,17 +39,11 @@
         android:id="@+id/etLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="50dp"
-        android:autofillHints=""
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/etLastname_RegisterActivity"
         android:inputType="text"
-        android:minHeight="48dp"
-        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
@@ -66,17 +51,13 @@
         android:id="@+id/etxPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="50dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/etPassword_RegisterActivity"
         android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etLastName" />
 
@@ -84,17 +65,11 @@
         android:id="@+id/etxEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
-        android:autofillHints=""
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/etEmail_RegisterActivity"
         android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etxPassword" />
 
@@ -102,32 +77,24 @@
         android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:autofillHints=""
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/etTelefono_RegisterActivity"
         android:inputType="phone"
-        android:minHeight="48dp"
-        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etxEmail" />
 
+
     <EditText
         android:id="@+id/editTextDateOfBirth"
-        android:layout_width="211dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="20dp"
-        android:autofillHints=""
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="86dp"
         android:focusable="false"
         android:hint="@string/etDate_RegisterActivity"
         android:inputType="date"
-        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
@@ -135,8 +102,7 @@
         android:id="@+id/btRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="32dp"
         android:background="#009688"
         android:fontFamily="sans-serif"
         android:text="@string/btRegister_RegisterActivity"
@@ -144,8 +110,7 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButtonFemale" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
         android:id="@+id/genderRadioGroup"
@@ -155,21 +120,19 @@
         android:layout_marginTop="15dp"
         android:text="@string/rbMasculino_RegisterActivity"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDateOfBirth" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDateOfBirth" /><![CDATA[
 
-    <RadioButton
-        android:id="@+id/radioButtonFemale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="100dp"
-        android:text="@string/rbFemenino_RegisterActivity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDateOfBirth" />
-        android:layout_marginTop="20dp"
+    android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
-        tools:layout_editor_absoluteX="-14dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone">
+
+        ]]>
+
+    <Space
+            android:layout_width="16dp"
+            android:layout_height="match_parent" />
 
         <RadioButton
             android:id="@+id/maleRadioButton"
@@ -180,6 +143,10 @@
             android:text="Masculino"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="503dp" />
+
+        <Space
+            android:layout_width="90dp"
+            android:layout_height="match_parent" />
 
         <RadioButton
             android:id="@+id/femaleRadioButton"
