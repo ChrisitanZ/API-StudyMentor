@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">StudyMentor</string>
+    <string name="btRegister_LoginActivity">Registrarse</string>
+    <string name="btLogin_LoginActivity">Login</string>
+    <string name="etPassword_LoginActivity">Password</string>
+    <string name="etEmail_LoginActivity">Email</string>
+    <string name="tvLogin_LoginActivity">Login</string>
+    <string name="btRegister_RegisterActivity">Registrarse</string>
+    <string name="tvRegister_RegisterActivity">Register</string>
+    <string name="etName_RegisterActivity">Name</string>
+    <string name="etLastname_RegisterActivity">LastName</string>
+    <string name="etEmail_RegisterActivity">Email</string>
+    <string name="etPassword_RegisterActivity">Password</string>
+    <string name="etTelefono_RegisterActivity">Telefono</string>
+    <string name="etDate_RegisterActivity">month/day/year</string>
+    <string name="rbFemenino_RegisterActivity">Femenino</string>
+    <string name="rbMasculino_RegisterActivity">Masculino</string>
+    <string name="btStudent_MainActivity">Estudiante</string>
+    <string name="btTeacher_MainActivity">Profesor</string>
+    <string name="ivStudent_MainActivity">TODO</string>
+    <string name="ivTeacher_MainActivity">TODO</string>
+    <string name="tvRol_MainActivity">Elije tu rol:</string>
 </resources>
