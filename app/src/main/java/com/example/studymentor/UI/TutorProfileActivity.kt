@@ -1,6 +1,6 @@
 package com.example.studymentor.UI
 
-import android.annotation.SuppressLint
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
 
 class TutorProfileActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,7 +22,7 @@ class TutorProfileActivity : AppCompatActivity() {
             insets
         }
 
-        //Agregar a los activies restantes
+
         val btHome = findViewById<ImageButton>(R.id.btHome)
 
         val btTutorList = findViewById<ImageButton>(R.id.btTutor)

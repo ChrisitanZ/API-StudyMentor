@@ -20,7 +20,7 @@ class HomeStudentActivity : AppCompatActivity() {
             insets
         }
 
-        //Agregar a los activies restantes
+
         val btTutor = findViewById<ImageButton>(R.id.btTutor)
 
         val btTutorProfile = findViewById<ImageButton>(R.id.btProfile)

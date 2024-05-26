@@ -4,22 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <Button
-        android:id="@+id/btSave"
+        android:id="@+id/btSaveP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="56dp"
         android:backgroundTint="#004330"
         android:text="Save"
         android:textColor="#DDFBF2"
         app:cornerRadius="2sp"
         app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone2"
-        app:layout_constraintVertical_bias="0.771" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvCardName"
@@ -36,9 +34,9 @@
         tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etNameP"
         android:layout_width="183dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:background="#004330"
         android:ems="10"
@@ -66,13 +64,13 @@
         android:textSize="12sp"
         android:textStyle="bold"
         android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/etName"
-        app:layout_constraintTop_toBottomOf="@+id/etName" />
+        app:layout_constraintStart_toStartOf="@+id/etNameP"
+        app:layout_constraintTop_toBottomOf="@+id/etNameP" />
 
     <EditText
-        android:id="@+id/etLastName"
+        android:id="@+id/etLastNameP"
         android:layout_width="178dp"
-        android:layout_height="34dp"
+        android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="35dp"
         android:background="#004330"
@@ -103,29 +101,29 @@
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etLastName"
-        app:layout_constraintTop_toBottomOf="@+id/etLastName" />
+        app:layout_constraintStart_toStartOf="@+id/etLastNameP"
+        app:layout_constraintTop_toBottomOf="@+id/etLastNameP" />
 
     <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="173dp"
-        android:layout_height="32dp"
+        android:id="@+id/etEmailP"
+        android:layout_width="181dp"
+        android:layout_height="46dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="40dp"
         android:background="#004330"
         android:ems="10"
         android:fontFamily="sans-serif"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         android:padding="8sp"
         android:textColor="#70988C"
         android:textColorHint="#DDFBF2"
         android:textSize="12sp"
         android:textStyle="bold"
         android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/tvCumple"
@@ -140,13 +138,13 @@
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintStart_toStartOf="@+id/etEmailP"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailP" />
 
     <EditText
-        android:id="@+id/etCumple"
+        android:id="@+id/etCumpleP"
         android:layout_width="173dp"
-        android:layout_height="37dp"
+        android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="40dp"
         android:background="#004330"
@@ -177,13 +175,13 @@
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etCumple"
-        app:layout_constraintTop_toBottomOf="@+id/etCumple" />
+        app:layout_constraintStart_toStartOf="@+id/etCumpleP"
+        app:layout_constraintTop_toBottomOf="@+id/etCumpleP" />
 
     <EditText
-        android:id="@+id/editTextPhone2"
+        android:id="@+id/etPhone"
         android:layout_width="171dp"
-        android:layout_height="37dp"
+        android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="40dp"
         android:background="#004330"
@@ -207,28 +205,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="267dp"
-        android:layout_marginBottom="249dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayout"
+        android:layout_marginBottom="186dp"
+        app:layout_constraintBottom_toTopOf="@+id/btSaveP"
         app:layout_constraintEnd_toStartOf="@+id/tvCardName"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
         android:id="@+id/bottomOptionsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="645dp"
+        android:layout_marginTop="15dp"
         android:background="#68A86B"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/etPhone">
 
         <ImageButton
             android:id="@+id/btHome"
