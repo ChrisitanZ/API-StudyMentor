@@ -60,19 +60,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="135dp"
-            android:text="Valoracion"
+            android:text="Email"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/ivTutor"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btSeeMore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="125dp"
-            android:text="Ver más"
-            app:layout_constraintStart_toEndOf="@+id/ivTutor"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

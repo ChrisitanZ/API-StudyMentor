@@ -1,9 +1,11 @@
 package com.example.studymentor.network
 
-import com.example.studymentor.model.TutorResponse
+import com.example.studymentor.model.UserTutor
+import retrofit2.Call
+import retrofit2.http.GET
 
 interface TutorService {
-    /*
-    @GET("?results=30")
-    fun getFriend(): Call<TutorResponse>*/
+
+    @GET("api/tutors")
+    fun getTutors(): Call<List<UserTutor>>
 }

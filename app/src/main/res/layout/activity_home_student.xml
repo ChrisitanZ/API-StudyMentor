@@ -186,7 +186,6 @@
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="?selectableItemBackground"
-            android:contentDescription="Opción 3"
             android:scaleType="fitCenter"
             android:src="@drawable/btprofile" />
 
