@@ -90,7 +90,7 @@
         tools:textColorHint="#DDFBF2" />
 
     <TextView
-        android:id="@+id/tvEmail"
+        android:id="@+id/tvEmailP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -121,8 +121,8 @@
         android:textSize="12sp"
         android:textStyle="bold"
         android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/tvEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+        app:layout_constraintStart_toStartOf="@+id/tvEmailP"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmailP"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
@@ -257,7 +257,7 @@
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btProfile"
+            android:id="@+id/btPerfil"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"

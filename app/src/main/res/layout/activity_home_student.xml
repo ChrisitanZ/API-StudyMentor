@@ -62,12 +62,13 @@
 
         <ImageButton
             android:id="@+id/ibTutor"
-            android:layout_width="90dp"
-            android:layout_height="110dp"
+            android:layout_width="101dp"
+            android:layout_height="96dp"
             android:layout_gravity="center"
             android:layout_marginTop="-50dp"
+            android:contentDescription="profe1"
             android:visibility="visible"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@drawable/perfil_profesor1" />
 
         <TextView
             android:id="@+id/tvRating"
@@ -97,6 +98,7 @@
             android:layout_height="110dp"
             android:layout_gravity="center"
             android:layout_marginTop="-50dp"
+            android:contentDescription="calendario"
             android:scaleType="fitCenter"
             android:visibility="visible"
             tools:srcCompat="@drawable/calendario" />
@@ -126,6 +128,7 @@
             android:layout_height="110dp"
             android:layout_gravity="center"
             android:layout_marginTop="-50dp"
+            android:contentDescription="notas"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/calificiones" />
 
@@ -181,11 +184,12 @@
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btProfile"
+            android:id="@+id/btPerfil"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="?selectableItemBackground"
+            android:contentDescription="Perfil"
             android:scaleType="fitCenter"
             android:src="@drawable/btprofile" />
 

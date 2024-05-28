@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface TutorService {
 
-    @GET("api/tutors")
+    @GET("/api/tutors")
     fun getTutors(): Call<List<UserTutor>>
 }

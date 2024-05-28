@@ -23,7 +23,7 @@ class HomeStudentActivity : AppCompatActivity() {
 
         val btTutor = findViewById<ImageButton>(R.id.btTutor)
 
-        val btTutorProfile = findViewById<ImageButton>(R.id.btProfile)
+        val btPerfil = findViewById<ImageButton>(R.id.btPerfil)
 
 
         btTutor.setOnClickListener {
@@ -31,7 +31,7 @@ class HomeStudentActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btTutorProfile.setOnClickListener{
+        btPerfil.setOnClickListener{
             val intent = Intent(this@HomeStudentActivity, TutorProfileActivity::class.java)
             startActivity(intent)
         }
