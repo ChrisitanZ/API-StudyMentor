@@ -1,10 +1,9 @@
 package com.example.studymentor.model
 
 class UserTutor (
-    val Name: Name,
-    val email: String,
-    val specialty: String,
-    val cost: String,
-    val telephone: String,
-    val image: Picture
+    val Name: String,
+    val Email: String,
+    val Specialty: String,
+    val Cost: Int,
+    val Photo: String
 )

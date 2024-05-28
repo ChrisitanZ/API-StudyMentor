@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/btSaveP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="56dp"
+        android:backgroundTint="#004330"
+        android:text="Save"
+        android:textColor="#DDFBF2"
+        app:cornerRadius="2sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayout"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCardName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="181dp"
+        android:text="Name"
+        android:textColor="#004330"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/etNameP"
+        android:layout_width="183dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:background="#004330"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Name"
+        android:inputType="text"
+        android:padding="8sp"
+        android:text="Name"
+        android:textColor="#70988C"
+        android:textColorHint="#DDFBF2"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintStart_toStartOf="@+id/tvCardName"
+        app:layout_constraintTop_toBottomOf="@+id/tvCardName" />
+
+    <TextView
+        android:id="@+id/tvLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:fontFamily="sans-serif"
+        android:text="Last Name"
+        android:textColor="#004330"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintStart_toStartOf="@+id/etNameP"
+        app:layout_constraintTop_toBottomOf="@+id/etNameP" />
+
+    <EditText
+        android:id="@+id/etLastNameP"
+        android:layout_width="178dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="35dp"
+        android:background="#004330"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Last Name"
+        android:inputType="text"
+        android:padding="8sp"
+        android:textAlignment="viewStart"
+        android:textColor="#70988C"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvLastName"
+        app:layout_constraintTop_toBottomOf="@+id/tvLastName"
+        tools:textColorHint="#DDFBF2" />
+
+    <TextView
+        android:id="@+id/tvEmailP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="183dp"
+        android:text="Email"
+        android:textColor="#004330"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etLastNameP"
+        app:layout_constraintTop_toBottomOf="@+id/etLastNameP" />
+
+    <EditText
+        android:id="@+id/etEmailP"
+        android:layout_width="181dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="4dp"
+        android:background="#004330"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:padding="8sp"
+        android:textColor="#70988C"
+        android:textColorHint="#DDFBF2"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintStart_toStartOf="@+id/tvEmailP"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmailP"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvCumple"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="183dp"
+        android:fontFamily="sans-serif"
+        android:text="Date"
+        android:textColor="#004330"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etEmailP"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailP" />
+
+    <EditText
+        android:id="@+id/etCumpleP"
+        android:layout_width="173dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="40dp"
+        android:background="#004330"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Date"
+        android:inputType="date"
+        android:padding="8sp"
+        android:textColor="#70988C"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvCumple"
+        app:layout_constraintTop_toBottomOf="@+id/tvCumple"
+        tools:textColorHint="#DDFBF2" />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="159dp"
+        android:fontFamily="sans-serif"
+        android:text="Cellphone"
+        android:textColor="#004330"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etCumpleP"
+        app:layout_constraintTop_toBottomOf="@+id/etCumpleP" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="171dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="40dp"
+        android:background="#004330"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Cellphone"
+        android:inputType="phone"
+        android:padding="8sp"
+        android:textColor="#70988C"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvPhone"
+        app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+        tools:textColorHint="#DDFBF2" />
+
+    <ImageView
+        android:id="@+id/ImageProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="267dp"
+        android:layout_marginBottom="186dp"
+        app:layout_constraintBottom_toTopOf="@+id/btSaveP"
+        app:layout_constraintEnd_toStartOf="@+id/tvCardName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <LinearLayout
+        android:id="@+id/bottomOptionsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#68A86B"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPhone">
+
+        <ImageButton
+            android:id="@+id/btHome"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bthome" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btTutor"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 2"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bttutor" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btPerfil"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 3"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btprofile" />
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btCalendar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="16dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 4"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btcalendar" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
