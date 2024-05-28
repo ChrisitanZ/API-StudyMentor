@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPayment" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etCardHolderName"
+        android:id="@+id/etCardName"
         android:layout_width="178dp"
         android:layout_height="wrap_content"
         android:background="#004330"
@@ -43,8 +43,8 @@
         android:textColor="#70988C"
         android:textColorHint="#DDFBF2"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/tvCardHolderName"
-        app:layout_constraintTop_toBottomOf="@+id/tvCardHolderName"
+        app:layout_constraintStart_toStartOf="@+id/tvCardName"
+        app:layout_constraintTop_toBottomOf="@+id/tvCardName"
         tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -98,8 +98,8 @@
         android:textColor="#004330"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/etCardHolderName"
-        app:layout_constraintTop_toBottomOf="@+id/etCardHolderName"
+        app:layout_constraintStart_toStartOf="@+id/etCardName"
+        app:layout_constraintTop_toBottomOf="@+id/etCardName"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -130,7 +130,7 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/tvCardHolderName"
+        android:id="@+id/tvCardName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -194,7 +194,7 @@
         tools:ignore="SmallSp,TextContrastCheck" />
 
     <Button
-        android:id="@+id/btPay"
+        android:id="@+id/btSaveP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -276,7 +276,7 @@
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btProfile"
+            android:id="@+id/btPerfil"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
