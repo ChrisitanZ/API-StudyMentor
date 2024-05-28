@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.HomeStudentActivity">
+    tools:context=".UI.HomeTutorActivity">
 
     <FrameLayout
-        android:id="@+id/LayoutNews"
+        android:id="@+id/LayoutNewsT"
         android:layout_width="378dp"
         android:layout_height="320dp"
         android:layout_marginStart="16dp"
@@ -38,7 +38,7 @@
             app:srcCompat="@drawable/megafono" />
 
         <TextView
-            android:id="@+id/tvBody"
+            android:id="@+id/tvBodyT"
             android:layout_width="357dp"
             android:layout_height="148dp"
             android:layout_gravity="center_horizontal"
@@ -46,66 +46,60 @@
             android:text="Contenido de las noticias"
             android:textAlignment="center"
             android:textSize="18sp" />
-
     </FrameLayout>
 
-
-
     <FrameLayout
-        android:id="@+id/LayoutRating"
+        android:id="@+id/LayoutRatingT"
         android:layout_width="124dp"
         android:layout_height="230dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LayoutNews">
+        app:layout_constraintTop_toBottomOf="@+id/LayoutNewsT">
 
         <ImageButton
-            android:id="@+id/ibTutor"
+            android:id="@+id/ibStudent"
             android:layout_width="101dp"
             android:layout_height="96dp"
             android:layout_gravity="center"
             android:layout_marginTop="-50dp"
-            android:contentDescription="profe1"
-            android:visibility="visible"
-            tools:srcCompat="@drawable/perfil_profesor1" />
+            android:background="?selectableItemBackground"
+            android:scaleType="centerCrop"
+            android:src="@drawable/estudiante1"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/tvRating"
+            android:id="@+id/tvRatingT"
             android:layout_width="103dp"
             android:layout_height="92dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="130dp"
             android:text="¡Mira el puntaje de tus profesores!"
             android:textAlignment="center" />
-
     </FrameLayout>
 
-
-
     <FrameLayout
-        android:id="@+id/LayoutCalendar"
+        android:id="@+id/LayoutCalendarT"
         android:layout_width="125dp"
         android:layout_height="229dp"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LayoutNews">
+        app:layout_constraintTop_toBottomOf="@+id/LayoutNewsT">
 
         <ImageButton
-            android:id="@+id/ibCalendar"
+            android:id="@+id/ibCalendarT"
             android:layout_width="90dp"
             android:layout_height="110dp"
             android:layout_gravity="center"
             android:layout_marginTop="-50dp"
             android:background="?selectableItemBackground"
-            android:contentDescription="calendario"
             android:scaleType="fitCenter"
-            android:visibility="visible"
-            tools:srcCompat="@drawable/calendario" />
+            android:src="@drawable/calendario"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/tvCalendar"
+            android:id="@+id/textView4"
             android:layout_width="103dp"
             android:layout_height="90dp"
             android:layout_gravity="center_horizontal"
@@ -115,27 +109,27 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/LayoutCalifications"
+        android:id="@+id/LayoutCalificationsT"
         android:layout_width="124dp"
         android:layout_height="230dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LayoutNews">
+        app:layout_constraintTop_toBottomOf="@+id/LayoutNewsT">
 
         <ImageButton
-            android:id="@+id/ibCalifications"
+            android:id="@+id/ibCalificationsT"
             android:layout_width="90dp"
             android:layout_height="110dp"
             android:layout_gravity="center"
             android:layout_marginTop="-50dp"
             android:background="?selectableItemBackground"
-            android:contentDescription="notas"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/calificiones" />
+            android:src="@drawable/calificiones"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/tvCalifications"
+            android:id="@+id/tvCalificationsT"
             android:layout_width="102dp"
             android:layout_height="89dp"
             android:layout_gravity="center_horizontal"
@@ -145,7 +139,7 @@
     </FrameLayout>
 
     <LinearLayout
-        android:id="@+id/bottomOptionsLayout"
+        android:id="@+id/bottomOptionsLayoutT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="645dp"
@@ -159,55 +153,56 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/btHome"
+            android:id="@+id/btHomeT"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_weight="1"
             android:background="?selectableItemBackground"
-            android:contentDescription="Opción 1"
             android:scaleType="fitCenter"
-            android:src="@drawable/bthome" />
+            android:src="@drawable/bthome"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Space
-            android:layout_width="20dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btTutors"
+            android:id="@+id/btStudents"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="16dp"
+            android:layout_weight="1"
             android:background="?selectableItemBackground"
-            android:contentDescription="Opción 2"
             android:scaleType="fitCenter"
-            android:src="@drawable/bttutor" />
+            android:src="@drawable/bttutor"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Space
-            android:layout_width="20dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btPerfil"
+            android:id="@+id/btProfileT"
             android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
+            android:layout_height="47dp"
+            android:layout_weight="1"
             android:background="?selectableItemBackground"
-            android:contentDescription="Perfil"
             android:scaleType="fitCenter"
-            android:src="@drawable/btprofile" />
+            android:src="@drawable/btprofile"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <Space
-            android:layout_width="16dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btCalendar"
-            android:layout_width="64dp"
+            android:id="@+id/btCalendarT"
+            android:layout_width="56dp"
             android:layout_height="64dp"
-            android:layout_marginStart="16dp"
+            android:layout_weight="1"
             android:background="?selectableItemBackground"
-            android:contentDescription="Opción 4"
             android:scaleType="fitCenter"
-            android:src="@drawable/btcalendar" />
+            android:src="@drawable/btcalendar"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
 

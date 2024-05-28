@@ -1,7 +1,6 @@
 package com.example.studymentor.adapter
 
 import android.annotation.SuppressLint
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studymentor.R
 import com.example.studymentor.model.UserTutor
-import com.squareup.picasso.Picasso
 
 class TutorAdapter(private val tutors: List<UserTutor>) : RecyclerView.Adapter<TutorAdapter.TutorViewHolder>() {
 
