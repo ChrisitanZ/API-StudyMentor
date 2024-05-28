@@ -21,7 +21,7 @@ class PaymentActivity : AppCompatActivity() {
         }
 
         //Agregar a los activies restantes
-        val btTutor = findViewById<ImageButton>(R.id.btTutor)
+        val btTutor = findViewById<ImageButton>(R.id.btTutors)
         val btHome = findViewById<ImageButton>(R.id.btHome)
 
         btHome.setOnClickListener {

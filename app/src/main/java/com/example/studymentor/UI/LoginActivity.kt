@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
 
 class LoginActivity : AppCompatActivity() {
+    private var userType: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -19,13 +21,17 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        userType = intent.getStringExtra("userType")
 
         val btLogin = findViewById<Button>(R.id.btLogin)
         val btRegisterLogin = findViewById<Button>(R.id.btRegisterLogin)
 
         btLogin.setOnClickListener {
-            val intent = Intent(this@LoginActivity, HomeStudentActivity::class.java)
+            val intent = when (userType) {
+                "student" -> Intent(this@LoginActivity, HomeStudentActivity::class.java)
+                "teacher" -> Intent(this@LoginActivity, HomeTutorActivity::class.java)
+                else -> null
+            }
             startActivity(intent)
         }
 

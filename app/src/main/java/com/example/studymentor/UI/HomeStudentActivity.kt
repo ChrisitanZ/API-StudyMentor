@@ -21,7 +21,7 @@ class HomeStudentActivity : AppCompatActivity() {
         }
 
 
-        val btTutor = findViewById<ImageButton>(R.id.btTutor)
+        val btTutor = findViewById<ImageButton>(R.id.btTutors)
 
         val btPerfil = findViewById<ImageButton>(R.id.btPerfil)
 
