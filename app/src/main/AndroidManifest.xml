@@ -34,6 +34,9 @@
             android:name=".UI.RegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".UI.TutorProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.MainActivity"
             android:exported="true">
             <intent-filter>
