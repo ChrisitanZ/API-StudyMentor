@@ -276,7 +276,7 @@
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btPerfil"
+            android:id="@+id/btPerfilEstudiante"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"

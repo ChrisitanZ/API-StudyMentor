@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tvLastName" type="id" />
+    <item name="tvEmailP" type="id" />
+    <item name="etEmailP" type="id" />
+    <item name="tvCumple" type="id" />
+    <item name="etCumpleP" type="id" />
+    <item name="tvPhone" type="id" />
+    <item name="etPhone" type="id" />
+    <item name="ImageProfile" type="id" />
+</resources>

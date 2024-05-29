@@ -1,4 +1,4 @@
-package com.example.studymentor.UI
+package com.example.studymentor.UI.Estudiante
 
 import android.content.Intent
 import android.os.Bundle
@@ -42,10 +42,19 @@ class TutorListActivity : AppCompatActivity() {
 
         val btHome = findViewById<ImageButton>(R.id.btHome)
         val btFind = findViewById<Button>(R.id.btSearch)
+
+        val btPerfil = findViewById<ImageButton>(R.id.btPerfilEstudiante)
+
         rvTutors = findViewById(R.id.rvTutors)
 
         btHome.setOnClickListener {
             val intent = Intent(this@TutorListActivity, HomeStudentActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        btPerfil.setOnClickListener {
+            val intent = Intent(this@TutorListActivity, ProfileStudent::class.java)
             startActivity(intent)
         }
 

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.HomeStudentActivity">
+    tools:context=".UI.Estudiante.HomeStudentActivity">
 
     <FrameLayout
         android:id="@+id/LayoutNews"
@@ -186,7 +186,7 @@
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btPerfil"
+            android:id="@+id/btPerfilEstudiante"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"

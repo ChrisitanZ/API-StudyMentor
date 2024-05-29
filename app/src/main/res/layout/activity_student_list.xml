@@ -6,6 +6,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/bottomOptionsLayoutT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="645dp"
+        android:background="#68A86B"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btHomeT"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bthome"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btStudents"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bttutor"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btProfileT"
+            android:layout_width="48dp"
+            android:layout_height="47dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btprofile"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btCalendarT"
+            android:layout_width="56dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btcalendar"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tvListaStudents"
         android:layout_width="wrap_content"
@@ -25,76 +93,8 @@
         android:layout_width="409dp"
         android:layout_height="590dp"
         android:layout_marginTop="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvListaStudents" />
-
-    <LinearLayout
-        android:id="@+id/bottomOptionsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="645dp"
-        android:background="#68A86B"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/btHome"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?selectableItemBackground"
-            android:contentDescription="Opción 1"
-            android:scaleType="fitCenter"
-            android:src="@drawable/bthome" />
-
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="match_parent" />
-
-        <ImageButton
-            android:id="@+id/btTutors"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:background="?selectableItemBackground"
-            android:contentDescription="Opción 2"
-            android:scaleType="fitCenter"
-            android:src="@drawable/bttutor" />
-
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="match_parent" />
-
-        <ImageButton
-            android:id="@+id/btPerfil"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:background="?selectableItemBackground"
-            android:contentDescription="Opción 3"
-            android:scaleType="fitCenter"
-            android:src="@drawable/btprofile" />
-
-        <Space
-            android:layout_width="16dp"
-            android:layout_height="match_parent" />
-
-        <ImageButton
-            android:id="@+id/btCalendar"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginStart="16dp"
-            android:background="?selectableItemBackground"
-            android:contentDescription="Opción 4"
-            android:scaleType="fitCenter"
-            android:src="@drawable/btcalendar" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
