@@ -10,8 +10,8 @@
         android:id="@+id/btSaveP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#004330"
         android:text="Save"
         android:textColor="#DDFBF2"
@@ -58,12 +58,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="46dp"
+        android:layout_marginEnd="154dp"
         android:fontFamily="sans-serif"
         android:text="Last Name"
         android:textColor="#004330"
         android:textSize="12sp"
         android:textStyle="bold"
         android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/etNameP"
         app:layout_constraintTop_toBottomOf="@+id/etNameP" />
 
@@ -109,6 +111,7 @@
         android:layout_width="181dp"
         android:layout_height="46dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
         android:background="#004330"
         android:ems="10"
         android:fontFamily="sans-serif"
@@ -121,6 +124,7 @@
         android:textSize="12sp"
         android:textStyle="bold"
         android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvEmailP"
         app:layout_constraintTop_toBottomOf="@+id/tvEmailP"
         tools:ignore="TouchTargetSizeCheck" />
@@ -204,30 +208,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="267dp"
-        android:layout_marginBottom="186dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="181dp"
         app:layout_constraintBottom_toTopOf="@+id/btSaveP"
-        app:layout_constraintEnd_toStartOf="@+id/tvCardName"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/etLastNameP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
         android:id="@+id/bottomOptionsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:background="#68A86B"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPhone">
+        app:layout_constraintTop_toBottomOf="@+id/etPhone"
+        app:layout_constraintVertical_bias="0.0">
 
         <ImageButton
             android:id="@+id/btHome"
@@ -257,7 +261,7 @@
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btPerfil"
+            android:id="@+id/btPerfilEstudiante"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"

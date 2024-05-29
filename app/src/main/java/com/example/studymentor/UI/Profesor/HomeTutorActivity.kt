@@ -1,6 +1,8 @@
-package com.example.studymentor.UI
+package com.example.studymentor.UI.Profesor
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,5 +19,27 @@ class HomeTutorActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val btListStudent = findViewById<ImageButton>(R.id.btStudents)
+
+        val btProfile = findViewById<ImageButton>(R.id.btProfileT)
+
+
+        btListStudent.setOnClickListener {
+            val intent = Intent(this@HomeTutorActivity, StudentListActivity::class.java)
+            startActivity(intent)
+        }
+
+        btProfile.setOnClickListener {
+            val intent = Intent(this@HomeTutorActivity, TutorProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
     }
+
+
+
+
 }

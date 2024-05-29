@@ -15,18 +15,17 @@
         android:theme="@style/Theme.StudyMentor"
         tools:targetApi="31">
         <activity
-            android:name=".UI.HomeTutorActivity"
-            android:exported="false" />
-        <activity
             android:name=".UI.PaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.TutorListActivity"
+            android:name=".UI.Estudiante.TutorListActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.HomeStudentActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:name=".UI.Estudiante.ProfileStudent"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Estudiante.HomeStudentActivity"
+            android:exported="false" />
         <activity
             android:name=".UI.LoginActivity"
             android:exported="false" />
@@ -34,10 +33,19 @@
             android:name=".UI.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.TutorProfileActivity"
+            android:name=".UI.Profesor.HomeTutorActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.StudentListActivity"
+            android:name=".UI.Profesor.TutorProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Profesor.StudentListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Profesor.TutorProfileEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Profesor.StudentReviewsListActivity"
             android:exported="false" />
         <activity
             android:name=".UI.MainActivity"
