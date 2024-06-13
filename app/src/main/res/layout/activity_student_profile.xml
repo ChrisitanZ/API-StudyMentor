@@ -11,11 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginBottom="24dp"
-        android:backgroundTint="#004330"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="150dp"
+        android:backgroundTint="#86A364"
         android:text="Save"
         android:textColor="#DDFBF2"
-        app:cornerRadius="2sp"
+        android:textColorLink="#4CAF50"
         app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayout"
         app:layout_constraintStart_toStartOf="parent" />
 
