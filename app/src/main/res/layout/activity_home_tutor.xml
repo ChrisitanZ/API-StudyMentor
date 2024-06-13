@@ -74,7 +74,7 @@
             android:layout_height="92dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="130dp"
-            android:text="¡Mira el puntaje de tus profesores!"
+            android:text="¡Mira el puntaje de tus alumnos!"
             android:textAlignment="center" />
     </FrameLayout>
 

@@ -8,9 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studymentor.R
-import com.example.studymentor.model.UserTutor
+import com.example.studymentor.model.Tutor
 
-class TutorAdapter(private val tutors: List<UserTutor>) : RecyclerView.Adapter<TutorAdapter.TutorViewHolder>() {
+class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<TutorAdapter.TutorViewHolder>() {
 
 
 
@@ -34,7 +34,7 @@ class TutorAdapter(private val tutors: List<UserTutor>) : RecyclerView.Adapter<T
         private val btimage : ImageView = itemView.findViewById(R.id.ivTutor)
 
         @SuppressLint("SetTextI18n")
-        fun bind(tutor: UserTutor){
+        fun bind(tutor: Tutor){
             name.text = tutor.Name
             email.text = tutor.Email
             specialty.text = tutor.Specialty
