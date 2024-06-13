@@ -3,9 +3,9 @@ package com.example.studymentor.apiservice
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-/*object RetrofitClient {
+object RetrofitClient {
 
-    private const val BASE_URL = ""//endpoint del swaggger
+    private const val BASE_URL = "https://restful-api-studymentor.up.railway.app/" //endpoint del swaggger
 
     val paymentService: PaymentApiService by lazy {
         createService(PaymentApiService::class.java)
@@ -39,4 +39,4 @@ import retrofit2.converter.gson.GsonConverterFactory
 
         return retrofit.create(serviceClass)
     }
-}*/
+}

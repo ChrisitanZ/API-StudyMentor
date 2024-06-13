@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.studymentor.R
 
 import com.example.studymentor.adapter.TutorAdapter
+import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.model.Tutor
 import com.example.studymentor.network.TutorService
 import retrofit2.Call
@@ -65,12 +66,7 @@ class TutorListActivity : AppCompatActivity() {
     }
 
     private fun fetchTutors() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api-vlxw.onrender.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val service = retrofit.create(TutorService::class.java)
+        val service = RetrofitClient.tutorService
         service.getTutors().enqueue(object : Callback<List<Tutor>> {
             override fun onResponse(call: Call<List<Tutor>>, response: Response<List<Tutor>>) {
                 if (response.isSuccessful) {
@@ -88,6 +84,5 @@ class TutorListActivity : AppCompatActivity() {
             }
         })
     }
-
-
 }
+

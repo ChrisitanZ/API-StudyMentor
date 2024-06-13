@@ -35,10 +35,10 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
 
         @SuppressLint("SetTextI18n")
         fun bind(tutor: Tutor){
-            name.text = tutor.Name
-            email.text = tutor.Email
-            specialty.text = tutor.Specialty
-            cost.text=tutor.Cost.toString()
+            name.text = tutor.name
+            email.text = tutor.email
+            specialty.text = tutor.specialty
+            cost.text=tutor.cost.toString()
 
             //Picasso.get().load(tutor.Photo).into(btimage)
         }
