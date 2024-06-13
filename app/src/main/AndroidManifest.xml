@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.studymentor">
-
     <!-- Permiso para acceso a internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -23,38 +22,42 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <!-- Actividades de Estudiante -->
         <activity
-            android:name=".UI.Estudiante.HomeStudentActivity"
+            android:name=".UI.Student.HomeStudentActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.Estudiante.ProfileStudent"
+            android:name=".UI.Student.StudentProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.Estudiante.TutorListActivity"
+            android:name=".UI.Student.TutorListActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".UI.Student.StudentProfileEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Student.StudentsReviewsListActivity"
+            android:exported="false" />
         <!-- Actividades de Profesor -->
         <activity
-            android:name=".UI.Profesor.HomeTutorActivity"
+            android:name=".UI.Tutor.HomeTutorActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.Profesor.TutorProfileActivity"
+            android:name=".UI.Tutor.TutorProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.Profesor.StudentListActivity"
+            android:name=".UI.Tutor.StudentListActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.Profesor.TutorProfileEditActivity"
+            android:name=".UI.Tutor.TutorProfileEditActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.Profesor.StudentReviewsListActivity"
+            android:name=".UI.Tutor.TutorsReviewsListActivity"
             android:exported="false" />
-
         <!-- Otras actividades -->
         <activity
             android:name=".UI.LoginActivity"
@@ -62,7 +65,6 @@
         <activity
             android:name=".UI.RegisterActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>

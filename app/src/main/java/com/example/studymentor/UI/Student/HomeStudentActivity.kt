@@ -1,4 +1,4 @@
-package com.example.studymentor.UI.Estudiante
+package com.example.studymentor.UI.Student
 
 import android.content.Intent
 import android.os.Bundle
@@ -31,7 +31,7 @@ class HomeStudentActivity : AppCompatActivity() {
         }
 
         btPerfil.setOnClickListener{
-            val intent = Intent(this@HomeStudentActivity, ProfileStudent::class.java)
+            val intent = Intent(this@HomeStudentActivity, StudentProfileActivity::class.java)
             startActivity(intent)
         }
     }
