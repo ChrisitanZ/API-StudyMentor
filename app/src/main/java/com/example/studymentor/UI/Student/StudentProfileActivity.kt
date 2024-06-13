@@ -1,5 +1,4 @@
-package com.example.studymentor.UI.Profesor
-
+package com.example.studymentor.UI.Student
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,57 +10,53 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
-import com.example.studymentor.UI.Estudiante.HomeStudentActivity
-import com.example.studymentor.UI.Estudiante.TutorListActivity
 import com.example.studymentor.UI.MainActivity
 
-class TutorProfileActivity : AppCompatActivity() {
+class StudentProfileActivity: AppCompatActivity(){
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_profile_tutor)
+        setContentView(R.layout.activity_student_profile)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        val btHome = findViewById<ImageButton>(R.id.btHome)
 
-        val btHome = findViewById<ImageButton>(R.id.btHomeT)
+        val btTutorList = findViewById<ImageButton>(R.id.btTutors)
 
-        val btTutorList = findViewById<ImageButton>(R.id.btStudents)
+        val btEditS = findViewById<Button>(R.id.btEditS)
 
-        val btEdit = findViewById<Button>(R.id.btEdit)
+        val btReviewsS = findViewById<Button>(R.id.btReviewsS)
 
-        val btReview = findViewById<Button>(R.id.btReviews)
-
-        val btExitT = findViewById<Button>(R.id.btExitT)
+        val btExitS = findViewById<Button>(R.id.btExitS)
 
         btHome.setOnClickListener {
-            val intent = Intent(this@TutorProfileActivity, HomeStudentActivity::class.java)
+            val intent = Intent(this@StudentProfileActivity, HomeStudentActivity::class.java)
             startActivity(intent)
         }
 
         btTutorList.setOnClickListener {
-            val intent = Intent(this@TutorProfileActivity, StudentListActivity::class.java)
+            val intent = Intent(this@StudentProfileActivity, TutorListActivity::class.java)
             startActivity(intent)
         }
 
-        btEdit.setOnClickListener {
-            val intent = Intent(this@TutorProfileActivity, TutorProfileEditActivity::class.java)
+        btEditS.setOnClickListener {
+            val intent = Intent(this@StudentProfileActivity, StudentProfileEditActivity::class.java)
             startActivity(intent)
         }
 
-        btReview.setOnClickListener {
-
-            val intent = Intent(this@TutorProfileActivity, StudentReviewsListActivity::class.java)
+        btReviewsS.setOnClickListener {
+            val intent = Intent(this@StudentProfileActivity, StudentsReviewsListActivity::class.java)
             startActivity(intent)
         }
 
-        btExitT.setOnClickListener {
-            val intent = Intent(this@TutorProfileActivity, MainActivity::class.java)
+        btExitS.setOnClickListener {
+            val intent = Intent(this@StudentProfileActivity, MainActivity::class.java)
             startActivity(intent)
         }
     }
