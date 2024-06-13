@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
                 else -> null
             }
             startActivity(intent)
+            finish()
         }
 
         btRegisterLogin.setOnClickListener {

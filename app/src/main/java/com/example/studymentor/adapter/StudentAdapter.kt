@@ -31,9 +31,8 @@ class StudentAdapter(private val students: List<Student>): RecyclerView.Adapter<
 
         @SuppressLint("SetTextI18n")
         fun bind(student: Student){
-            name.text = student.Name
-            age.text = student.Age
-            course.text = student.Course
+            name.text = student.name
+            age.text = student.birthday
 
             //Picasso.get().load(tutor.Photo).into(btimage)
         }

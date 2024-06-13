@@ -1,13 +1,13 @@
 package com.example.studymentor.model
 
-data class Student(
+data class Tutor(
     val id: Int,
     val name: String,
     val lastname: String,
     val email: String,
     val password: String,
-    val birthday: String,
     val cellphone: String,
-    val genre: Genre,
+    val specialty: String,
+    val cost: Double,
     val image: String
 )

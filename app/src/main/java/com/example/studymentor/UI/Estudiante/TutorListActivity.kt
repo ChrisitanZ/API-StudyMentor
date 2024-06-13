@@ -15,7 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.studymentor.R
 
 import com.example.studymentor.adapter.TutorAdapter
-import com.example.studymentor.model.UserTutor
+import com.example.studymentor.apiservice.RetrofitClient
+import com.example.studymentor.model.Tutor
 import com.example.studymentor.network.TutorService
 import retrofit2.Call
 import retrofit2.Callback
@@ -65,14 +66,9 @@ class TutorListActivity : AppCompatActivity() {
     }
 
     private fun fetchTutors() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api-vlxw.onrender.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val service = retrofit.create(TutorService::class.java)
-        service.getTutors().enqueue(object : Callback<List<UserTutor>> {
-            override fun onResponse(call: Call<List<UserTutor>>, response: Response<List<UserTutor>>) {
+        val service = RetrofitClient.tutorService
+        service.getTutors().enqueue(object : Callback<List<Tutor>> {
+            override fun onResponse(call: Call<List<Tutor>>, response: Response<List<Tutor>>) {
                 if (response.isSuccessful) {
                     val tutors = response.body() ?: emptyList()
                     tutorAdapter = TutorAdapter(tutors)
@@ -83,11 +79,10 @@ class TutorListActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<List<UserTutor>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Tutor>>, t: Throwable) {
                 Toast.makeText(this@TutorListActivity, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
-
-
 }
+
