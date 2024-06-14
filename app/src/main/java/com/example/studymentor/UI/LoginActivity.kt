@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
-import com.example.studymentor.UI.Estudiante.HomeStudentActivity
-import com.example.studymentor.UI.Profesor.HomeTutorActivity
+import com.example.studymentor.UI.Student.HomeStudentActivity
+import com.example.studymentor.UI.Tutor.HomeTutorActivity
 
 class LoginActivity : AppCompatActivity() {
     private var userType: String? = null

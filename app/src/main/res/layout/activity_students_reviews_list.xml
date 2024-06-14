@@ -5,14 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Profesor.StudentReviewsListActivity">
+    tools:context=".UI.Student.StudentsReviewsListActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <FrameLayout
-            android:id="@+id/FrameLayoutTutorInfo"
+            android:id="@+id/FrameLayoutStudentInfo"
             android:layout_width="412dp"
             android:layout_height="174dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -30,8 +31,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <TextView
+                        android:id="@+id/tvScoreS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="18dp"
+                        android:hint="Puntaje del estudiante"
+                        app:layout_constraintStart_toEndOf="@+id/ivStarReview"
+                        app:layout_constraintTop_toBottomOf="@+id/tvStudentInfo" />
+
                     <ImageView
-                        android:id="@+id/imageView7"
+                        android:id="@+id/ivStarReview"
+                        android:layout_width="48dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="64dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toEndOf="@+id/ivStudentInfo"
+                        app:layout_constraintTop_toBottomOf="@+id/tvStudentInfo"
+                        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+                    <ImageView
+                        android:id="@+id/ivStudentInfo"
                         android:layout_width="93dp"
                         android:layout_height="112dp"
                         android:layout_marginStart="16dp"
@@ -40,70 +61,37 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        tools:src="@tools:sample/avatars" />
 
                     <TextView
-                        android:id="@+id/tvTutorInfo"
+                        android:id="@+id/tvStudentInfo"
                         android:layout_width="265dp"
                         android:layout_height="33dp"
                         android:layout_marginTop="48dp"
                         android:layout_marginEnd="16dp"
-                        android:hint="Nombre completo del tutor"
+                        android:hint="Nombre del estudiante"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/ivStarReview"
-                        android:layout_width="48dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="64dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toEndOf="@+id/imageView7"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTutorInfo"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
-
-                    <TextView
-                        android:id="@+id/tvScoreT"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="18dp"
-                        android:hint="Calificacion del tutor"
-                        app:layout_constraintStart_toEndOf="@+id/ivStarReview"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTutorInfo" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
-
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/FrameLayoutTutorReviews"
+            android:id="@+id/FrameLayoutStudentReviews"
             android:layout_width="413dp"
             android:layout_height="65dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/FrameLayoutTutorInfo" >
+            app:layout_constraintTop_toBottomOf="@+id/FrameLayoutStudentInfo">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tvTextReview"
-                    android:layout_width="101dp"
-                    android:layout_height="33dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Reviews:"
-                    android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <Button
-                    android:id="@+id/btSeeReviewsT"
+                    android:id="@+id/btSeeReviewsS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -114,21 +102,34 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvTextReviewS"
+                    android:layout_width="101dp"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Reviews:"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvLlistStudents"
-            android:layout_width="408dp"
-            android:layout_height="405dp"
+            android:id="@+id/rvListTutors"
+            android:layout_width="412dp"
+            android:layout_height="402dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/FrameLayoutTutorReviews" />
+            app:layout_constraintTop_toBottomOf="@+id/FrameLayoutStudentReviews" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:id="@+id/bottomOptionsLayoutT"
+        android:id="@+id/bottomOptionsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="645dp"
@@ -139,60 +140,59 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
         <ImageButton
-            android:id="@+id/btHomeT"
+            android:id="@+id/btHome"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_weight="1"
             android:background="?selectableItemBackground"
+            android:contentDescription="Opción 1"
             android:scaleType="fitCenter"
-            android:src="@drawable/bthome"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:src="@drawable/bthome" />
 
         <Space
-            android:layout_width="10dp"
+            android:layout_width="20dp"
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btStudents"
+            android:id="@+id/btTutors"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_weight="1"
+            android:layout_marginStart="16dp"
             android:background="?selectableItemBackground"
+            android:contentDescription="Opción 2"
             android:scaleType="fitCenter"
-            android:src="@drawable/bttutor"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:src="@drawable/bttutor" />
 
         <Space
-            android:layout_width="10dp"
+            android:layout_width="20dp"
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btProfileT"
+            android:id="@+id/btPerfilEstudiante"
             android:layout_width="48dp"
-            android:layout_height="47dp"
-            android:layout_weight="1"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
             android:background="?selectableItemBackground"
+            android:contentDescription="Opción 3"
             android:scaleType="fitCenter"
-            android:src="@drawable/btprofile"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            android:src="@drawable/btprofile" />
 
         <Space
-            android:layout_width="10dp"
+            android:layout_width="16dp"
             android:layout_height="match_parent" />
 
         <ImageButton
-            android:id="@+id/btCalendarT"
-            android:layout_width="56dp"
+            android:id="@+id/btCalendar"
+            android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_weight="1"
+            android:layout_marginStart="16dp"
             android:background="?selectableItemBackground"
+            android:contentDescription="Opción 4"
             android:scaleType="fitCenter"
-            android:src="@drawable/btcalendar"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:src="@drawable/btcalendar" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

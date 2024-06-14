@@ -1,6 +1,7 @@
-package com.example.studymentor.UI.Profesor
+package com.example.studymentor.UI.Tutor
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -10,15 +11,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
-import com.example.studymentor.UI.Estudiante.HomeStudentActivity
-import com.example.studymentor.UI.Estudiante.TutorListActivity
+import com.example.studymentor.UI.Student.HomeStudentActivity
+import com.example.studymentor.UI.MainActivity
 
 class TutorProfileActivity : AppCompatActivity() {
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_profile_tutor)
+        setContentView(R.layout.activity_tutor_profile)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -32,7 +34,9 @@ class TutorProfileActivity : AppCompatActivity() {
 
         val btEdit = findViewById<Button>(R.id.btEdit)
 
-        val btReview=findViewById<Button>(R.id.btReviews)
+        val btReview = findViewById<Button>(R.id.btReviews)
+
+        val btExitT = findViewById<Button>(R.id.btExitT)
 
         btHome.setOnClickListener {
             val intent = Intent(this@TutorProfileActivity, HomeStudentActivity::class.java)
@@ -51,7 +55,12 @@ class TutorProfileActivity : AppCompatActivity() {
 
         btReview.setOnClickListener {
 
-            val intent = Intent(this@TutorProfileActivity, StudentReviewsListActivity::class.java)
+            val intent = Intent(this@TutorProfileActivity, TutorsReviewsListActivity::class.java)
+            startActivity(intent)
+        }
+
+        btExitT.setOnClickListener {
+            val intent = Intent(this@TutorProfileActivity, MainActivity::class.java)
             startActivity(intent)
         }
     }

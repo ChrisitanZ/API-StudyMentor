@@ -1,4 +1,4 @@
-package com.example.studymentor.UI.Estudiante
+package com.example.studymentor.UI.Student
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,12 +17,9 @@ import com.example.studymentor.R
 import com.example.studymentor.adapter.TutorAdapter
 import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.model.Tutor
-import com.example.studymentor.network.TutorService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class TutorListActivity : AppCompatActivity() {
 
@@ -55,7 +52,7 @@ class TutorListActivity : AppCompatActivity() {
 
 
         btPerfil.setOnClickListener {
-            val intent = Intent(this@TutorListActivity, ProfileStudent::class.java)
+            val intent = Intent(this@TutorListActivity, StudentProfileActivity::class.java)
             startActivity(intent)
         }
 

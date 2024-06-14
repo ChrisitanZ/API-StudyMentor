@@ -96,7 +96,7 @@
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageProfile"
-        tools:text="Name:Rodrigo Bruno Garcia Ulloa" />
+        tools:text="Name: Rodrigo Bruno Garcia Ulloa" />
 
     <TextView
         android:id="@+id/tvcourse"
@@ -140,6 +140,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="36dp"
+        android:backgroundTint="#629E98"
         android:text="Chat: comunicate with your students"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvemail" />
@@ -150,6 +151,7 @@
         android:layout_height="57dp"
         android:layout_marginStart="66dp"
         android:layout_marginTop="8dp"
+        android:backgroundTint="#629E98"
         android:text="Reviews: see your reviews of all students"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btChat" />
@@ -159,7 +161,21 @@
         android:layout_width="281dp"
         android:layout_height="54dp"
         android:layout_marginStart="64dp"
+        android:backgroundTint="#629E98"
         android:text="Edit: Check or edit your personal information"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btReviews" />
+
+    <Button
+        android:id="@+id/btExitT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#467387"
+        android:text="Log out"
+        app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayoutT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btEdit" />
 </androidx.constraintlayout.widget.ConstraintLayout>
