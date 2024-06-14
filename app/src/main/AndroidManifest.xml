@@ -42,6 +42,9 @@
         <activity
             android:name=".UI.Student.StudentsReviewsListActivity"
             android:exported="false" />
+        <activity
+            android:name=".UI.Student.SelectedTutorActivity"
+            android:exported="false" />
         <!-- Actividades de Profesor -->
         <activity
             android:name=".UI.Tutor.HomeTutorActivity"
