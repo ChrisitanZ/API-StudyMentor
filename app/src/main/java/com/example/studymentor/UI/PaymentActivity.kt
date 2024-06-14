@@ -8,12 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
+import com.example.studymentor.UI.Student.HomeStudentActivity
+import com.example.studymentor.UI.Student.TutorListActivity
 
-class TutorListActivity : AppCompatActivity() {
+class PaymentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_tutor_list)
+        setContentView(R.layout.activity_payment)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -21,10 +23,15 @@ class TutorListActivity : AppCompatActivity() {
         }
 
         //Agregar a los activies restantes
+        val btTutor = findViewById<ImageButton>(R.id.btTutors)
         val btHome = findViewById<ImageButton>(R.id.btHome)
 
         btHome.setOnClickListener {
-            val intent = Intent(this@TutorListActivity, HomeStudentActivity::class.java)
+            val intent = Intent(this@PaymentActivity, HomeStudentActivity::class.java)
+            startActivity(intent)
+        }
+        btTutor.setOnClickListener {
+            val intent = Intent(this@PaymentActivity, TutorListActivity::class.java)
             startActivity(intent)
         }
     }

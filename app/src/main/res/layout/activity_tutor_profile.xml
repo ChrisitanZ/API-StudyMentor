@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/bottomOptionsLayoutT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="645dp"
+        android:background="#68A86B"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btHomeT"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bthome"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btStudents"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bttutor"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btProfileT"
+            android:layout_width="48dp"
+            android:layout_height="47dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btprofile"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btCalendarT"
+            android:layout_width="56dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btcalendar"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="135dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageProfile"
+        tools:text="Name: Rodrigo Bruno Garcia Ulloa" />
+
+    <TextView
+        android:id="@+id/tvcourse"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="139dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvname"
+        tools:text="Course: Matemáticas" />
+
+    <TextView
+        android:id="@+id/tvCellphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="135dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvcourse"
+        tools:text="Cellphone: 948548236" />
+
+    <TextView
+        android:id="@+id/tvemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="106dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCellphone"
+        tools:text="Email: rodrigoperez@gmail.com" />
+
+    <Button
+        android:id="@+id/btChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#629E98"
+        android:text="Chat: comunicate with your students"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvemail" />
+
+    <Button
+        android:id="@+id/btReviews"
+        android:layout_width="280dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#629E98"
+        android:text="Reviews: see your reviews of all students"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btChat" />
+
+    <Button
+        android:id="@+id/btEdit"
+        android:layout_width="281dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="64dp"
+        android:backgroundTint="#629E98"
+        android:text="Edit: Check or edit your personal information"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btReviews" />
+
+    <Button
+        android:id="@+id/btExitT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#467387"
+        android:text="Log out"
+        app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayoutT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btEdit" />
+</androidx.constraintlayout.widget.ConstraintLayout>

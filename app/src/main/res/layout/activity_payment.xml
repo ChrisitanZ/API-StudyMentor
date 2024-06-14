@@ -5,16 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#70998D"
+    android:background="#FFFFFF"
     app:layout_constraintCircleRadius="2dp"
-    tools:context=".PaymentActivity">
+    tools:context=".UI.PaymentActivity">
 
     <TextView
         android:id="@+id/tvPayment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="@string/tvPayment_PaymentActivity"
+        android:text="Realizar pago"
         android:textColor="#004330"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="@string/tvDetails_PaymentActivity"
+        android:text="Detalles del pago"
         android:textColor="#004330"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -34,17 +34,17 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPayment" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etCardHolderName"
+        android:id="@+id/etCardName"
         android:layout_width="178dp"
         android:layout_height="wrap_content"
         android:background="#004330"
-        android:hint="@string/etCardHolderName_PaymentActivity"
+        android:hint="ombre del Titular"
         android:padding="8sp"
         android:textColor="#70988C"
         android:textColorHint="#DDFBF2"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/tvCardHolderName"
-        app:layout_constraintTop_toBottomOf="@+id/tvCardHolderName"
+        app:layout_constraintStart_toStartOf="@+id/tvCardName"
+        app:layout_constraintTop_toBottomOf="@+id/tvCardName"
         tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"
         android:background="#004330"
-        android:hint="@string/etCVV_PaymentActivity"
+        android:hint="123"
         android:padding="8sp"
         android:textColorHint="#DDFBF2"
         android:textSize="12sp"
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
-        android:text="@string/tvCVV_PaymentActivity"
+        android:text="CVV"
         android:textColor="#004330"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:background="#004330"
-        android:hint="@string/etCardNumber_PaymentActivity"
+        android:hint="XXXX XXXX XXXX XXXX"
         android:padding="8sp"
         android:textColorHint="#DDFBF2"
         android:textSize="12sp"
@@ -94,12 +94,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="@string/tvCardNumber_PaymentActivity"
+        android:text="Número de Tarjeta"
         android:textColor="#004330"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/etCardHolderName"
-        app:layout_constraintTop_toBottomOf="@+id/etCardHolderName"
+        app:layout_constraintStart_toStartOf="@+id/etCardName"
+        app:layout_constraintTop_toBottomOf="@+id/etCardName"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -107,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/tvExpirationDate_PaymentActivity"
+        android:text="Fecha Venc."
         android:textColor="#004330"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -120,7 +120,7 @@
         android:layout_width="69dp"
         android:layout_height="wrap_content"
         android:background="#004330"
-        android:hint="@string/etDate_PaymentActivity"
+        android:hint="MM/YY"
         android:padding="8sp"
         android:textAlignment="viewStart"
         android:textColorHint="#DDFBF2"
@@ -130,11 +130,11 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/tvCardHolderName"
+        android:id="@+id/tvCardName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="@string/tvCardHolderName_PaymentActivity"
+        android:text="Titular de la Tarjeta"
         android:textColor="#004330"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -147,18 +147,18 @@
         android:layout_width="105dp"
         android:layout_height="105dp"
         android:layout_marginTop="230dp"
+        android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="@+id/tvStudyMentor"
         app:layout_constraintTop_toBottomOf="@+id/tvStudyMentor"
         tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@string/ivCardType_PaymentActivity" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvAmount"
         android:layout_width="83dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="@string/tvAmount_PaymentActivity"
+        android:layout_marginTop="50dp"
+        android:text="Total amount"
         android:textColor="#004330"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -183,9 +183,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="100dp"
         android:buttonTint="#004330"
-        android:text="@string/cbSaveCardDetails_PaymentActivity"
+        android:text="Guardar datos para futuras compras"
         android:textColor="#004330"
         android:textSize="10sp"
         android:textStyle="bold"
@@ -194,14 +194,14 @@
         tools:ignore="SmallSp,TextContrastCheck" />
 
     <Button
-        android:id="@+id/btPay"
+        android:id="@+id/btSaveP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="100dp"
         android:backgroundTint="#004330"
-        android:text="@string/btPay_PaymentActivity"
+        android:text="Pagar"
         android:textColor="#DDFBF2"
         app:cornerRadius="2sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -214,10 +214,10 @@
         android:layout_height="81dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="TODO"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@string/ivStudyMentor_PaymentActivity" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvStudyMentor"
@@ -226,12 +226,79 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
-        android:text="@string/tvStudymentor_PaymentActivity"
+        android:text="StudyMentor"
         android:textColor="#004330"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivStudyMentor"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/bottomOptionsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="645dp"
+        android:background="#68A86B"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btHome"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bthome" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btTutors"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 2"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bttutor" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btPerfilEstudiante"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 3"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btprofile" />
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btCalendar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="16dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Opción 4"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btcalendar" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

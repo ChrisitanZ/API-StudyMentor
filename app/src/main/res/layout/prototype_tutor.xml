@@ -2,77 +2,80 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvPackage"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:text="Name"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/ivTutor"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivTutor"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivTutor"
             android:layout_width="109dp"
             android:layout_height="112dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tvFee"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="85dp"
+            android:layout_width="57dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
             android:text="Tarifa"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/ivTutor"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
         <TextView
             android:id="@+id/tvSpecialty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="85dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:text="Especialidad"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/ivTutor"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
         <TextView
-            android:id="@+id/tvValoration"
+            android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="135dp"
-            android:text="Valoracion"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Email"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/ivTutor"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecialty" />
 
         <Button
-            android:id="@+id/btSeeMore"
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="125dp"
-            android:text="Ver más"
-            app:layout_constraintStart_toEndOf="@+id/ivTutor"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginEnd="36dp"
+            android:text="See More"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.298" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

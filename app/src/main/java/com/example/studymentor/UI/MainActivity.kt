@@ -9,7 +9,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,14 +21,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         val btEstudiante = findViewById<Button>(R.id.btStudent)
+        val btTeacher = findViewById<Button>(R.id.btTeacher)
 
         btEstudiante.setOnClickListener {
-            val intent = Intent(
-                this@MainActivity,
-                LoginActivity::class.java
-            )
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            intent.putExtra("userType", "student")
             startActivity(intent)
         }
 
+        btTeacher.setOnClickListener {
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            intent.putExtra("userType", "teacher")
+            startActivity(intent)
+        }
     }
 }

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Tutor.HomeTutorActivity">
+
+    <FrameLayout
+        android:id="@+id/LayoutNewsT"
+        android:layout_width="378dp"
+        android:layout_height="320dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvAcademicNewsT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Noticias Académicas"
+            android:textColor="#60899C"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivMegafono"
+            android:layout_width="94dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-50dp"
+            app:srcCompat="@drawable/megafono" />
+
+        <TextView
+            android:id="@+id/tvBodyT"
+            android:layout_width="357dp"
+            android:layout_height="148dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="160dp"
+            android:text="Contenido de las noticias"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/LayoutRatingT"
+        android:layout_width="124dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutNewsT">
+
+        <ImageButton
+            android:id="@+id/ibStudent"
+            android:layout_width="101dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-50dp"
+            android:background="?selectableItemBackground"
+            android:scaleType="centerCrop"
+            android:src="@drawable/estudiante1"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/tvRatingT"
+            android:layout_width="103dp"
+            android:layout_height="92dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="130dp"
+            android:text="¡Mira el puntaje de tus alumnos!"
+            android:textAlignment="center" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/LayoutCalendarT"
+        android:layout_width="125dp"
+        android:layout_height="229dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutNewsT">
+
+        <ImageButton
+            android:id="@+id/ibCalendarT"
+            android:layout_width="90dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-50dp"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/calendario"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="103dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="130dp"
+            android:text="¡Mira tu calendario y ve que clases están pendientes!"
+            android:textAlignment="center" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/LayoutCalificationsT"
+        android:layout_width="124dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutNewsT">
+
+        <ImageButton
+            android:id="@+id/ibCalificationsT"
+            android:layout_width="90dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-50dp"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/calificiones"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/tvCalificationsT"
+            android:layout_width="102dp"
+            android:layout_height="89dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="130dp"
+            android:text="¡Mira tus calificaciones y comentarios!"
+            android:textAlignment="center" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomOptionsLayoutT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="645dp"
+        android:background="#68A86B"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btHomeT"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bthome"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btStudents"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bttutor"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btProfileT"
+            android:layout_width="48dp"
+            android:layout_height="47dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btprofile"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/btCalendarT"
+            android:layout_width="56dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btcalendar"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

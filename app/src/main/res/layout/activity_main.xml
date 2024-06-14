@@ -9,30 +9,23 @@
     tools:context=".UI.MainActivity">
 
     <ImageView
-        android:id="@+id/ivStudent"
-        android:layout_width="192dp"
-        android:layout_height="177dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
         android:id="@+id/imageView"
         android:layout_width="165dp"
         android:layout_height="162dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="60dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRol"
-        app:srcCompat="@drawable/estudiante"
-        android:contentDescription="@string/ivStudent_MainActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/estudiante" />
 
     <TextView
-        android:id="@+id/tvRol"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
         android:layout_marginTop="80dp"
         android:fontFamily="sans-serif"
-        android:text="@string/tvRol_MainActivity"
-        android:textColor="#263238"
+        android:text="Elije tu rol:"
         android:textSize="24sp"
         android:textStyle="bold|italic"
         android:typeface="normal"
@@ -40,31 +33,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ivTeacher"
+        android:id="@+id/imageView2"
         android:layout_width="153dp"
         android:layout_height="172dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
-        android:contentDescription="@string/ivTeacher_MainActivity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRol"
-        app:srcCompat="@drawable/profesor"
-        tools:ignore="ImageContrastCheck" />
-
-    <Button
-        android:id="@+id/btStudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="32dp"
-        android:background="#BFB1B1"
-        android:fontFamily="sans-serif"
-        android:text="@string/btStudent_MainActivity"
-        android:textColor="#795548"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivStudent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/profesor" />
 
     <Button
         android:id="@+id/btTeacher"
@@ -72,12 +48,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="36dp"
-        android:text="@string/btTeacher_MainActivity"
+        android:text="Profesor"
         android:fontFamily="sans-serif"
         android:textSize="20sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivTeacher" />
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
