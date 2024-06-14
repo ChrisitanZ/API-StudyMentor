@@ -31,7 +31,7 @@ class StudentListActivity: AppCompatActivity() {
 
 
         val btHome = findViewById<ImageButton>(R.id.btHomeT)
-
+        val btCalendar = findViewById<ImageButton>(R.id.btCalendarT)
         val btPerfil =findViewById<ImageButton>(R.id.btProfileT)
 
         rvStudents = findViewById(R.id.rvSudents)
@@ -45,6 +45,11 @@ class StudentListActivity: AppCompatActivity() {
             val intent = Intent(this@StudentListActivity, TutorProfileActivity::class.java)
             startActivity(intent)
 
+        }
+
+        btCalendar.setOnClickListener{
+            val intent = Intent(this@StudentListActivity, TutorCalendarActivity::class.java)
+            startActivity(intent)
         }
 
 
