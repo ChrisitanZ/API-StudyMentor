@@ -1,6 +1,5 @@
 package com.example.studymentor.UI.Tutor
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -8,7 +7,6 @@ import android.view.Gravity
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.Spinner
@@ -18,9 +16,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
-import com.example.studymentor.UI.Student.HomeStudentActivity
-import com.example.studymentor.UI.Student.StudentProfileActivity
-import com.example.studymentor.UI.Student.TutorListActivity
+import com.example.studymentor.apiservice.ScheduleApiService
+import com.example.studymentor.model.Schedule
+import retrofit2.Response
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -31,13 +33,8 @@ class TutorCalendarActivity : AppCompatActivity() {
     private lateinit var calendarGrid: GridLayout
     private val calendar = Calendar.getInstance()
     private val dateFormat = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
-
-    //datos de ejemplo momentaneos
-    private val scheduledClasses = mapOf(
-        Pair(4, "10:00"),
-        Pair(17, "14:00"),
-        Pair(21, "13:00")
-    )
+    private lateinit var scheduleApiService: ScheduleApiService
+    private val scheduledClasses = mutableMapOf<Int, MutableList<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +51,7 @@ class TutorCalendarActivity : AppCompatActivity() {
 
         setupMonthSpinner()
         setupCalendar()
+        fetchSchedules()
 
         val btHome = findViewById<ImageButton>(R.id.btHomeT)
         val btTutor = findViewById<ImageButton>(R.id.btStudents)
@@ -74,6 +72,58 @@ class TutorCalendarActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    private fun setupRetrofit(){
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://restful-api-studymentor.up.railway.app/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        scheduleApiService = retrofit.create(ScheduleApiService::class.java)
+    }
+
+    private fun fetchSchedules() {
+        scheduleApiService.getSchedules().enqueue(object : Callback<List<Schedule>> {
+            override fun onResponse(call: Call<List<Schedule>>, response: Response<List<Schedule>>) {
+                if (response.isSuccessful) {
+                    val schedules = response.body()
+                    schedules?.let {
+                        processSchedules(it)
+                        setupCalendar()
+                    }
+                }
+            }
+
+            override fun onFailure(p0: Call<List<Schedule>>, p1: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun processSchedules(schedules: List<Schedule>) {
+        for (schedule in schedules) {
+            val days = schedule.days.split(", ").map { it.trim() }
+            for (day in days) {
+                val dayOfWeek = convertDayToCalendar(day)
+                if (dayOfWeek != -1) {
+                    scheduledClasses.getOrPut(dayOfWeek) { mutableListOf() }.add(schedule.time)
+                }
+            }
+        }
+    }
+
+    private fun convertDayToCalendar(day: String): Int {
+        return when (day) {
+            "Monday" -> Calendar.MONDAY
+            "Tuesday" -> Calendar.TUESDAY
+            "Wednesday" -> Calendar.WEDNESDAY
+            "Thursday" -> Calendar.THURSDAY
+            "Friday" -> Calendar.FRIDAY
+            "Saturday" -> Calendar.SATURDAY
+            "Sunday" -> Calendar.SUNDAY
+            else -> -1
+        }
     }
 
     private fun setupMonthSpinner(){
