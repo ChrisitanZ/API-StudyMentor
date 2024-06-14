@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
+import com.example.studymentor.StudentCalendarActivity
 
 class HomeStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +23,9 @@ class HomeStudentActivity : AppCompatActivity() {
 
 
         val btPerfil = findViewById<ImageButton>(R.id.btPerfilEstudiante)
-
         val btTutor = findViewById<ImageButton>(R.id.btTutors)
+        val btCalendar = findViewById<ImageButton>(R.id.btCalendar)
+
 
         btTutor.setOnClickListener {
             val intent = Intent(this@HomeStudentActivity, TutorListActivity::class.java)
@@ -32,6 +34,11 @@ class HomeStudentActivity : AppCompatActivity() {
 
         btPerfil.setOnClickListener{
             val intent = Intent(this@HomeStudentActivity, StudentProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        btCalendar.setOnClickListener{
+            val intent = Intent(this@HomeStudentActivity, StudentCalendarActivity::class.java)
             startActivity(intent)
         }
     }

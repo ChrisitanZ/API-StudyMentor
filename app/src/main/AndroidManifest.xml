@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyMentor"
         tools:targetApi="31">
-
+        <activity
+            android:name=".StudentCalendarActivity"
+            android:exported="false" />
         <!-- Actividad principal -->
         <activity
             android:name=".UI.MainActivity"
@@ -25,8 +27,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- Actividades de Estudiante -->
+        </activity> <!-- Actividades de Estudiante -->
         <activity
             android:name=".UI.Student.HomeStudentActivity"
             android:exported="false" />
@@ -41,8 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".UI.Student.StudentsReviewsListActivity"
-            android:exported="false" />
-        <!-- Actividades de Profesor -->
+            android:exported="false" /> <!-- Actividades de Profesor -->
         <activity
             android:name=".UI.Tutor.HomeTutorActivity"
             android:exported="false" />
@@ -57,8 +57,7 @@
             android:exported="false" />
         <activity
             android:name=".UI.Tutor.TutorsReviewsListActivity"
-            android:exported="false" />
-        <!-- Otras actividades -->
+            android:exported="false" /> <!-- Otras actividades -->
         <activity
             android:name=".UI.LoginActivity"
             android:exported="false" />
