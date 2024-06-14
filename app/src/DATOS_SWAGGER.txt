@@ -1,0 +1,544 @@
+TUTOR -----------------------------------------------------------------
+[
+  {
+    "name": "John",
+    "lastname": "Doe",
+    "email": "john.doe@example.com",
+    "password": "password123",
+    "specialty": "Math",
+    "cost": 15.00,
+    "cellphone": "988745819",
+    "image": "https://www.blogdelfotografo.com/wp-content/uploads/2022/01/retrato-anillo-luz.webp"
+  },
+  {
+    "name": "Jane",
+    "lastname": "Smith",
+    "email": "jane.smith@example.com",
+    "password": "password123",
+    "specialty": "Science",
+    "cost": 20.50,
+    "cellphone": "985454785",
+    "image": "https://www.seoptimer.com/storage/images/2016/05/foto-de-perfil-adecuada.jpg"
+  },
+  {
+    "name": "Alice",
+    "lastname": "Johnson",
+    "email": "alice.johnson@example.com",
+    "password": "password123",
+    "specialty": "History",
+    "cost": 18.75,
+    "cellphone": "987487459",
+    "image": "https://www.dzoom.org.es/wp-content/uploads/2020/02/portada-foto-perfil-redes-sociales-consejos.jpg"
+  },
+  {
+    "name": "Bob",
+    "lastname": "Brown",
+    "email": "bob.brown@example.com",
+    "password": "password123",
+    "specialty": "Literature",
+    "cost": 22.00,
+    "cellphone": "987487459",
+    "image": "https://i0.wp.com/lamiradafotografia.es/wp-content/uploads/2014/07/foto-perfil-psicologo-180x180.jpg?resize=180%2C180"
+  },
+  {
+    "name": "Charlie",
+    "lastname": "Davis",
+    "email": "charlie.davis@example.com",
+    "password": "password123",
+    "specialty": "Physics",
+    "cost": 25.00,
+    "cellphone": "956874879",
+    "image": "https://us.123rf.com/450wm/cheschhh/cheschhh1805/cheschhh180500139/100737036-retrato-de-un-joven-barbudo-con-el-ce%C3%B1o-fruncido-tiro-del-estudio.jpg?ver=6"
+  },
+  {
+    "name": "Diana",
+    "lastname": "Miller",
+    "email": "diana.miller@example.com",
+    "password": "password123",
+    "specialty": "Chemistry",
+    "cost": 19.95,
+    "cellphone": "987458978",
+    "image": "https://www.shutterstock.com/image-photo/portrait-successful-middle-aged-businesswoman-600nw-437205478.jpg"
+  },
+  {
+    "name": "Edward",
+    "lastname": "Wilson",
+    "email": "edward.wilson@example.com",
+    "password": "password123",
+    "specialty": "Biology",
+    "cost": 21.75,
+    "cellphone": "987412459",
+    "image": "https://muhimu.es/wp-content/uploads/2017/04/FRENTE-NITIDA.jpg"
+  },
+  {
+    "name": "Fiona",
+    "lastname": "Taylor",
+    "email": "fiona.taylor@example.com",
+    "password": "password123",
+    "specialty": "Music",
+    "cost": 17.50,
+    "cellphone": "985748956",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtFbP_33lZ_7P58QoaDg4av3J2NrRrdzpxZI6EMRZz0qSe2_kjGs6U5kvJqQ8Um6E7Q0o&usqp=CAU"
+  },
+  {
+    "name": "George",
+    "lastname": "Anderson",
+    "email": "george.anderson@example.com",
+    "password": "password123",
+    "specialty": "Art",
+    "cost": 23.00,
+    "cellphone": "901234567",
+    "image": "https://www.lavanguardia.com/files/content_image_mobile_filter/uploads/2018/07/25/5fa43c9755611.jpeg"
+  },
+  {
+    "name": "Hannah",
+    "lastname": "Thomas",
+    "email": "hannah.thomas@example.com",
+    "password": "password123",
+    "specialty": "Geography",
+    "cost": 16.25,
+    "cellphone": "912345789",
+    "image": "https://i.pinimg.com/170x/41/a9/a6/41a9a6e9d68f5bced2ce7cb6db729909.jpg"
+  }
+]
+
+
+STUDENT -------------------------------------------------------------------------------
+[
+  {
+    "name": "Michael",
+    "lastname": "Clark",
+    "email": "michael.clark@example.com",
+    "password": "securePass1",
+    "genre": {
+      "nameGenre": "Male",
+      "code": "M"
+    },
+    "birthday": "1993-07-19T00:12:44.684Z",
+    "cellphone": "912345689",
+    "image": "https://randomuser.me/api/portraits/men/11.jpg"
+  },
+  {
+    "name": "Emily",
+    "lastname": "Walker",
+    "email": "emily.walker@example.com",
+    "password": "securePass2",
+    "genre": {
+      "nameGenre": "Female",
+      "code": "F"
+    },
+    "birthday": "1987-10-22T00:12:44.684Z",
+    "cellphone": "923456790",
+    "image": "https://randomuser.me/api/portraits/women/12.jpg"
+  },
+  {
+    "name": "Kevin",
+    "lastname": "Harris",
+    "email": "kevin.harris@example.com",
+    "password": "securePass3",
+    "genre": {
+      "nameGenre": "Male",
+      "code": "M"
+    },
+    "birthday": "1995-12-17T00:12:44.684Z",
+    "cellphone": "934567801",
+    "image": "https://randomuser.me/api/portraits/men/13.jpg"
+  },
+  {
+    "name": "Laura",
+    "lastname": "Martinez",
+    "email": "laura.martinez@example.com",
+    "password": "securePass4",
+    "genre": {
+      "nameGenre": "Female",
+      "code": "F"
+    },
+    "birthday": "1984-03-05T00:12:44.684Z",
+    "cellphone": "945678912",
+    "image": "https://randomuser.me/api/portraits/women/14.jpg"
+  },
+  {
+    "name": "David",
+    "lastname": "Rodriguez",
+    "email": "david.rodriguez@example.com",
+    "password": "securePass5",
+    "genre": {
+      "nameGenre": "Male",
+      "code": "M"
+    },
+    "birthday": "1990-11-11T00:12:44.684Z",
+    "cellphone": "956789023",
+    "image": "https://randomuser.me/api/portraits/men/15.jpg"
+  },
+  {
+    "name": "Sara",
+    "lastname": "Lewis",
+    "email": "sara.lewis@example.com",
+    "password": "securePass6",
+    "genre": {
+      "nameGenre": "Female",
+      "code": "F"
+    },
+    "birthday": "1988-09-29T00:12:44.684Z",
+    "cellphone": "967890134",
+    "image": "https://randomuser.me/api/portraits/women/16.jpg"
+  },
+  {
+    "name": "Brian",
+    "lastname": "Lee",
+    "email": "brian.lee@example.com",
+    "password": "securePass7",
+    "genre": {
+      "nameGenre": "Male",
+      "code": "M"
+    },
+    "birthday": "1992-05-23T00:12:44.684Z",
+    "cellphone": "978901245",
+    "image": "https://randomuser.me/api/portraits/men/17.jpg"
+  },
+  {
+    "name": "Karen",
+    "lastname": "Young",
+    "email": "karen.young@example.com",
+    "password": "securePass8",
+    "genre": {
+      "nameGenre": "Female",
+      "code": "F"
+    },
+    "birthday": "1983-02-14T00:12:44.684Z",
+    "cellphone": "989012356",
+    "image": "https://randomuser.me/api/portraits/women/18.jpg"
+  },
+  {
+    "name": "Steven",
+    "lastname": "King",
+    "email": "steven.king@example.com",
+    "password": "securePass9",
+    "genre": {
+      "nameGenre": "Male",
+      "code": "M"
+    },
+    "birthday": "1981-07-07T00:12:44.684Z",
+    "cellphone": "990123467",
+    "image": "https://randomuser.me/api/portraits/men/19.jpg"
+  },
+  {
+    "name": "Olivia",
+    "lastname": "Wright",
+    "email": "olivia.wright@example.com",
+    "password": "securePass10",
+    "genre": {
+      "nameGenre": "Female",
+      "code": "F"
+    },
+    "birthday": "1986-01-25T00:12:44.684Z",
+    "cellphone": "991234578",
+    "image": "https://randomuser.me/api/portraits/women/20.jpg"
+  }
+]
+
+SCORE -----------------------------------------------------------------------------------
+[
+  {
+    "type": "Exam",
+    "date": "2024-06-14T00:19:50.474Z",
+    "scoreValue": "10/20",
+    "status": "NOTSUBMITTED",
+    "studentId": 1,
+    "tutorId": 1
+  },
+  {
+    "type": "Homework",
+    "date": "2024-06-15T00:19:50.474Z",
+    "scoreValue": "15/20",
+    "status": "SUBMITTED",
+    "studentId": 2,
+    "tutorId": 2
+  },
+  {
+    "type": "Project",
+    "date": "2024-06-16T00:19:50.474Z",
+    "scoreValue": "18/20",
+    "status": "GRADED",
+    "studentId": 3,
+    "tutorId": 3
+  },
+  {
+    "type": "Quiz",
+    "date": "2024-06-17T00:19:50.474Z",
+    "scoreValue": "12/20",
+    "status": "NOTSUBMITTED",
+    "studentId": 4,
+    "tutorId": 4
+  },
+  {
+    "type": "Midterm",
+    "date": "2024-06-18T00:19:50.474Z",
+    "scoreValue": "20/20",
+    "status": "SUBMITTED",
+    "studentId": 5,
+    "tutorId": 5
+  },
+  {
+    "type": "Final",
+    "date": "2024-06-19T00:19:50.474Z",
+    "scoreValue": "14/20",
+    "status": "GRADED",
+    "studentId": 6,
+    "tutorId": 6
+  },
+  {
+    "type": "Assignment",
+    "date": "2024-06-20T00:19:50.474Z",
+    "scoreValue": "9/20",
+    "status": "NOTSUBMITTED",
+    "studentId": 7,
+    "tutorId": 7
+  },
+  {
+    "type": "Lab",
+    "date": "2024-06-21T00:19:50.474Z",
+    "scoreValue": "16/20",
+    "status": "SUBMITTED",
+    "studentId": 8,
+    "tutorId": 8
+  },
+  {
+    "type": "Presentation",
+    "date": "2024-06-22T00:19:50.474Z",
+    "scoreValue": "17/20",
+    "status": "GRADED",
+    "studentId": 9,
+    "tutorId": 9
+  },
+  {
+    "type": "Participation",
+    "date": "2024-06-23T00:19:50.474Z",
+    "scoreValue": "13/20",
+    "status": "NOTSUBMITTED",
+    "studentId": 10,
+    "tutorId": 10
+  }
+]
+
+SCHEDULE -------------------------------------------------------------------------------
+[
+  {
+    "tutorName": "John Doe",
+    "days": "Monday, Wednesday, Friday",
+    "time": "10:00 AM - 12:00 PM",
+    "price": "15.00",
+    "idTutor": 1
+  },
+  {
+    "tutorName": "Jane Smith",
+    "days": "Tuesday, Thursday",
+    "time": "2:00 PM - 4:00 PM",
+    "price": "20.50",
+    "idTutor": 2
+  },
+  {
+    "tutorName": "Alice Johnson",
+    "days": "Monday, Thursday",
+    "time": "3:00 PM - 5:00 PM",
+    "price": "18.75",
+    "idTutor": 3
+  },
+  {
+    "tutorName": "Bob Brown",
+    "days": "Wednesday, Friday",
+    "time": "9:00 AM - 11:00 AM",
+    "price": "22.00",
+    "idTutor": 4
+  },
+  {
+    "tutorName": "Charlie Davis",
+    "days": "Tuesday, Thursday",
+    "time": "1:00 PM - 3:00 PM",
+    "price": "25.00",
+    "idTutor": 5
+  },
+  {
+    "tutorName": "Diana Miller",
+    "days": "Monday, Wednesday",
+    "time": "4:00 PM - 6:00 PM",
+    "price": "19.95",
+    "idTutor": 6
+  },
+  {
+    "tutorName": "Edward Wilson",
+    "days": "Tuesday, Friday",
+    "time": "10:00 AM - 12:00 PM",
+    "price": "21.75",
+    "idTutor": 7
+  },
+  {
+    "tutorName": "Fiona Taylor",
+    "days": "Monday, Thursday",
+    "time": "2:00 PM - 4:00 PM",
+    "price": "17.50",
+    "idTutor": 8
+  },
+  {
+    "tutorName": "George Anderson",
+    "days": "Wednesday, Friday",
+    "time": "3:00 PM - 5:00 PM",
+    "price": "23.00",
+    "idTutor": 9
+  },
+  {
+    "tutorName": "Hannah Thomas",
+    "days": "Tuesday, Thursday",
+    "time": "11:00 AM - 1:00 PM",
+    "price": "16.25",
+    "idTutor": 10
+  }
+]
+
+REVIEW -------------------------------------------------------------------------------
+[
+  {
+    "textMessagge": "John Doe is a fantastic tutor!",
+    "rating": 4,
+    "studentId": 1,
+    "date": "2024-06-14T00:34:40.867Z",
+    "tutorId": 1
+  },
+  {
+    "textMessagge": "Jane Smith is very knowledgeable.",
+    "rating": 5,
+    "studentId": 2,
+    "date": "2024-06-14T01:00:00.000Z",
+    "tutorId": 2
+  },
+  {
+    "textMessagge": "Alice Johnson helped me understand History better.",
+    "rating": 4,
+    "studentId": 3,
+    "date": "2024-06-14T02:15:30.123Z",
+    "tutorId": 3
+  },
+  {
+    "textMessagge": "Bob Brown is an excellent Literature tutor.",
+    "rating": 5,
+    "studentId": 4,
+    "date": "2024-06-14T03:30:00.456Z",
+    "tutorId": 4
+  },
+  {
+    "textMessagge": "Charlie Davis explains Physics concepts clearly.",
+    "rating": 4,
+    "studentId": 5,
+    "date": "2024-06-14T04:45:00.789Z",
+    "tutorId": 5
+  },
+  {
+    "textMessagge": "Diana Miller is passionate about Chemistry.",
+    "rating": 5,
+    "studentId": 6,
+    "date": "2024-06-14T05:00:00.000Z",
+    "tutorId": 6
+  },
+  {
+    "textMessagge": "Edward Wilson helped me ace my Biology exam!",
+    "rating": 4,
+    "studentId": 7,
+    "date": "2024-06-14T06:15:00.321Z",
+    "tutorId": 7
+  },
+  {
+    "textMessagge": "Fiona Taylor has a great understanding of Music theory.",
+    "rating": 5,
+    "studentId": 8,
+    "date": "2024-06-14T07:30:00.654Z",
+    "tutorId": 8
+  },
+  {
+    "textMessagge": "George Anderson's Art classes are inspiring.",
+    "rating": 4,
+    "studentId": 9,
+    "date": "2024-06-14T08:45:00.987Z",
+    "tutorId": 9
+  },
+  {
+    "textMessagge": "Hannah Thomas taught me a lot about Geography.",
+    "rating": 5,
+    "studentId": 10,
+    "date": "2024-06-14T09:00:00.000Z",
+    "tutorId": 10
+  }
+]
+
+PAYMENT -------------------------------------------------------------------------------
+[
+  {
+    "cardNumber": "1234567812345678",
+    "expirationDate": "2026-05",
+    "owner": "Michael Clark",
+    "cvv": 123,
+    "studentId": 1
+  },
+  {
+    "cardNumber": "2345678923456789",
+    "expirationDate": "2025-09",
+    "owner": "Emily Walker",
+    "cvv": 456,
+    "studentId": 2
+  },
+  {
+    "cardNumber": "3456789034567890",
+    "expirationDate": "2024-12",
+    "owner": "Kevin Harris",
+    "cvv": 789,
+    "studentId": 3
+  },
+  {
+    "cardNumber": "4567890145678901",
+    "expirationDate": "2023-04",
+    "owner": "Laura Martinez",
+    "cvv": 234,
+    "studentId": 4
+  },
+  {
+    "cardNumber": "5678901256789012",
+    "expirationDate": "2025-07",
+    "owner": "David Rodriguez",
+    "cvv": 567,
+    "studentId": 5
+  },
+  {
+    "cardNumber": "6789012367890123",
+    "expirationDate": "2024-11",
+    "owner": "Sara Lewis",
+    "cvv": 890,
+    "studentId": 6
+  },
+  {
+    "cardNumber": "7890123478901234",
+    "expirationDate": "2023-02",
+    "owner": "Brian Lee",
+    "cvv": 123,
+    "studentId": 7
+  },
+  {
+    "cardNumber": "8901234589012345",
+    "expirationDate": "2025-06",
+    "owner": "Karen Young",
+    "cvv": 456,
+    "studentId": 8
+  },
+  {
+    "cardNumber": "9012345690123456",
+    "expirationDate": "2024-09",
+    "owner": "Steven King",
+    "cvv": 789,
+    "studentId": 9
+  },
+  {
+    "cardNumber": "0123456701234567",
+    "expirationDate": "2023-01",
+    "owner": "Olivia Wright",
+    "cvv": 234,
+    "studentId": 10
+  }
+]
