@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
+import com.example.studymentor.UI.Student.ScoreActivity
 
 class HomeStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +26,8 @@ class HomeStudentActivity : AppCompatActivity() {
 
         val btTutor = findViewById<ImageButton>(R.id.btTutors)
 
+        val tvRating = findViewById<ImageButton>(R.id.ibCalifications)
+
         btTutor.setOnClickListener {
             val intent = Intent(this@HomeStudentActivity, TutorListActivity::class.java)
             startActivity(intent)
@@ -34,5 +37,9 @@ class HomeStudentActivity : AppCompatActivity() {
             val intent = Intent(this@HomeStudentActivity, StudentProfileActivity::class.java)
             startActivity(intent)
         }
+        //tvRating.setOnClickListener {
+          //  val intent = Intent(this@HomeStudentActivity, ScoreActivity::class.java)
+            //startActivity(intent)
+        //}
     }
 }
