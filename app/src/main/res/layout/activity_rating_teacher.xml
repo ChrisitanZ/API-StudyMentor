@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/title_reviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:text="Reviews"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="?android:textColorPrimary" />
+
+    <!-- Spinner para seleccionar tutor -->
+    <TextView
+        android:id="@+id/select_tutor_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:text="Select your tutor"
+        android:textColor="?android:textColorPrimary" />
+
+    <Spinner
+        android:id="@+id/tutor_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:minHeight="48dp" />
+
+    <!-- RatingBar para calificar -->
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:numStars="5"
+        android:stepSize="1.0" />
+
+    <!-- Cuadro de texto para la reseña -->
+    <EditText
+        android:id="@+id/review_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="autofill"
+        android:gravity="top"
+        android:hint="Write your review"
+        android:inputType="textMultiLine"
+        android:minHeight="100dp"
+        android:textColor="?android:textColorPrimary"
+        android:textColorHint="#546E7A"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <!-- Botón para publicar la reseña -->
+    <Button
+        android:id="@+id/publish_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Publish Review" />
+
+</LinearLayout>
