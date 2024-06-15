@@ -29,13 +29,10 @@ class TutorProfileActivity : AppCompatActivity() {
 
 
         val btHome = findViewById<ImageButton>(R.id.btHomeT)
-
+        val btCalendar = findViewById<ImageButton>(R.id.btCalendarT)
         val btTutorList = findViewById<ImageButton>(R.id.btStudents)
-
         val btEdit = findViewById<Button>(R.id.btEdit)
-
         val btReview = findViewById<Button>(R.id.btReviews)
-
         val btExitT = findViewById<Button>(R.id.btExitT)
 
         btHome.setOnClickListener {
@@ -61,6 +58,11 @@ class TutorProfileActivity : AppCompatActivity() {
 
         btExitT.setOnClickListener {
             val intent = Intent(this@TutorProfileActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        btCalendar.setOnClickListener{
+            val intent = Intent(this@TutorProfileActivity, TutorCalendarActivity::class.java)
             startActivity(intent)
         }
     }

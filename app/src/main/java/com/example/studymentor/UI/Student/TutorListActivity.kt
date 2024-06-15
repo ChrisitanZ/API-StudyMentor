@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.studymentor.R
+import com.example.studymentor.StudentCalendarActivity
 
 import com.example.studymentor.adapter.TutorAdapter
 import com.example.studymentor.apiservice.RetrofitClient
@@ -40,7 +41,7 @@ class TutorListActivity : AppCompatActivity() {
 
         val btHome = findViewById<ImageButton>(R.id.btHome)
         val btFind = findViewById<Button>(R.id.btSearch)
-
+        val btCalendar = findViewById<ImageButton>(R.id.btCalendar)
         val btPerfil = findViewById<ImageButton>(R.id.btPerfilEstudiante)
 
         rvTutors = findViewById(R.id.rvTutors)
@@ -58,6 +59,11 @@ class TutorListActivity : AppCompatActivity() {
 
         btFind.setOnClickListener{
             fetchTutors()
+        }
+
+        btCalendar.setOnClickListener{
+            val intent = Intent(this@TutorListActivity, StudentCalendarActivity::class.java)
+            startActivity(intent)
         }
 
     }
