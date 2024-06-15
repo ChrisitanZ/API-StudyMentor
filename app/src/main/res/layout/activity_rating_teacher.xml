@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Título -->
+
     <TextView
         android:id="@+id/title_reviews"
         android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
         android:textStyle="bold"
         android:textColor="?android:textColorPrimary" />
 
-    <!-- Spinner para seleccionar tutor -->
+
     <TextView
         android:id="@+id/select_tutor_text"
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
         android:layout_marginBottom="18dp"
         android:minHeight="48dp" />
 
-    <!-- RatingBar para calificar -->
+
     <RatingBar
         android:id="@+id/rating_bar"
         android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
         android:numStars="5"
         android:stepSize="1.0" />
 
-    <!-- Cuadro de texto para la reseña -->
+
     <EditText
         android:id="@+id/review_text"
         android:layout_width="match_parent"
@@ -60,7 +60,7 @@
         android:textColorHint="#546E7A"
         tools:ignore="VisualLintTextFieldSize" />
 
-    <!-- Botón para publicar la reseña -->
+
     <Button
         android:id="@+id/publish_button"
         android:layout_width="wrap_content"

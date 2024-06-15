@@ -1,5 +1,6 @@
 package com.example.studymentor.UI.Student
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -40,31 +41,47 @@ class RatingTeacherActivity : AppCompatActivity() {
             val studentId = 25
             val tutorId = tutorList[tutorSpinner.selectedItemPosition].id
 
-            val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-            val currentDate = sdf.format(Date())
+            if (content.isEmpty()) {
+                Toast.makeText(this, "Completa la reseña antes de publicar", Toast.LENGTH_SHORT).show()
+            } else {
+                val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+                val currentDate = sdf.format(Date())
 
-            val reviewRequest = ReviewRequest(
-                textMessagge = content,
-                rating = rating,
-                studentId = studentId,
-                tutorId = tutorId,
-                date = currentDate
-            )
+                val reviewRequest = ReviewRequest(
+                    textMessagge = content,
+                    rating = rating,
+                    studentId = studentId,
+                    tutorId = tutorId,
+                    date = currentDate
+                )
 
-            RetrofitClient.reviewService.createReview(reviewRequest).enqueue(object : Callback<ReviewResponse> {
-                override fun onResponse(call: Call<ReviewResponse>, response: Response<ReviewResponse>) {
-                    if (response.isSuccessful) {
-                        Log.d("Review", "Review posted successfully: ${response.body()?.message}")
+                RetrofitClient.reviewService.createReview(reviewRequest).enqueue(object : Callback<ReviewResponse> {
+                    override fun onResponse(call: Call<ReviewResponse>, response: Response<ReviewResponse>) {
+                        if (response.isSuccessful) {
+                            val reviewResponse = response.body()
+                            Toast.makeText(this@RatingTeacherActivity, "Reseña publicada exitosamente", Toast.LENGTH_SHORT).show()
+                            Log.d("Review", "Review posted successfully: ${reviewResponse?.message}")
+                        } else {
+                            val errorMsg = response.errorBody()?.string() ?: "Error desconocido"
+                            Toast.makeText(this@RatingTeacherActivity, "Error al publicar la reseña: $errorMsg", Toast.LENGTH_SHORT).show()
+                            Log.e("Review", "Failed to post review: $errorMsg")
+                        }
+
+                        val intent = Intent(this@RatingTeacherActivity, HomeStudentActivity::class.java)
+                        startActivity(intent)
                         finish()
-                    } else {
-                        Log.e("Review", "Failed to post review: ${response.errorBody()?.string()}")
                     }
-                }
 
-                override fun onFailure(call: Call<ReviewResponse>, t: Throwable) {
-                    Log.e("Review", "Error posting review", t)
-                }
-            })
+                    override fun onFailure(call: Call<ReviewResponse>, t: Throwable) {
+
+                        Log.e("Review", "Error posting review", t)
+
+                        val intent = Intent(this@RatingTeacherActivity, HomeStudentActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                })
+            }
         }
     }
 
@@ -76,12 +93,14 @@ class RatingTeacherActivity : AppCompatActivity() {
                     tutorList = response.body() ?: emptyList()
                     setupSpinner()
                 } else {
-                    Toast.makeText(this@RatingTeacherActivity, "Error al obtener la lista de tutores", Toast.LENGTH_SHORT).show()
+
+                    Log.e("Tutor", "Failed to fetch tutors: ${response.errorBody()?.string()}")
                 }
             }
 
             override fun onFailure(call: Call<List<Tutor>>, t: Throwable) {
-                Toast.makeText(this@RatingTeacherActivity, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
+
+                Log.e("Tutor", "Error fetching tutors", t)
             }
         })
     }
