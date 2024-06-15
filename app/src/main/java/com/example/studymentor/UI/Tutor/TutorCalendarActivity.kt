@@ -29,12 +29,17 @@ import java.util.Locale
 
 class TutorCalendarActivity : AppCompatActivity() {
 
-    private lateinit var  monthSpinner: Spinner
+    private lateinit var monthSpinner: Spinner
     private lateinit var calendarGrid: GridLayout
     private val calendar = Calendar.getInstance()
     private val dateFormat = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
-    private lateinit var scheduleApiService: ScheduleApiService
-    private val scheduledClasses = mutableMapOf<Int, MutableList<String>>()
+
+    //datos de ejemplo momentaneos
+    private val scheduledClasses = mapOf(
+        Pair(4, "10:00"),
+        Pair(17, "14:00"),
+        Pair(21, "13:00")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +56,6 @@ class TutorCalendarActivity : AppCompatActivity() {
 
         setupMonthSpinner()
         setupCalendar()
-        fetchSchedules()
 
         val btHome = findViewById<ImageButton>(R.id.btHomeT)
         val btTutor = findViewById<ImageButton>(R.id.btStudents)
@@ -74,64 +78,12 @@ class TutorCalendarActivity : AppCompatActivity() {
 
     }
 
-    private fun setupRetrofit(){
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://restful-api-studymentor.up.railway.app/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        scheduleApiService = retrofit.create(ScheduleApiService::class.java)
-    }
-
-    private fun fetchSchedules() {
-        scheduleApiService.getSchedules().enqueue(object : Callback<List<Schedule>> {
-            override fun onResponse(call: Call<List<Schedule>>, response: Response<List<Schedule>>) {
-                if (response.isSuccessful) {
-                    val schedules = response.body()
-                    schedules?.let {
-                        processSchedules(it)
-                        setupCalendar()
-                    }
-                }
-            }
-
-            override fun onFailure(p0: Call<List<Schedule>>, p1: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
-    }
-
-    private fun processSchedules(schedules: List<Schedule>) {
-        for (schedule in schedules) {
-            val days = schedule.days.split(", ").map { it.trim() }
-            for (day in days) {
-                val dayOfWeek = convertDayToCalendar(day)
-                if (dayOfWeek != -1) {
-                    scheduledClasses.getOrPut(dayOfWeek) { mutableListOf() }.add(schedule.time)
-                }
-            }
-        }
-    }
-
-    private fun convertDayToCalendar(day: String): Int {
-        return when (day) {
-            "Monday" -> Calendar.MONDAY
-            "Tuesday" -> Calendar.TUESDAY
-            "Wednesday" -> Calendar.WEDNESDAY
-            "Thursday" -> Calendar.THURSDAY
-            "Friday" -> Calendar.FRIDAY
-            "Saturday" -> Calendar.SATURDAY
-            "Sunday" -> Calendar.SUNDAY
-            else -> -1
-        }
-    }
-
-    private fun setupMonthSpinner(){
+    private fun setupMonthSpinner() {
         val months = arrayListOf<String>()
         val currentMonth = calendar.get(Calendar.MONTH)
         val currentYear = calendar.get(Calendar.YEAR)
 
-        for (i in -3..3){
+        for (i in -3..3) {
             calendar.set(currentYear, currentMonth + i, 1)
             months.add(dateFormat.format(calendar.time))
         }
@@ -142,7 +94,12 @@ class TutorCalendarActivity : AppCompatActivity() {
         monthSpinner.setSelection(3)
 
         monthSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 calendar.set(currentYear, currentMonth + position - 3, 1)
                 setupCalendar()
             }

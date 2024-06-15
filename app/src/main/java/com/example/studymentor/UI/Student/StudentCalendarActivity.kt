@@ -60,8 +60,6 @@ class StudentCalendarActivity : AppCompatActivity() {
         val btHome = findViewById<ImageButton>(R.id.btHome)
         val btPerfil = findViewById<ImageButton>(R.id.btPerfilEstudiante)
         val btTutor = findViewById<ImageButton>(R.id.btTutors)
-        val btPayment = findViewById<Button>(R.id.btPayment)
-
 
         btHome.setOnClickListener {
             val intent = Intent(this@StudentCalendarActivity, HomeStudentActivity::class.java)
@@ -76,11 +74,6 @@ class StudentCalendarActivity : AppCompatActivity() {
 
         btTutor.setOnClickListener {
             val intent = Intent(this@StudentCalendarActivity, TutorListActivity::class.java)
-            startActivity(intent)
-        }
-
-        btPayment.setOnClickListener {
-            val intent = Intent(this@StudentCalendarActivity, PaymentActivity::class.java)
             startActivity(intent)
         }
     }

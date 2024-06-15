@@ -5,52 +5,21 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentCalendarActivity">
-
-    <Spinner
-        android:id="@+id/spMonth"
-        android:layout_width="99dp"
-        android:layout_height="41dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <GridLayout
-        android:id="@+id/calendar_grid"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_below="@id/spMonth"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
-        android:columnCount="7"
-        android:padding="16dp"
-        android:rowCount="6"
-        app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spMonth">
-
-        <!-- Aquí agregarás tus celdas del calendario dinámicamente desde Kotlin -->
-
-    </GridLayout>
-
+    tools:context=".UI.Student.TutorSchedulesActivity">
     <LinearLayout
         android:id="@+id/bottomOptionsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="645dp"
+        android:layout_marginTop="20dp"
         android:background="#68A86B"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintVertical_bias="0.0">
 
         <ImageButton
             android:id="@+id/btHome"
@@ -85,7 +54,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="?selectableItemBackground"
-            android:contentDescription="Perfil"
+            android:contentDescription="Opción 3"
             android:scaleType="fitCenter"
             android:src="@drawable/btprofile" />
 
@@ -105,5 +74,37 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Make your Schedule"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Available schedules for this tutor"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_schedules"
+        android:layout_width="373dp"
+        android:layout_height="482dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
