@@ -48,6 +48,9 @@
         <activity
             android:name=".UI.Student.ScoreActivity"
             android:exported="false" />
+        <activity
+            android:name=".UI.Student.RatingTeacherActivity"
+            android:exported="false" />
         <!-- Actividades de Profesor -->
         <activity
             android:name=".UI.Tutor.HomeTutorActivity"
