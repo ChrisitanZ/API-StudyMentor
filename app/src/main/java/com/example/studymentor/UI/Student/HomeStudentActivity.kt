@@ -9,7 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
 import com.example.studymentor.StudentCalendarActivity
-import com.example.studymentor.UI.Estudiante.RatingTeacherActivity
+import com.example.studymentor.UI.Student.RatingTeacherActivity
 
 class HomeStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
