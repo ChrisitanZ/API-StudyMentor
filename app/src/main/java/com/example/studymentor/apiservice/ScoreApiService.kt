@@ -15,8 +15,9 @@ interface ScoreApiService {
     fun getScores(): Call<List<Score>>
 
     @GET("api/Score/{id}")
-    fun getScoreById(@Path("id") id: Int): Call<Score>
-
+    fun getScoresById(@Path("id") id: Int): Call<List<Score>>
+    @GET("api/Score/scores/student/{id}")
+    fun getScoresByStudentId(@Path("id") id: Int): Call<List<Score>>
     @POST("api/Score")
     fun createScore(@Body score: ScoreRequest): Call<Score>
 

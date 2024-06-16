@@ -71,6 +71,9 @@
             android:name=".UI.Tutor.TutorsReviewsListActivity"
             android:exported="false" />
         <activity
+            android:name=".UI.Tutor.ScoreTutorActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.Tutor.TutorCalendarActivity"
             android:exported="false" /> <!-- Otras actividades -->
         <activity
