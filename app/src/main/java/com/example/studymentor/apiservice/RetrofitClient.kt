@@ -45,12 +45,8 @@ object RetrofitClient {
     }
 
     private fun <T> createService(serviceClass: Class<T>): T {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
         return retrofit.create(serviceClass)
     }
+
 
 }

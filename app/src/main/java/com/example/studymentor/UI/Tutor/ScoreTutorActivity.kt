@@ -18,12 +18,14 @@ import com.example.studymentor.adapter.ScoreAdapter
 import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.model.Score
 import com.example.studymentor.model.Student
+import com.example.studymentor.request.ScoreRequest
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ScoreTutorActivity: AppCompatActivity() {
+
+class ScoreTutorActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var scoreAdapter: ScoreAdapter
@@ -39,6 +41,11 @@ class ScoreTutorActivity: AppCompatActivity() {
 
         spinnerTutors = findViewById(R.id.spinnerTutors)
         fetchStudents()
+
+        val fabAddScore: FloatingActionButton = findViewById(R.id.fabAddNote)
+        fabAddScore.setOnClickListener {
+            showAddScoreDialog()
+        }
     }
 
     private fun fetchStudents() {
@@ -68,7 +75,7 @@ class ScoreTutorActivity: AppCompatActivity() {
         spinnerTutors.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedStudentId = studentList[position].id
-                loadScores(2, selectedStudentId)
+                loadScores(selectedStudentId, 2)  // Asumiendo que el tutor con ID 2 es el que queremos
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -81,11 +88,17 @@ class ScoreTutorActivity: AppCompatActivity() {
             override fun onResponse(call: Call<List<Score>>, response: Response<List<Score>>) {
                 if (response.isSuccessful) {
                     val scores = response.body()
-                    if (scores != null) {
-                        scoreAdapter = ScoreAdapter(scores)
-                        recyclerView.adapter = scoreAdapter
+                    if (scores!= null) {
+                        val filteredScores = scores.filter { it.tutorId == tutorId }
+                        if (filteredScores.isNotEmpty()) {
+                            scoreAdapter = ScoreAdapter(filteredScores, studentList)
+                            recyclerView.adapter = scoreAdapter
+                            scoreAdapter.notifyDataSetChanged() // Add this line
+                        } else {
+                            Toast.makeText(this@ScoreTutorActivity, "No hay puntuaciones para mostrar", Toast.LENGTH_SHORT).show()
+                        }
                     } else {
-                        Toast.makeText(this@ScoreTutorActivity, "Lista de puntuaciones nula", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@ScoreTutorActivity, "Error en la solicitud: ${response.code()}", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Toast.makeText(this@ScoreTutorActivity, "Error en la solicitud: ${response.code()}", Toast.LENGTH_SHORT).show()
@@ -93,6 +106,63 @@ class ScoreTutorActivity: AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<Score>>, t: Throwable) {
+                Toast.makeText(this@ScoreTutorActivity, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun showAddScoreDialog() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_score, null)
+        val builder = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setTitle("Agregar Nota")
+
+        val alertDialog = builder.show()
+
+        val edtScoreType = dialogView.findViewById<EditText>(R.id.etNoteType)
+        val edtScoreDate = dialogView.findViewById<EditText>(R.id.etNoteDate)
+        val edtScoreValue = dialogView.findViewById<EditText>(R.id.etNoteScoreValue)
+        val edtScoreStatus = dialogView.findViewById<EditText>(R.id.etNoteStatus)
+        val btnAddScore = dialogView.findViewById<Button>(R.id.btnAddNote)
+
+        btnAddScore.setOnClickListener {
+            val scoreType = edtScoreType.text.toString()
+            val scoreDate = edtScoreDate.text.toString()
+            val scoreValue = edtScoreValue.text.toString()
+            val scoreStatus = edtScoreStatus.text.toString()
+
+            if (scoreType.isNotEmpty() && scoreDate.isNotEmpty() && scoreValue.isNotEmpty() && scoreStatus.isNotEmpty()) {
+                val selectedStudentPosition = spinnerTutors.selectedItemPosition
+                val selectedStudentId = studentList[selectedStudentPosition].id
+                val scoreRequest = ScoreRequest(
+                    type = scoreType,
+                    date = scoreDate,
+                    scoreValue = scoreValue,
+                    status = scoreStatus,
+                    studentId = selectedStudentId,
+                    tutorId = 2  // Asumiendo que el tutor con ID 2 es el que queremos
+                )
+                saveScore(scoreRequest)
+                alertDialog.dismiss()
+            } else {
+                Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun saveScore(scoreRequest: ScoreRequest) {
+        val service = RetrofitClient.scoreService
+        service.createScore(scoreRequest).enqueue(object : Callback<Score> {
+            override fun onResponse(call: Call<Score>, response: Response<Score>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@ScoreTutorActivity, "Nota agregada exitosamente", Toast.LENGTH_SHORT).show()
+                    loadScores(scoreRequest.studentId, scoreRequest.tutorId)
+                } else {
+                    Toast.makeText(this@ScoreTutorActivity, "Error al agregar la nota", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Score>, t: Throwable) {
                 Toast.makeText(this@ScoreTutorActivity, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
