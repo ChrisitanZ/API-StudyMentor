@@ -31,6 +31,9 @@ class StudentsReviewsListActivity : AppCompatActivity() {
     private lateinit var rvListTutors: RecyclerView
     private lateinit var ivStudentInfo: ImageView
     private lateinit var tvStudentInfo: TextView
+    private lateinit var tvScoreS: TextView
+    //Reemplazar por el adecuado
+    private val studentId: Int = 26
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +52,7 @@ class StudentsReviewsListActivity : AppCompatActivity() {
         val btSeeReviewsS = findViewById<Button>(R.id.btSeeReviewsS)
         tvStudentInfo = findViewById(R.id.tvStudentInfo)
         ivStudentInfo = findViewById(R.id.ivStudentInfo)
+        tvScoreS = findViewById(R.id.tvScoreS)
 
         rvListTutors = findViewById(R.id.rvListTutors)
         rvListTutors.layoutManager = LinearLayoutManager(this@StudentsReviewsListActivity)
@@ -81,8 +85,6 @@ class StudentsReviewsListActivity : AppCompatActivity() {
     }
 
     private fun fetchStudentName() {
-        val studentId = 26 //Reemplazar por el adecuado
-
         val service = RetrofitClient.studentService
         service.getStudentById(studentId).enqueue(object : Callback<Student> {
             override fun onResponse(call: Call<Student>, response: Response<Student>) {
@@ -93,6 +95,8 @@ class StudentsReviewsListActivity : AppCompatActivity() {
                         Picasso.get()
                             .load(student.image)
                             .into(ivStudentInfo)
+
+                        fetchReviewsStudent()
                     }
                 } else {
                     Toast.makeText(this@StudentsReviewsListActivity, "Error al obtener el tutor", Toast.LENGTH_SHORT).show()
@@ -111,7 +115,18 @@ class StudentsReviewsListActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<Review>>, response: Response<List<Review>>) {
                 if (response.isSuccessful) {
                     val reviews = response.body() ?: emptyList()
-                    reviewAdapterStudent = ReviewAdapterStudent(reviews)
+
+                    //Promedio de las reseñas
+                    val filteredReviews = reviews.filter { it.type == 1 && it.studentId == studentId}
+                    val averageScore = if (filteredReviews.isNotEmpty()) {
+                        filteredReviews.map { it.rating }.average()
+                    } else {
+                        0.0
+                    }
+                    tvScoreS.text = "Promedio: %.2f".format(averageScore)
+
+
+                    reviewAdapterStudent = ReviewAdapterStudent(filteredReviews)
                     rvListTutors.adapter = reviewAdapterStudent
                     rvListTutors.layoutManager = LinearLayoutManager(this@StudentsReviewsListActivity)
                 } else {
