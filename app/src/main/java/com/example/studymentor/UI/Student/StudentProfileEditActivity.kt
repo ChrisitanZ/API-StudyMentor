@@ -20,6 +20,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class StudentProfileEditActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
@@ -40,6 +41,7 @@ class StudentProfileEditActivity : AppCompatActivity() {
         setContentView(R.layout.activity_student_profile_edit)
 
 
+
         val btHomeT = findViewById<ImageButton>(R.id.btHomeT)
         val btStudents = findViewById<ImageButton>(R.id.btStudents)
         val btProfileT = findViewById<ImageButton>(R.id.btProfileT)
@@ -48,6 +50,7 @@ class StudentProfileEditActivity : AppCompatActivity() {
         btHomeT.setOnClickListener {
             startActivity(Intent(this, HomeStudentActivity::class.java))
         }
+
 
         btStudents.setOnClickListener {
             // Redirigir a la pantalla de estudiantes (StudentsActivity)
@@ -82,6 +85,7 @@ class StudentProfileEditActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Error: No se pudo obtener el ID de usuario", Toast.LENGTH_SHORT).show()
         }
+
 
         val btnSaveProfile = findViewById<Button>(R.id.btnSaveProfile)
 
@@ -159,5 +163,6 @@ class StudentProfileEditActivity : AppCompatActivity() {
                 Toast.makeText(this@StudentProfileEditActivity, "Error al actualizar perfil: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
+
     }
 }

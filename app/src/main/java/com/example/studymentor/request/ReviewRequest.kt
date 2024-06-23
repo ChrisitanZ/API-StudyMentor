@@ -1,8 +1,10 @@
 package com.example.studymentor.request
 
 data class ReviewRequest(
-    val content: String,
+    val textMessagge: String,
     val rating: Int,
     val studentId: Int,
-    val tutorId: Int
+    val date: String,
+    val tutorId: Int,
+    val type: String
 )

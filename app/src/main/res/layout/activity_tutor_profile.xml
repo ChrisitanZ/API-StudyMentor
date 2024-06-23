@@ -76,8 +76,8 @@
 
     <ImageView
         android:id="@+id/imageProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginStart="148dp"
         android:layout_marginTop="54dp"
         android:layout_marginEnd="135dp"
@@ -135,26 +135,15 @@
         tools:text="Email: rodrigoperez@gmail.com" />
 
     <Button
-        android:id="@+id/btChat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="36dp"
-        android:backgroundTint="#629E98"
-        android:text="Chat: comunicate with your students"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvemail" />
-
-    <Button
         android:id="@+id/btReviews"
         android:layout_width="280dp"
         android:layout_height="57dp"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="#629E98"
         android:text="Reviews: see your reviews of all students"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btChat" />
+        app:layout_constraintTop_toBottomOf="@+id/tvemail" />
 
     <Button
         android:id="@+id/btEdit"
@@ -168,14 +157,12 @@
 
     <Button
         android:id="@+id/btExitT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="25dp"
+        android:layout_width="133dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="44dp"
         android:backgroundTint="#467387"
         android:text="Log out"
         app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayoutT"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btEdit" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
