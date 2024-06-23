@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studymentor.R
 import com.example.studymentor.model.Tutor
+import com.squareup.picasso.Picasso
 
 class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<TutorAdapter.TutorViewHolder>() {
 
@@ -37,9 +38,10 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
             specialty.text = tutor.specialty
             cost.text=tutor.cost.toString()
 
-            //Picasso.get().load(tutor.Photo).into(btimage)
+            Picasso.get()
+                .load(tutor.image)
+                .into(btimage)
         }
-
     }
 }
 

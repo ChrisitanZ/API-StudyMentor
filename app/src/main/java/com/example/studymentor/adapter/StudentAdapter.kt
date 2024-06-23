@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studymentor.R
 import com.example.studymentor.model.Student
+import com.squareup.picasso.Picasso
 
 class StudentAdapter(private val students: List<Student>): RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
@@ -36,6 +37,10 @@ class StudentAdapter(private val students: List<Student>): RecyclerView.Adapter<
             name.text = student.name
             age.text = student.birthday
             cellphone.text = student.cellphone
+
+            Picasso.get()
+                .load(student.image)
+                .into(image)
 
             // Aquí puedes añadir la lógica para cargar la imagen si es necesario, por ejemplo con Picasso o Glide.
             // Picasso.get().load(student.photoUrl).into(image)

@@ -21,6 +21,7 @@ import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.model.Review
 import com.example.studymentor.model.Student
 import com.example.studymentor.model.Tutor
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +29,7 @@ import retrofit2.Response
 class StudentsReviewsListActivity : AppCompatActivity() {
     private lateinit var reviewAdapterStudent: ReviewAdapterStudent
     private lateinit var rvListTutors: RecyclerView
+    private lateinit var ivStudentInfo: ImageView
     private lateinit var tvStudentInfo: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +48,7 @@ class StudentsReviewsListActivity : AppCompatActivity() {
         val btPerfil = findViewById<ImageButton>(R.id.btPerfilEstudiante)
         val btSeeReviewsS = findViewById<Button>(R.id.btSeeReviewsS)
         tvStudentInfo = findViewById(R.id.tvStudentInfo)
+        ivStudentInfo = findViewById(R.id.ivStudentInfo)
 
         rvListTutors = findViewById(R.id.rvListTutors)
         rvListTutors.layoutManager = LinearLayoutManager(this@StudentsReviewsListActivity)
@@ -71,7 +74,6 @@ class StudentsReviewsListActivity : AppCompatActivity() {
         }
 
         btSeeReviewsS.setOnClickListener {
-            Log.d("StudentsReviewsList", "btSeeReviewsS clicked")
             fetchReviewsStudent()
         }
 
@@ -79,7 +81,7 @@ class StudentsReviewsListActivity : AppCompatActivity() {
     }
 
     private fun fetchStudentName() {
-        val studentId = 25 //Reemplazar por el adecuado
+        val studentId = 26 //Reemplazar por el adecuado
 
         val service = RetrofitClient.studentService
         service.getStudentById(studentId).enqueue(object : Callback<Student> {
@@ -88,6 +90,9 @@ class StudentsReviewsListActivity : AppCompatActivity() {
                     val student = response.body()
                     if (student != null) {
                         tvStudentInfo.text = "${student.name} ${student.lastname}"
+                        Picasso.get()
+                            .load(student.image)
+                            .into(ivStudentInfo)
                     }
                 } else {
                     Toast.makeText(this@StudentsReviewsListActivity, "Error al obtener el tutor", Toast.LENGTH_SHORT).show()
@@ -106,20 +111,15 @@ class StudentsReviewsListActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<Review>>, response: Response<List<Review>>) {
                 if (response.isSuccessful) {
                     val reviews = response.body() ?: emptyList()
-                    Log.d("StudentsReviewsList", "Reviews fetched: ${reviews.size}")
                     reviewAdapterStudent = ReviewAdapterStudent(reviews)
                     rvListTutors.adapter = reviewAdapterStudent
-                    Log.d("StudentsReviewsList", "Adapter set")
                     rvListTutors.layoutManager = LinearLayoutManager(this@StudentsReviewsListActivity)
-                    Log.d("StudentsReviewsList", "LayoutManager set")
                 } else {
-                    Log.e("StudentsReviewsList", "Error fetching reviews: ${response.message()}")
                     Toast.makeText(this@StudentsReviewsListActivity, "Error al obtener la lista de reseñas", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<Review>>, t: Throwable) {
-                Log.e("StudentsReviewsList", "Error fetching reviews: ${t.message}")
                 Toast.makeText(this@StudentsReviewsListActivity, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
