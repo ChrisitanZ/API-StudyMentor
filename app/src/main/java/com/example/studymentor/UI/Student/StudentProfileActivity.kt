@@ -110,7 +110,7 @@ class StudentProfileActivity: AppCompatActivity(){
                 if (response.isSuccessful) {
                     val student = response.body()
                     if (student != null){
-                        tvNameS.text = "Nombre Completo: ${student.name} ${student.lastName}"
+                        tvNameS.text = "Nombre Completo: ${student.name} ${student.lastname}"
                         tvBirthS.text = "Fecha de Nacimiento: ${calculateAge(student.birthday)}"
                         tvEmailS.text = "Email: ${student.email}"
                         tvCellphoneS.text = "Telefono: ${student.cellphone}"
