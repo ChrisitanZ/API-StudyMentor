@@ -9,16 +9,9 @@ import java.util.Date
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://restful-api-studymentor.up.railway.app/" //endpoint del swaggger
+    private const val BASE_URL = "https://restful-api-studymentor.up.railway.app/" // Endpoint del Swagger
 
-    private val gson: Gson = GsonBuilder()
-        .registerTypeAdapter(Date::class.java, DateAdapter())
-        .create()
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create(gson))
-        .build()
+    // Lazy initialization para servicios específicos
 
     val paymentService: PaymentApiService by lazy {
         createService(PaymentApiService::class.java)
@@ -44,6 +37,11 @@ object RetrofitClient {
         createService(ScoreApiService::class.java)
     }
 
+    val loginApiService: LoginApiService by lazy {
+        createService(LoginApiService::class.java)
+    }
+
+    // Función privada para crear servicios Retrofit
     private fun <T> createService(serviceClass: Class<T>): T {
         return retrofit.create(serviceClass)
     }
