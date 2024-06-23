@@ -31,6 +31,10 @@ object RetrofitClient {
         createService(ScoreApiService::class.java)
     }
 
+    val loginApiService: LoginApiService by lazy {
+        createService(LoginApiService::class.java)
+    }
+
     private fun <T> createService(serviceClass: Class<T>): T {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
