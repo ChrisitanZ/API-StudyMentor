@@ -29,6 +29,9 @@ class TutorsReviewsListActivity : AppCompatActivity() {
     private lateinit var rvListStudents: RecyclerView
     private lateinit var tvTutorInfo: TextView
     private lateinit var ivTutorInfo: ImageView
+    private lateinit var tvScoreT: TextView
+    //Reemplazar por el adecuado
+    private var tutorId: Int = 2
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +52,7 @@ class TutorsReviewsListActivity : AppCompatActivity() {
         val tvTextReview = findViewById<TextView>(R.id.tvTextReview)
         ivTutorInfo = findViewById<ImageView>(R.id.ivTutorInfo)
         tvTutorInfo = findViewById<TextView>(R.id.tvTutorInfo)
+        tvScoreT = findViewById(R.id.tvScoreT)
         val ivStarReview = findViewById<ImageView>(R.id.ivStarReview)
         val tvScoreT = findViewById<TextView>(R.id.tvScoreT)
 
@@ -84,8 +88,6 @@ class TutorsReviewsListActivity : AppCompatActivity() {
     }
 
     private fun fetchTutorName() {
-        val tutorId = 2 //Reemplazar por el adecuado
-
         val service = RetrofitClient.tutorService
         service.getTutorById(tutorId).enqueue(object : Callback<Tutor> {
             override fun onResponse(call: Call<Tutor>, response: Response<Tutor>) {
@@ -96,6 +98,8 @@ class TutorsReviewsListActivity : AppCompatActivity() {
                         Picasso.get()
                             .load(tutor.image)
                             .into(ivTutorInfo)
+
+                        fetchReviewsTutor()
                     }
                 } else {
                     Toast.makeText(this@TutorsReviewsListActivity, "Error al obtener el tutor", Toast.LENGTH_SHORT).show()
@@ -115,7 +119,16 @@ class TutorsReviewsListActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<Review>>, response: Response<List<Review>>){
                 if (response.isSuccessful) {
                     val reviews = response.body() ?: emptyList()
-                    reviewAdapterTutor = ReviewAdapterTutor(reviews)
+
+                    val filteredReviews = reviews.filter { it.type == 0 && it.tutorId == tutorId }
+                    val averageScore = if (filteredReviews.isNotEmpty()) {
+                        filteredReviews.map { it.rating }.average()
+                    } else {
+                        0.0
+                    }
+                    tvScoreT.text = "Promedio: %.2f".format(averageScore)
+
+                    reviewAdapterTutor = ReviewAdapterTutor(filteredReviews)
                     rvListStudents.adapter = reviewAdapterTutor
                     rvListStudents.layoutManager = LinearLayoutManager(this@TutorsReviewsListActivity)
                 } else {

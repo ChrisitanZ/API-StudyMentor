@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.model.Student
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
@@ -22,11 +23,7 @@ class ReviewAdapterTutor(private val reviews: List<Review>): RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
         val review = reviews[position]
-        if (review.type == 0) {
-            holder.bind(review)
-        } else {
-            holder.itemView.visibility = View.GONE
-        }
+        holder.bind(review)
     }
 
     override fun getItemCount(): Int = reviews.size
@@ -51,6 +48,9 @@ class ReviewAdapterTutor(private val reviews: List<Review>): RecyclerView.Adapte
                         val student = response.body()
                         if (student != null) {
                             name.text = student.name
+                            Picasso.get()
+                                .load(student.image)
+                                .into(image)
                         }
                     } else  {
                         name.text = "Student Not Found"
