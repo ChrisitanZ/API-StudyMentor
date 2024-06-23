@@ -82,6 +82,8 @@ class ScoreTutorActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun loadScores(studentId: Int, tutorId: Int) {
         val service = RetrofitClient.scoreService
         service.getScoresByStudentId(studentId).enqueue(object : Callback<List<Score>> {

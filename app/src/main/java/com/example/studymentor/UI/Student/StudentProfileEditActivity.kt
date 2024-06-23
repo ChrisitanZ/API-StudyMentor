@@ -69,12 +69,12 @@ class StudentProfileEditActivity : AppCompatActivity() {
         etNameP = findViewById(R.id.etNameP)
         etLastNameP = findViewById(R.id.etLastNameP)
         etEmailP = findViewById(R.id.etEmailP)
-        etPhoneP = findViewById(R.id.etPhoneP)
-        etGenreName = findViewById(R.id.etGenre)
-        etCode = findViewById(R.id.etCode)
-        etPassword = findViewById(R.id.etPassword)
-        etBirthday = findViewById(R.id.etBirthday)
-        etImageURL = findViewById(R.id.etImageURL)
+        etPhoneP = findViewById(R.id.etPhonePE)
+        etGenreName = findViewById(R.id.etGenrePE)
+        etCode = findViewById(R.id.etCodePE)
+        etPassword = findViewById(R.id.etPasswordPE)
+        etBirthday = findViewById(R.id.etBirthdayPE)
+        etImageURL = findViewById(R.id.etImageURLPE)
 
         // Obtener el ID de usuario almacenado en SharedPreferences
         val userId = sharedPreferences.getInt("USER_ID", -1)
@@ -87,7 +87,7 @@ class StudentProfileEditActivity : AppCompatActivity() {
         }
 
 
-        val btnSaveProfile = findViewById<Button>(R.id.btnSaveProfile)
+        val btnSaveProfile = findViewById<Button>(R.id.btnSaveProfilePE)
 
         btnSaveProfile.setOnClickListener {
             val name = etNameP.text.toString().trim()
