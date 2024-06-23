@@ -11,29 +11,56 @@ class ScheduleAdapter(private val scheduleList: List<Schedule>) :
     RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>() {
 
     class ScheduleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val daysTextView: TextView = itemView.findViewById(R.id.tv_days)
-        val timeTextView: TextView = itemView.findViewById(R.id.tv_time)
-        val tutorNameTextView: TextView = itemView.findViewById(R.id.tv_tutor_name)
-        val priceTextView: TextView = itemView.findViewById(R.id.tv_cost)
+        val days: TextView = itemView.findViewById(R.id.tv_days)
+        val time: TextView = itemView.findViewById(R.id.tv_time)
+        val tutorName: TextView = itemView.findViewById(R.id.tv_tutor_name)
+        val cost: TextView = itemView.findViewById(R.id.tv_cost)
         val paymentButton: Button = itemView.findViewById(R.id.btn_payment)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
+        val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.prototype_schedule, parent, false)
-        return ScheduleViewHolder(itemView)
+        return ScheduleViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        val currentItem = scheduleList[position]
-        holder.daysTextView.text = currentItem.days
-        holder.timeTextView.text = currentItem.time
-        holder.tutorNameTextView.text = currentItem.tutorName
-        holder.priceTextView.text = currentItem.price
-        holder.paymentButton.setOnClickListener {
+        val schedule = scheduleList[position]
 
+        val formattedDate = formatDate(schedule.day)
+        holder.days.text = formattedDate
+
+        val formattedStartTime = formatTime(schedule.startingHour)
+        holder.time.text = formattedStartTime
+
+        holder.cost.text = "${schedule.tutorHours} hours"
+        holder.tutorName.text = "Cost: S/. ${schedule.price}"
+        holder.paymentButton.setOnClickListener {
+            // Aquí puedes manejar la lógica de ir al pago
         }
     }
 
-    override fun getItemCount() = scheduleList.size
+    override fun getItemCount(): Int = scheduleList.size
+
+    private fun formatDate(date: String): String {
+        val parts = date.split("-")
+        if (parts.size == 3) {
+            val day = parts[2]
+            val month = parts[1]
+            val year = parts[0]
+            return "$day-$month-$year"
+        }
+        return date // En caso de error, retornar la fecha original
+    }
+
+    private fun formatTime(time: String): String {
+        val parts = time.split(":")
+        if (parts.size >= 2) {
+            val hour = parts[0]
+            val minute = parts[1]
+            return "$hour:$minute"
+        }
+        return time // En caso de error, retornar la hora original
+    }
 }
+

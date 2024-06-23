@@ -1,11 +1,12 @@
 package com.example.studymentor.model
 
-data class Schedule (
+data class Schedule(
     val id: Int,
-    val tutorName: String,
-    val days: String,
-    val time: String,
-    val price: String,
+    val day: String,
+    val tutorHours: Int,
+    val startingHour: String,
+    val price: Double,
+    val isAvailable: Boolean,
     val tutorId: Int
 )
 

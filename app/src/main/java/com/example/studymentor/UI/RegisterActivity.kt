@@ -1,8 +1,10 @@
 package com.example.studymentor.UI
 
+
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
@@ -10,9 +12,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.studymentor.R
 import com.example.studymentor.apiservice.RetrofitClient
-import com.example.studymentor.model.Student
 import com.example.studymentor.request.GenreRequest
 import com.example.studymentor.request.StudentRequest
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +24,7 @@ import java.util.Locale
 import java.util.TimeZone
 
 class RegisterActivity : AppCompatActivity() {
+
     private lateinit var editTextDateOfBirth: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +41,6 @@ class RegisterActivity : AppCompatActivity() {
             registerStudent()
         }
     }
-
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -66,6 +68,8 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerStudent() {
+        val studentService = RetrofitClient.studentService
+
         val editTextName = findViewById<EditText>(R.id.etNameP)
         val editTextLastName = findViewById<EditText>(R.id.etLastNameP)
         val editTextEmail = findViewById<EditText>(R.id.etxEmail)
@@ -80,54 +84,49 @@ class RegisterActivity : AppCompatActivity() {
         val birthday = editTextDateOfBirth.text.toString()
         val cellphone = editTextCellphone.text.toString()
         val selectedGenderId = genderRadioGroup.checkedRadioButtonId
-        val selectedGender = when (selectedGenderId) {
-            R.id.maleRadioButton -> "Masculino"
-            R.id.femaleRadioButton -> "Femenino"
-            else -> ""
+        val (selectedGender, genreCode) = when (selectedGenderId) {
+            R.id.maleRadioButton -> "Masculino" to "M"
+            R.id.femaleRadioButton -> "Femenino" to "F"
+            else -> "" to ""
         }
-        
-        if (name.isEmpty() || lastName.isEmpty() || password.isEmpty() || email.isEmpty() || cellphone.isEmpty() || birthday.isEmpty() || selectedGender.isEmpty()) {
-            Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val genreRequest = GenreRequest(nameGenre = selectedGender, code = "")
 
         val studentRequest = StudentRequest(
             name = name,
             lastname = lastName,
             email = email,
             password = password,
-            birthday = birthday,
+            birthday = birthday, // Asegúrate de pasar la fecha correcta si es requerida
             cellphone = cellphone,
-            genre = genreRequest,
+            genre = GenreRequest(nameGenre = selectedGender, code = genreCode),
             image = ""
         )
 
-        createStudent(studentRequest)
-    }
-
-    private fun createStudent(studentRequest: StudentRequest) {
-        val studentService = RetrofitClient.studentService
-
-        // Llamar a la API para crear el estudiante
-        studentService.createStudent(studentRequest).enqueue(object : Callback<Student> {
-            override fun onResponse(call: Call<Student>, response: Response<Student>) {
+        studentService.createStudent(studentRequest).enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@RegisterActivity, "Estudiante registrado correctamente", Toast.LENGTH_SHORT).show()
-                    navigateToHome()
+                    val responseBody = response.body()?.string()
+                    val success = responseBody?.toBoolean() ?: false
+
+                    if (success) {
+                        Toast.makeText(this@RegisterActivity, "Estudiante registrado correctamente", Toast.LENGTH_SHORT).show()
+                        navigateToLogin()
+                    } else {
+                        Toast.makeText(this@RegisterActivity, "Error al registrar estudiante", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
+                    Log.e("API_ERROR", "Error al registrar estudiante: ${response.code()}")
                     Toast.makeText(this@RegisterActivity, "Error al registrar estudiante", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onFailure(call: Call<Student>, t: Throwable) {
-                Toast.makeText(this@RegisterActivity, "Error de red: " + t.message, Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.e("NETWORK_ERROR", "Error de red: ${t.message}", t)
+                Toast.makeText(this@RegisterActivity, "Error de red: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    private fun navigateToHome() {
+    private fun navigateToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
