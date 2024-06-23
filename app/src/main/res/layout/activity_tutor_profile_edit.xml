@@ -1,26 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UI.Tutor.TutorProfileEditActivity">
+    android:layout_height="match_parent">
 
+    <!-- Contenido Principal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- EditText para el Nombre -->
+        <EditText
+            android:id="@+id/etNamePT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- EditText para el Apellido -->
+        <EditText
+            android:id="@+id/etLastNamePT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Last Name"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- EditText para el Email -->
+        <EditText
+            android:id="@+id/etEmailPT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- EditText para el Teléfono -->
+        <EditText
+            android:id="@+id/etPhonePET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- EditText para la Especialidad -->
+        <EditText
+            android:id="@+id/etSpecialtyPET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Specialty"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+
+        <!-- EditText para la Contraseña -->
+        <EditText
+            android:id="@+id/etPasswordPET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:padding="8dp"
+            android:inputType="textPassword"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- EditText para la URL de la Imagen -->
+        <EditText
+            android:id="@+id/etImageURLPET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Image URL"
+            android:padding="8dp"
+            android:inputType="text"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Botón para Guardar el Perfil -->
+        <Button
+            android:id="@+id/btnSaveProfilePET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Profile"
+            android:textColor="#FFFFFF"
+            android:background="#68A86B"
+            android:layout_marginBottom="8dp"/>
+    </LinearLayout>
+
+    <!-- Fondo Verde debajo del Contenido Principal -->
     <LinearLayout
         android:id="@+id/bottomOptionsLayoutT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="645dp"
+        android:layout_alignParentBottom="true"
         android:background="#68A86B"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="12dp">
 
+        <!-- Botones de la Barra Inferior -->
         <ImageButton
             android:id="@+id/btHomeT"
             android:layout_width="48dp"
@@ -29,7 +107,7 @@
             android:background="?selectableItemBackground"
             android:scaleType="fitCenter"
             android:src="@drawable/bthome"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:contentDescription="Home"/>
 
         <Space
             android:layout_width="10dp"
@@ -43,7 +121,7 @@
             android:background="?selectableItemBackground"
             android:scaleType="fitCenter"
             android:src="@drawable/bttutor"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:contentDescription="Students"/>
 
         <Space
             android:layout_width="10dp"
@@ -57,7 +135,7 @@
             android:background="?selectableItemBackground"
             android:scaleType="fitCenter"
             android:src="@drawable/btprofile"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            android:contentDescription="Profile"/>
 
         <Space
             android:layout_width="10dp"
@@ -71,225 +149,8 @@
             android:background="?selectableItemBackground"
             android:scaleType="fitCenter"
             android:src="@drawable/btcalendar"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:contentDescription="Calendar"/>
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/etPhonePT"
-        android:layout_width="171dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="40dp"
-        android:background="#004330"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="Cellphone"
-        android:inputType="phone"
-        android:padding="8sp"
-        android:textColor="#70988C"
-        android:textColorHint="#DDFBF2"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvPhonePT"
-        app:layout_constraintTop_toBottomOf="@+id/tvPhonePT"
-        tools:textColorHint="#DDFBF2" />
-
-    <TextView
-        android:id="@+id/tvPhonePT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="159dp"
-        android:fontFamily="sans-serif"
-        android:text="Cellphone"
-        android:textColor="#004330"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etCumplePT"
-        app:layout_constraintTop_toBottomOf="@+id/etCumplePT" />
-
-    <EditText
-        android:id="@+id/etCumplePT"
-        android:layout_width="173dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="40dp"
-        android:background="#004330"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="Date"
-        android:inputType="date"
-        android:padding="8sp"
-        android:textColor="#70988C"
-        android:textColorHint="#DDFBF2"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvCumplePT"
-        app:layout_constraintTop_toBottomOf="@+id/tvCumplePT"
-        tools:textColorHint="#DDFBF2" />
-
-    <TextView
-        android:id="@+id/tvCumplePT"
-        android:layout_width="30dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="183dp"
-        android:fontFamily="sans-serif"
-        android:text="Date"
-        android:textColor="#004330"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
-        app:layout_constraintStart_toStartOf="@+id/etEmailPT"
-        app:layout_constraintTop_toBottomOf="@+id/etEmailPT" />
-
-    <EditText
-        android:id="@+id/etEmailPT"
-        android:layout_width="181dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="4dp"
-        android:background="#004330"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:padding="8sp"
-        android:textColor="#70988C"
-        android:textColorHint="#DDFBF2"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/tvEmailPT"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmailPT"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/tvEmailPT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="183dp"
-        android:text="Email"
-        android:textColor="#004330"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etLastNamePT"
-        app:layout_constraintTop_toBottomOf="@+id/etLastNamePT" />
-
-    <EditText
-        android:id="@+id/etLastNamePT"
-        android:layout_width="178dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="35dp"
-        android:background="#004330"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="Last Name"
-        android:inputType="text"
-        android:padding="8sp"
-        android:textAlignment="viewStart"
-        android:textColor="#70988C"
-        android:textColorHint="#DDFBF2"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvLastNamePT"
-        app:layout_constraintTop_toBottomOf="@+id/tvLastNamePT"
-        tools:textColorHint="#DDFBF2" />
-
-    <TextView
-        android:id="@+id/tvLastNamePT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif"
-        android:text="Last Name"
-        android:textColor="#004330"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/etNamePT"
-        app:layout_constraintTop_toBottomOf="@+id/etNamePT" />
-
-    <EditText
-        android:id="@+id/etNamePT"
-        android:layout_width="183dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:background="#004330"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="Name"
-        android:inputType="text"
-        android:padding="8sp"
-        android:text="Name"
-        android:textColor="#70988C"
-        android:textColorHint="#DDFBF2"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/tvNamePT"
-        app:layout_constraintTop_toBottomOf="@+id/tvNamePT" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="143dp"
-        android:layout_height="165dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="204dp"
-        android:layout_marginEnd="240dp"
-        android:src="@drawable/perfil_profesor1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvNamePT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="181dp"
-        android:text="TextView"
-        android:textColor="#004330"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btSavePT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="150dp"
-        android:backgroundTint="#86A364"
-        android:text="Save"
-        android:textColorLink="#4CAF50"
-        app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayoutT"
-        app:layout_constraintEnd_toStartOf="@+id/etCumplePT"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

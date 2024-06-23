@@ -39,7 +39,7 @@
 
         <!-- EditText para el Teléfono -->
         <EditText
-            android:id="@+id/etPhoneP"
+            android:id="@+id/etPhonePE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone"
@@ -48,7 +48,7 @@
 
         <!-- EditText para el Género (invisible por defecto) -->
         <EditText
-            android:id="@+id/etGenre"
+            android:id="@+id/etGenrePE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Genre"
@@ -58,7 +58,7 @@
 
         <!-- EditText para el Código (invisible por defecto) -->
         <EditText
-            android:id="@+id/etCode"
+            android:id="@+id/etCodePE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Code"
@@ -68,7 +68,7 @@
 
         <!-- EditText para la Contraseña (invisible por defecto) -->
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/etPasswordPE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -79,7 +79,7 @@
 
         <!-- EditText para la Fecha de Nacimiento -->
         <EditText
-            android:id="@+id/etBirthday"
+            android:id="@+id/etBirthdayPE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Birthday"
@@ -89,7 +89,7 @@
 
         <!-- EditText para la URL de la Imagen -->
         <EditText
-            android:id="@+id/etImageURL"
+            android:id="@+id/etImageURLPE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Image URL"
@@ -99,7 +99,7 @@
 
         <!-- Botón para Guardar el Perfil -->
         <Button
-            android:id="@+id/btnSaveProfile"
+            android:id="@+id/btnSaveProfilePE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Profile"

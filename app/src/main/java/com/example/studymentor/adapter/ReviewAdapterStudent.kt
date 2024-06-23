@@ -49,7 +49,7 @@ class ReviewAdapterStudent(private val reviews: List<Review>) : RecyclerView.Ada
                     if (response.isSuccessful) {
                         val tutor = response.body()
                         if (tutor != null) {
-                            name.text = tutor.name
+                            name.text = "${tutor.name} ${tutor.lastname}"
                             Picasso.get()
                                 .load(tutor.image)
                                 .into(image)

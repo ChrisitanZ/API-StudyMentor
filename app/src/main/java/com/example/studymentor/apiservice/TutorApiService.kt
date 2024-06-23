@@ -2,6 +2,7 @@ package com.example.studymentor.apiservice
 
 import com.example.studymentor.model.Tutor
 import com.example.studymentor.request.TutorRequest
+import com.example.studymentor.request.TutorRequestPE
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -21,8 +22,8 @@ interface TutorApiService {
     @POST("api/Tutor")
     fun createTutor(@Body tutor: TutorRequest): Call<Tutor>
 
-    @PUT("api/Tutor/{id}")
-    fun updateTutor(@Path("id") id: Int, @Body tutor: TutorRequest): Call<ResponseBody>
+    @PUT("tutors/{id}")
+    fun updateTutor(@Path("id") id: Int, @Body tutorRequest: TutorRequestPE): Call<Boolean>
 
     @DELETE("api/Tutor/{id}")
     fun deleteTutor(@Path("id") id: Int): Call<Void>

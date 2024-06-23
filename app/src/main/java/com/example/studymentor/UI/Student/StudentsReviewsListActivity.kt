@@ -1,5 +1,6 @@
 package com.example.studymentor.UI.Student
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -39,6 +40,7 @@ class StudentsReviewsListActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private var studentId: Int = -1
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -63,6 +65,7 @@ class StudentsReviewsListActivity : AppCompatActivity() {
         val btCalendar = findViewById<ImageButton>(R.id.btCalendar)
         val btPerfil = findViewById<ImageButton>(R.id.btPerfilEstudiante)
         val btSeeReviewsS = findViewById<Button>(R.id.btSeeReviewsS)
+        val btMakeReview = findViewById<Button>(R.id.btMakeReview)
         tvStudentInfo = findViewById(R.id.tvStudentInfo)
         ivStudentInfo = findViewById(R.id.ivStudentInfo)
         tvScoreS = findViewById(R.id.tvScoreS)
@@ -92,6 +95,11 @@ class StudentsReviewsListActivity : AppCompatActivity() {
 
         btSeeReviewsS.setOnClickListener {
             fetchReviewsStudent()
+        }
+
+        btMakeReview.setOnClickListener {
+            val intent = Intent(this@StudentsReviewsListActivity, RatingTeacherActivity::class.java)
+            startActivity(intent)
         }
 
         fetchStudentName()
