@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.studymentor.R
 import com.example.studymentor.model.Student
 import com.squareup.picasso.Picasso
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 class StudentAdapter(private val students: List<Student>): RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
@@ -34,16 +37,20 @@ class StudentAdapter(private val students: List<Student>): RecyclerView.Adapter<
 
         @SuppressLint("SetTextI18n")
         fun bind(student: Student) {
-            name.text = student.name
-            age.text = student.birthday
+            name.text = "${student.name} ${student.lastname}"
+            age.text = calculateAge(student.birthday)
             cellphone.text = student.cellphone
 
             Picasso.get()
                 .load(student.image)
                 .into(image)
+        }
 
-            // Aquí puedes añadir la lógica para cargar la imagen si es necesario, por ejemplo con Picasso o Glide.
-            // Picasso.get().load(student.photoUrl).into(image)
+        private fun calculateAge(birthday: String): String {
+            val birthDate = LocalDate.parse(birthday.substring(0, 10), DateTimeFormatter.ISO_LOCAL_DATE)
+            val currentDate = LocalDate.now()
+            val age = ChronoUnit.YEARS.between(birthDate, currentDate)
+            return "$age years"
         }
     }
 }
