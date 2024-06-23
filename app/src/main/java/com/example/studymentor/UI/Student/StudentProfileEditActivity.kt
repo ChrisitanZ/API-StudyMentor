@@ -130,7 +130,7 @@ class StudentProfileEditActivity : AppCompatActivity() {
 
                     // Llenar los EditText con los datos del estudiante
                     etNameP.setText(student?.name ?: "")
-                    etLastNameP.setText(student?.lastName ?: "")
+                    etLastNameP.setText(student?.lastname ?: "")
                     etEmailP.setText(student?.email ?: "")
                     etPhoneP.setText(student?.cellphone ?: "")
                     etGenreName.setText(student?.genre?.nameGenre ?: "")
