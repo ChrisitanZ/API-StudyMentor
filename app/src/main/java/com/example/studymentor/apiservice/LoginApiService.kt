@@ -1,16 +1,15 @@
 package com.example.studymentor.apiservice
 
+import com.example.studymentor.model.LoginResponse
+import com.example.studymentor.model.User
+import com.example.studymentor.request.LoginRequest
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface LoginApiService {
-
-    @FormUrlEncoded
-    @POST("login") // Replace with your actual endpoint
-    fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
-    ): Call<Any>
+    @POST("api/auth/login")
+    fun login(@Body loginRequest: LoginRequest): Call<LoginResponse>
 }
