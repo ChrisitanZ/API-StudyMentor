@@ -24,6 +24,10 @@ object RetrofitClient {
         createService(PaymentApiService::class.java)
     }
 
+    val loginApiService: LoginApiService by lazy {
+        createService(LoginApiService::class.java)
+    }
+
     val reviewService: ReviewApiService by lazy {
         createService(ReviewApiService::class.java)
     }
