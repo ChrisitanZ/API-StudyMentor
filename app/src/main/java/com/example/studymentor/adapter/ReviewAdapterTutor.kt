@@ -1,6 +1,5 @@
 package com.example.studymentor.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,14 +10,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.model.Student
-import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
 
 class ReviewAdapterTutor(private val reviews: List<Review>): RecyclerView.Adapter<ReviewAdapterTutor.ReviewViewHolder>() {
-    private val studentNameMap = mutableMapOf<Int, String>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.prototype_tutor_reviews, parent, false)
         return ReviewViewHolder(view)
