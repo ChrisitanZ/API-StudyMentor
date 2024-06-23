@@ -2,7 +2,9 @@ package com.example.studymentor.UI.Tutor
 
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -30,6 +32,9 @@ class TutorProfileActivity : AppCompatActivity() {
     private lateinit var tvemail: TextView
     private lateinit var imageProfile: ImageView
 
+    private lateinit var sharedPreferences: SharedPreferences
+    private var tutorId: Int = -1
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +46,14 @@ class TutorProfileActivity : AppCompatActivity() {
             insets
         }
 
+        sharedPreferences = getSharedPreferences("com.example.studymentor.session", Context.MODE_PRIVATE)
+        tutorId = sharedPreferences.getInt("USER_ID", -1)
+
+        if (tutorId == -1) {
+            Toast.makeText(this, "No se pudo obtener el ID del tutor", Toast.LENGTH_SHORT).show()
+            finish() // Finaliza la actividad si no se encuentra el ID del tutor
+            return
+        }
 
         val btHome = findViewById<ImageButton>(R.id.btHomeT)
         val btCalendar = findViewById<ImageButton>(R.id.btCalendarT)
@@ -90,8 +103,6 @@ class TutorProfileActivity : AppCompatActivity() {
     }
 
     private fun fetchInfoTutor() {
-        val tutorId = 3 //Reemplazar por el adecuado
-
         val service = RetrofitClient.tutorService
         service.getTutorById(tutorId).enqueue(object : Callback<Tutor> {
             override fun onResponse(call: Call<Tutor>, response: Response<Tutor>) {

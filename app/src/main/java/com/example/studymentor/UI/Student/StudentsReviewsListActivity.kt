@@ -1,6 +1,8 @@
 package com.example.studymentor.UI.Student
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -33,7 +35,9 @@ class StudentsReviewsListActivity : AppCompatActivity() {
     private lateinit var tvStudentInfo: TextView
     private lateinit var tvScoreS: TextView
     //Reemplazar por el adecuado
-    private val studentId: Int = 26
+    //private val studentId: Int = 26
+    private lateinit var sharedPreferences: SharedPreferences
+    private var studentId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +47,15 @@ class StudentsReviewsListActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        sharedPreferences = getSharedPreferences("com.example.studymentor.session", Context.MODE_PRIVATE)
+        studentId = sharedPreferences.getInt("USER_ID", -1)
+
+        if (studentId == -1) {
+            Toast.makeText(this, "No se pudo obtener el ID del estudiante", Toast.LENGTH_SHORT).show()
+            finish() // Finaliza la actividad si no se encuentra el ID del estudiante
+            return
         }
 
         val btHome = findViewById<ImageButton>(R.id.btHome)
