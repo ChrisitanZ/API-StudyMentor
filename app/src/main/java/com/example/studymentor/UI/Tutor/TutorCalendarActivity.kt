@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studymentor.R
+import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.apiservice.ScheduleApiService
 import com.example.studymentor.model.Schedule
 import retrofit2.Response
@@ -33,13 +34,7 @@ class TutorCalendarActivity : AppCompatActivity() {
     private lateinit var calendarGrid: GridLayout
     private val calendar = Calendar.getInstance()
     private val dateFormat = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
-
-    //datos de ejemplo momentaneos
-    private val scheduledClasses = mapOf(
-        Pair(4, "10:00"),
-        Pair(17, "14:00"),
-        Pair(21, "13:00")
-    )
+    private  val scheduledClasses = mutableMapOf<Int, String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +50,10 @@ class TutorCalendarActivity : AppCompatActivity() {
         calendarGrid = findViewById(R.id.calendar_grid)
 
         setupMonthSpinner()
-        setupCalendar()
+
+        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val userId = sharedPreferences.getInt("TutorId", 1)
+        fetchSchedulesFromApi(userId)
 
         val btHome = findViewById<ImageButton>(R.id.btHomeT)
         val btTutor = findViewById<ImageButton>(R.id.btStudents)
@@ -76,6 +74,31 @@ class TutorCalendarActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    private fun fetchSchedulesFromApi(tutorId: Int) {
+        RetrofitClient.scheduleService.getSchedulesByTutor(tutorId).enqueue(object : Callback<List<Schedule>> {
+            override fun onResponse(call: Call<List<Schedule>>, response: Response<List<Schedule>>) {
+                if (response.isSuccessful) {
+                    val schedules = response.body()
+                    schedules?.let {
+                        for (schedule in it) {
+                            if (!schedule.isAvailable) {
+                                val day = Calendar.getInstance().apply {
+                                    time = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(schedule.day)
+                                }.get(Calendar.DAY_OF_MONTH)
+                                scheduledClasses[day] = schedule.startingHour
+                            }
+                        }
+                        setupCalendar()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<Schedule>>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
     }
 
     private fun setupMonthSpinner() {
@@ -154,7 +177,8 @@ class TutorCalendarActivity : AppCompatActivity() {
                 }
                 scheduledClasses[day]?.let {
                     setBackgroundColor(Color.parseColor("#82A89A")) // Cambia el color de fondo para los días con clases
-                    text = "$day\n$it" // Muestra la hora de la clase
+                    val formattedTime = it.substring(0, 5) // Muestra solo hh:mm
+                    text = "$day\n$formattedTime" // Muestra la hora de la clase
                     textSize = 14f
                 }
             }

@@ -27,6 +27,7 @@ class TutorSchedulesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_tutor_schedules)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -60,24 +61,46 @@ class TutorSchedulesActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        fetchSchedules()
+        val extras = intent.extras ?: Bundle()
+        Log.d("TutorSchedulesActivity", "Received extras: $extras")
+
+
+        val tutorId = intent.getIntExtra("TUTOR_ID", 1)
+        if (tutorId != 0){
+            fetchSchedulesByTutor(tutorId)
+        } else {
+            fetchSchedulesByTutor(13)
+            Log.e("TutorSchedulesActivity", "No tutor ID found in Intent extras")
+        }
     }
 
-    private fun fetchSchedules() {
-        RetrofitClient.scheduleService.getSchedules().enqueue(object : Callback<List<Schedule>> {
+    private fun fetchSchedulesByTutor(tutorId: Int) {
+        RetrofitClient.scheduleService.getSchedulesByTutor(tutorId).enqueue(object : Callback<List<Schedule>> {
             override fun onResponse(call: Call<List<Schedule>>, response: Response<List<Schedule>>) {
                 if (response.isSuccessful) {
                     val schedules = response.body() ?: emptyList()
-                    scheduleAdapter = ScheduleAdapter(schedules)
-                    recyclerView.adapter = scheduleAdapter
+                    Log.d("TutorSchedulesActivity", "Fetched schedules: $schedules")
+
+                    // Filtrar por horarios disponibles
+                    val availableSchedules = schedules.filter { it.isAvailable }
+                    Log.d("TutorSchedulesActivity", "Available schedules: $availableSchedules")
+
+                    // Verificar que haya horarios disponibles
+                    if (availableSchedules.isNotEmpty()) {
+                        scheduleAdapter = ScheduleAdapter(availableSchedules)
+                        recyclerView.adapter = scheduleAdapter
+                    } else {
+                        Log.e("TutorSchedulesActivity", "No available schedules found")
+                    }
                 } else {
-                    Log.e("TutorSchedule", "Failed to get schedules: ${response.errorBody()?.string()}")
+                    Log.e("TutorSchedulesActivity", "Failed to get schedules: ${response.errorBody()?.string()}")
                 }
             }
 
             override fun onFailure(call: Call<List<Schedule>>, t: Throwable) {
-                Log.e("TutorSchedule", "Error fetching schedules", t)
+                Log.e("TutorSchedulesActivity", "Error fetching schedules", t)
             }
         })
     }
+
 }

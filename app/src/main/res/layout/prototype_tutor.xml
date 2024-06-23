@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvSpecialty" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btSeeMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="36dp"
