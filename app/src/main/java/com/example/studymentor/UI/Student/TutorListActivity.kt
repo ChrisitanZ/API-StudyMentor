@@ -37,8 +37,6 @@ class TutorListActivity : AppCompatActivity() {
             insets
         }
 
-
-
         val btHome = findViewById<ImageButton>(R.id.btHome)
         val btFind = findViewById<Button>(R.id.btSearch)
         val btCalendar = findViewById<ImageButton>(R.id.btCalendar)

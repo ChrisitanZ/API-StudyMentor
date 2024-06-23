@@ -52,7 +52,8 @@ class RatingTeacherActivity : AppCompatActivity() {
                     rating = rating,
                     studentId = studentId,
                     tutorId = tutorId,
-                    date = currentDate
+                    date = currentDate,
+                    type = "0"
                 )
 
                 RetrofitClient.reviewService.createReview(reviewRequest).enqueue(object : Callback<ReviewResponse> {
