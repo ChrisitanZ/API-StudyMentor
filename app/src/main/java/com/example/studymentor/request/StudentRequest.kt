@@ -7,6 +7,6 @@ data class StudentRequest(
     val password: String,
     val birthday: String,
     val cellphone: String,
-    val genre: GenreRequest,
-    val image: String
+    val image: String,
+    val genre: GenreRequest
 )

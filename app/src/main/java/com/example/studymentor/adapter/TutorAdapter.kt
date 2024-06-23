@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.studymentor.R
 import com.example.studymentor.UI.Student.TutorSchedulesActivity
 import com.example.studymentor.model.Tutor
+import com.squareup.picasso.Picasso
 
 class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<TutorAdapter.TutorViewHolder>() {
 
@@ -44,25 +45,28 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
 
     override fun getItemCount(): Int = tutors.size
 
-
     class TutorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val name: TextView = itemView.findViewById(R.id.tvName)
         private val email: TextView = itemView.findViewById(R.id.tvEmail)
         private val specialty: TextView = itemView.findViewById(R.id.tvSpecialty)
-        private val cost: TextView = itemView.findViewById(R.id.tvFee)
+        //private val cost: TextView = itemView.findViewById(R.id.tvFee)
         private val btimage : ImageView = itemView.findViewById(R.id.ivTutor)
         val btSeeMore: Button = itemView.findViewById(R.id.btSeeMore)
 
         @SuppressLint("SetTextI18n")
         fun bind(tutor: Tutor){
-            name.text = tutor.name
+            name.text = "${tutor.name} ${tutor.lastname}"
             email.text = tutor.email
             specialty.text = tutor.specialty
+
             cost.text=tutor.cost.toString()
             //Picasso.get().load(tutor.Photo).into(btimage)
+            //cost.text=tutor.cost.toString()
 
+            Picasso.get()
+                .load(tutor.image)
+                .into(btimage)
         }
-
     }
 }
 

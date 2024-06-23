@@ -11,8 +11,8 @@
 
         <ImageView
             android:id="@+id/ivStudent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="109dp"
+            android:layout_height="112dp"
             android:layout_marginStart="22dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
@@ -46,12 +46,12 @@
             app:layout_constraintTop_toBottomOf="@+id/tvStudentName" />
 
         <TextView
-            android:id="@+id/tvCourse"
+            android:id="@+id/tvCellphonePS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Course:"
+            android:text="Cellphone:"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/ivStudent"
             app:layout_constraintTop_toBottomOf="@+id/tvAge" />

@@ -52,30 +52,25 @@ class RatingTeacherActivity : AppCompatActivity() {
                     rating = rating,
                     studentId = studentId,
                     tutorId = tutorId,
-                    date = currentDate
+                    date = currentDate,
+                    type = "0"
                 )
 
                 RetrofitClient.reviewService.createReview(reviewRequest).enqueue(object : Callback<ReviewResponse> {
                     override fun onResponse(call: Call<ReviewResponse>, response: Response<ReviewResponse>) {
                         if (response.isSuccessful) {
-                            val reviewResponse = response.body()
                             Toast.makeText(this@RatingTeacherActivity, "Reseña publicada exitosamente", Toast.LENGTH_SHORT).show()
-                            Log.d("Review", "Review posted successfully: ${reviewResponse?.message}")
-                        } else {
-                            val errorMsg = response.errorBody()?.string() ?: "Error desconocido"
-                            Toast.makeText(this@RatingTeacherActivity, "Error al publicar la reseña: $errorMsg", Toast.LENGTH_SHORT).show()
-                            Log.e("Review", "Failed to post review: $errorMsg")
+                            Log.d("Review", "Review posted successfully: ${response.body()?.message}")
                         }
-
+                        // Redirigir a HomeStudentActivity en cualquier caso
                         val intent = Intent(this@RatingTeacherActivity, HomeStudentActivity::class.java)
                         startActivity(intent)
                         finish()
                     }
 
                     override fun onFailure(call: Call<ReviewResponse>, t: Throwable) {
-
                         Log.e("Review", "Error posting review", t)
-
+                        // Redirigir a HomeStudentActivity en caso de fallo sin mostrar mensaje
                         val intent = Intent(this@RatingTeacherActivity, HomeStudentActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -93,13 +88,13 @@ class RatingTeacherActivity : AppCompatActivity() {
                     tutorList = response.body() ?: emptyList()
                     setupSpinner()
                 } else {
-
+                    Toast.makeText(this@RatingTeacherActivity, "Error al obtener la lista de tutores", Toast.LENGTH_SHORT).show()
                     Log.e("Tutor", "Failed to fetch tutors: ${response.errorBody()?.string()}")
                 }
             }
 
             override fun onFailure(call: Call<List<Tutor>>, t: Throwable) {
-
+                Toast.makeText(this@RatingTeacherActivity, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
                 Log.e("Tutor", "Error fetching tutors", t)
             }
         })
