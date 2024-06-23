@@ -5,5 +5,6 @@ data class ReviewRequest(
     val rating: Int,
     val studentId: Int,
     val date: String,
-    val tutorId: Int
+    val tutorId: Int,
+    val type: String
 )

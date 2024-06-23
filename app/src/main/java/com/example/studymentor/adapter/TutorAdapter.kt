@@ -12,8 +12,6 @@ import com.example.studymentor.model.Tutor
 
 class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<TutorAdapter.TutorViewHolder>() {
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TutorViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.prototype_tutor, parent, false)
         return TutorViewHolder(view)
@@ -24,7 +22,6 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
     }
 
     override fun getItemCount(): Int = tutors.size
-
 
     class TutorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val name: TextView = itemView.findViewById(R.id.tvName)

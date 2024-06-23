@@ -9,4 +9,5 @@ data class Review(
     val studentId: Int,
     val tutorId: Int,
     val date: Date,
+    val type: Int
 )
