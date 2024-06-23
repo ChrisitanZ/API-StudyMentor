@@ -28,15 +28,15 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
         private val name: TextView = itemView.findViewById(R.id.tvName)
         private val email: TextView = itemView.findViewById(R.id.tvEmail)
         private val specialty: TextView = itemView.findViewById(R.id.tvSpecialty)
-        private val cost: TextView = itemView.findViewById(R.id.tvFee)
+        //private val cost: TextView = itemView.findViewById(R.id.tvFee)
         private val btimage : ImageView = itemView.findViewById(R.id.ivTutor)
 
         @SuppressLint("SetTextI18n")
         fun bind(tutor: Tutor){
-            name.text = tutor.name
+            name.text = "${tutor.name} ${tutor.lastname}"
             email.text = tutor.email
             specialty.text = tutor.specialty
-            cost.text=tutor.cost.toString()
+            //cost.text=tutor.cost.toString()
 
             Picasso.get()
                 .load(tutor.image)

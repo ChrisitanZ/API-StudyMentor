@@ -21,6 +21,9 @@ import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 class StudentProfileActivity: AppCompatActivity(){
     private lateinit var tvNameS: TextView
@@ -96,7 +99,7 @@ class StudentProfileActivity: AppCompatActivity(){
                     val student = response.body()
                     if (student != null){
                         tvNameS.text = "Nombre Completo: ${student.name} ${student.lastname}"
-                        tvBirthS.text = "Fecha de Nacimiento: ${student.birthday}"
+                        tvBirthS.text = "Fecha de Nacimiento: ${calculateAge(student.birthday)}"
                         tvEmailS.text = "Email: ${student.email}"
                         tvCellphoneS.text = "Telefono: ${student.cellphone}"
 
@@ -113,5 +116,11 @@ class StudentProfileActivity: AppCompatActivity(){
                 Toast.makeText(this@StudentProfileActivity, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+    private fun calculateAge(birthday: String): String {
+        val birthDate = LocalDate.parse(birthday.substring(0, 10), DateTimeFormatter.ISO_LOCAL_DATE)
+        val currentDate = LocalDate.now()
+        val age = ChronoUnit.YEARS.between(birthDate, currentDate)
+        return "$age years"
     }
 }
