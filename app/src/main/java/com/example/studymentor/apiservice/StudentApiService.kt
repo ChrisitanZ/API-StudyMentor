@@ -1,6 +1,7 @@
 package com.example.studymentor.apiservice
 import com.example.studymentor.model.Student
 import com.example.studymentor.request.StudentRequest
+import com.example.studymentor.request.StudentRequestPE
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -21,7 +22,7 @@ interface StudentApiService {
     fun createStudent(@Body studentRequest: StudentRequest): Call<ResponseBody>
 
     @PUT("api/Student/{id}")
-    fun updateStudent(@Path("id") id: Int, @Body student: StudentRequest): Call<Student>
+    fun updateStudent(@Path("id") userId: Int, @Body studentRequest: StudentRequestPE): Call<Boolean>
 
     @DELETE("api/Student/{id}")
     fun deleteStudent(@Path("id") id: Int): Call<Void>
