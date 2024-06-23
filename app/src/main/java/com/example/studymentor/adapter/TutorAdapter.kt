@@ -59,7 +59,7 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
             email.text = tutor.email
             specialty.text = tutor.specialty
 
-            cost.text=tutor.cost.toString()
+            //cost.text=tutor.cost.toString()
             //Picasso.get().load(tutor.Photo).into(btimage)
             //cost.text=tutor.cost.toString()
 

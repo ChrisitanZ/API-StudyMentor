@@ -37,7 +37,7 @@ class StudentAdapter(private val students: List<Student>): RecyclerView.Adapter<
 
         @SuppressLint("SetTextI18n")
         fun bind(student: Student) {
-            name.text = "${student.name} ${student.lastname}"
+            name.text = "${student.name} ${student.lastName}"
             age.text = calculateAge(student.birthday)
             cellphone.text = student.cellphone
 

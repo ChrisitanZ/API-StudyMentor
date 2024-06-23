@@ -104,7 +104,7 @@ class StudentsReviewsListActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val student = response.body()
                     if (student != null) {
-                        tvStudentInfo.text = "${student.name} ${student.lastname}"
+                        tvStudentInfo.text = "${student.name} ${student.lastName}"
                         Picasso.get()
                             .load(student.image)
                             .into(ivStudentInfo)
