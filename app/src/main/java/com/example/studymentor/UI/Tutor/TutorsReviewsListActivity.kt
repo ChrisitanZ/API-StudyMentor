@@ -19,6 +19,7 @@ import com.example.studymentor.adapter.ReviewAdapterTutor
 import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.model.Review
 import com.example.studymentor.model.Tutor
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,6 +28,7 @@ class TutorsReviewsListActivity : AppCompatActivity() {
     lateinit var reviewAdapterTutor: ReviewAdapterTutor
     private lateinit var rvListStudents: RecyclerView
     private lateinit var tvTutorInfo: TextView
+    private lateinit var ivTutorInfo: ImageView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +47,7 @@ class TutorsReviewsListActivity : AppCompatActivity() {
         val btListStudent = findViewById<ImageButton>(R.id.btStudents)
         val btSeeReviewsT = findViewById<Button>(R.id.btSeeReviewsT)
         val tvTextReview = findViewById<TextView>(R.id.tvTextReview)
-        val ivTutorInfo = findViewById<ImageView>(R.id.ivTutorInfo)
+        ivTutorInfo = findViewById<ImageView>(R.id.ivTutorInfo)
         tvTutorInfo = findViewById<TextView>(R.id.tvTutorInfo)
         val ivStarReview = findViewById<ImageView>(R.id.ivStarReview)
         val tvScoreT = findViewById<TextView>(R.id.tvScoreT)
@@ -82,7 +84,7 @@ class TutorsReviewsListActivity : AppCompatActivity() {
     }
 
     private fun fetchTutorName() {
-        val tutorId = 1 //Reemplazar por el adecuado
+        val tutorId = 2 //Reemplazar por el adecuado
 
         val service = RetrofitClient.tutorService
         service.getTutorById(tutorId).enqueue(object : Callback<Tutor> {
@@ -91,6 +93,9 @@ class TutorsReviewsListActivity : AppCompatActivity() {
                     val tutor = response.body()
                     if (tutor != null) {
                         tvTutorInfo.text = "${tutor.name} ${tutor.lastname}"
+                        Picasso.get()
+                            .load(tutor.image)
+                            .into(ivTutorInfo)
                     }
                 } else {
                     Toast.makeText(this@TutorsReviewsListActivity, "Error al obtener el tutor", Toast.LENGTH_SHORT).show()
