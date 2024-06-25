@@ -82,6 +82,9 @@
         <activity
             android:name=".UI.RegisterActivity"
             android:exported="false" />
+        <activity
+            android:name=".UI.TeacherRegisterActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
