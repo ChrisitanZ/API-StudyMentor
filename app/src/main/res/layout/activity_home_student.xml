@@ -49,8 +49,6 @@
 
     </FrameLayout>
 
-
-
     <FrameLayout
         android:id="@+id/LayoutRating"
         android:layout_width="124dp"
@@ -66,9 +64,9 @@
             android:layout_height="96dp"
             android:layout_gravity="center"
             android:layout_marginTop="-50dp"
-            android:contentDescription="profe1"
-            android:visibility="visible"
-            tools:srcCompat="@drawable/perfil_profesor1" />
+            android:background="?selectableItemBackground"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/perfil_profesor1" />
 
         <TextView
             android:id="@+id/tvRating"
@@ -80,8 +78,6 @@
             android:textAlignment="center" />
 
     </FrameLayout>
-
-
 
     <FrameLayout
         android:id="@+id/LayoutCalendar"
@@ -101,8 +97,7 @@
             android:background="?selectableItemBackground"
             android:contentDescription="calendario"
             android:scaleType="fitCenter"
-            android:visibility="visible"
-            tools:srcCompat="@drawable/calendario" />
+            app:srcCompat="@drawable/calendario" />
 
         <TextView
             android:id="@+id/tvCalendar"
