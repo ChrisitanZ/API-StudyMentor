@@ -1,25 +1,26 @@
 package com.example.studymentor.UI.Student
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.studymentor.R
 import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.apiservice.StudentApiService
-
 import com.example.studymentor.model.Student
 import com.example.studymentor.request.GenreRequest
 import com.example.studymentor.request.StudentRequestPE
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class StudentProfileEditActivity : AppCompatActivity() {
 
@@ -35,12 +36,13 @@ class StudentProfileEditActivity : AppCompatActivity() {
     private lateinit var etPassword: EditText
     private lateinit var etBirthday: EditText
     private lateinit var etImageURL: EditText
+    private lateinit var imageView: ImageView
+
+    private val PICK_IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_profile_edit)
-
-
 
         val btHomeT = findViewById<ImageButton>(R.id.btHomeT)
         val btStudents = findViewById<ImageButton>(R.id.btStudents)
@@ -51,7 +53,6 @@ class StudentProfileEditActivity : AppCompatActivity() {
             startActivity(Intent(this, HomeStudentActivity::class.java))
         }
 
-
         btStudents.setOnClickListener {
             startActivity(Intent(this, TutorListActivity::class.java))
         }
@@ -59,7 +60,6 @@ class StudentProfileEditActivity : AppCompatActivity() {
         btProfileT.setOnClickListener {
             startActivity(Intent(this, StudentProfileActivity::class.java))
         }
-        
 
         sharedPreferences = getSharedPreferences("com.example.studymentor.session", Context.MODE_PRIVATE)
         studentApiService = RetrofitClient.studentService
@@ -67,16 +67,15 @@ class StudentProfileEditActivity : AppCompatActivity() {
         etNameP = findViewById(R.id.etNameP)
         etLastNameP = findViewById(R.id.etLastNameP)
         etEmailP = findViewById(R.id.etEmailP)
-        etPhoneP = findViewById(R.id.etPhonePE)
-        etGenreName = findViewById(R.id.etGenrePE)
-        etCode = findViewById(R.id.etCodePE)
-        etPassword = findViewById(R.id.etPasswordPE)
-        etBirthday = findViewById(R.id.etBirthdayPE)
-        etImageURL = findViewById(R.id.etImageURLPE)
-
+        etPhoneP = findViewById(R.id.etPhonePED)
+        etGenreName = findViewById(R.id.etGenrePED)
+        etCode = findViewById(R.id.etCodePED)
+        etPassword = findViewById(R.id.etPasswordPED)
+        etBirthday = findViewById(R.id.etBirthdayPED)
+        etImageURL = findViewById(R.id.etImageURLPED)
+        imageView = findViewById(R.id.imageView) // ImageView para mostrar la imagen seleccionada
 
         val userId = sharedPreferences.getInt("USER_ID", -1)
-
 
         if (userId != -1) {
             loadStudentData(userId)
@@ -84,8 +83,12 @@ class StudentProfileEditActivity : AppCompatActivity() {
             Toast.makeText(this, "Error: No se pudo obtener el ID de usuario", Toast.LENGTH_SHORT).show()
         }
 
+        val btnSaveProfile = findViewById<Button>(R.id.btnSaveProfilePED)
+        val btnChangeImage = findViewById<Button>(R.id.btnChangeImage) // Botón para cambiar la imagen
 
-        val btnSaveProfile = findViewById<Button>(R.id.btnSaveProfilePE)
+        btnChangeImage.setOnClickListener {
+            openGallery()
+        }
 
         btnSaveProfile.setOnClickListener {
             val name = etNameP.text.toString().trim()
@@ -109,11 +112,27 @@ class StudentProfileEditActivity : AppCompatActivity() {
                 image = imageUrl.takeIf { it.isNotEmpty() }
             )
 
-
             if (userId != -1) {
                 updateStudentProfile(userId, studentRequest)
             } else {
                 Toast.makeText(this, "Error: No se pudo obtener el ID de usuario", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            val imageUri: Uri? = data?.data
+            imageUri?.let {
+                imageView.setImageURI(it)
+                etImageURL.setText(it.toString()) // Convertir la URI en una cadena URL y establecerla en el EditText
             }
         }
     }
@@ -123,7 +142,6 @@ class StudentProfileEditActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Student>, response: Response<Student>) {
                 if (response.isSuccessful) {
                     val student = response.body()
-
 
                     etNameP.setText(student?.name ?: "")
                     etLastNameP.setText(student?.lastname ?: "")
@@ -158,6 +176,5 @@ class StudentProfileEditActivity : AppCompatActivity() {
                 Toast.makeText(this@StudentProfileEditActivity, "Error al actualizar perfil: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
-
     }
 }
