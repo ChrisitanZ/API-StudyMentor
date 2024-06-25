@@ -69,11 +69,43 @@ class ScoreActivity : AppCompatActivity() {
                 }
             }
 
+
+        btHome.setOnClickListener {
+            val intent = Intent(this@ScoreActivity, HomeStudentActivity::class.java)
+            startActivity(intent)
+    }
+
+    private fun fetchStudents() {
+        val service = RetrofitClient.tutorService
+        service.getTutors().enqueue(object : Callback<List<Tutor>> {
+            override fun onResponse(call: Call<List<Tutor>>, response: Response<List<Tutor>>) {
+                if (response.isSuccessful) {
+                    tutorList = response.body() ?: emptyList()
+                    setupSpinner()
+                } else {
+                    Toast.makeText(this@ScoreActivity, "Error al obtener la lista de tutores", Toast.LENGTH_SHORT).show()
+                }
+            }
+
             override fun onFailure(call: Call<List<Tutor>>, t: Throwable) {
                 Toast.makeText(this@ScoreActivity, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
+    private fun setupSpinner() {
+        val tutorNames = tutorList.map { it.name }
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tutorNames)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerTutors.adapter = adapter
+
+        spinnerTutors.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val selectedTutorId = tutorList[position].tutorId
+                loadScores(studentId, selectedTutorId)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
 
     private fun setupSpinner() {
         val tutorNames = tutorList.map { it.name }

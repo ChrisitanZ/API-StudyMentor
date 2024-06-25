@@ -7,6 +7,7 @@ data class Schedule(
     val startingHour: String,
     val price: Double,
     val isAvailable: Boolean,
-    val tutorId: Int
+    val tutorId: Int,
+    val studentId: Int
 )
 

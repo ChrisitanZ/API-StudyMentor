@@ -1,6 +1,5 @@
 package com.example.studymentor.adapter
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studymentor.R
 import com.example.studymentor.UI.Student.TutorSchedulesActivity
@@ -21,7 +19,6 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TutorViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.prototype_tutor, parent, false)
         return TutorViewHolder(view)
-
     }
 
     override fun onBindViewHolder(prototype: TutorViewHolder, position: Int) {
@@ -31,13 +28,12 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
         prototype.btSeeMore.setOnClickListener {
             val context = prototype.itemView.context
             val intent = Intent(context, TutorSchedulesActivity::class.java).apply {
-                // Pasar la información del tutor a TutorSchedulesActivity
-                putExtra("TUTOR_ID", tutor.id)
+                putExtra("TUTOR_ID", tutor.tutorId)
                 putExtra("TUTOR_NAME", tutor.name)
                 putExtra("TUTOR_EMAIL", tutor.email)
                 putExtra("TUTOR_SPECIALTY", tutor.specialty)
             }
-            Log.d("TutorAdapter", "Tutor ID: ${tutor.id}")
+            Log.d("TutorAdapter", "Tutor ID: ${tutor.tutorId}")
             context.startActivity(intent)
         }
     }
@@ -48,12 +44,10 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
         private val name: TextView = itemView.findViewById(R.id.tvName)
         private val email: TextView = itemView.findViewById(R.id.tvEmail)
         private val specialty: TextView = itemView.findViewById(R.id.tvSpecialty)
-        //private val cost: TextView = itemView.findViewById(R.id.tvFee)
-        private val btimage : ImageView = itemView.findViewById(R.id.ivTutor)
+        private val btimage: ImageView = itemView.findViewById(R.id.ivTutor)
         val btSeeMore: Button = itemView.findViewById(R.id.btSeeMore)
 
-        @SuppressLint("SetTextI18n")
-        fun bind(tutor: Tutor){
+        fun bind(tutor: Tutor) {
             name.text = "${tutor.name} ${tutor.lastname}"
             email.text = tutor.email
             specialty.text = tutor.specialty
@@ -65,10 +59,7 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
             Picasso.get()
                 .load(tutor.image)
                 .into(btimage)
+            Picasso.get().load(tutor.image).into(btimage)
         }
     }
 }
-
-
-
-
