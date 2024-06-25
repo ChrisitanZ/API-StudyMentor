@@ -45,7 +45,7 @@ class HomeStudentActivity : AppCompatActivity() {
             startActivity(intent)
         }
         tvRating.setOnClickListener {
-            val intent = Intent(this@HomeStudentActivity, RatingTeacherActivity::class.java)
+            val intent = Intent(this@HomeStudentActivity, ScoreActivity::class.java)
             startActivity(intent)
         }
         tvReviews.setOnClickListener{
