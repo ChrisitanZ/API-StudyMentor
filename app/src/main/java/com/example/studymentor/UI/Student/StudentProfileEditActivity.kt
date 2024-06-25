@@ -1,25 +1,26 @@
 package com.example.studymentor.UI.Student
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.studymentor.R
 import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.apiservice.StudentApiService
-
 import com.example.studymentor.model.Student
 import com.example.studymentor.request.GenreRequest
 import com.example.studymentor.request.StudentRequestPE
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class StudentProfileEditActivity : AppCompatActivity() {
 
@@ -35,12 +36,13 @@ class StudentProfileEditActivity : AppCompatActivity() {
     private lateinit var etPassword: EditText
     private lateinit var etBirthday: EditText
     private lateinit var etImageURL: EditText
+    private lateinit var imageView: ImageView
+
+    private val PICK_IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_profile_edit)
-
-
 
         val btHomeT = findViewById<ImageButton>(R.id.btHomeT)
         val btStudents = findViewById<ImageButton>(R.id.btStudents)
@@ -51,17 +53,13 @@ class StudentProfileEditActivity : AppCompatActivity() {
             startActivity(Intent(this, HomeStudentActivity::class.java))
         }
 
-
         btStudents.setOnClickListener {
-            // Redirigir a la pantalla de estudiantes (StudentsActivity)
             startActivity(Intent(this, TutorListActivity::class.java))
         }
 
         btProfileT.setOnClickListener {
-            // Redirigir a la pantalla de perfil (ProfileActivity)
             startActivity(Intent(this, StudentProfileActivity::class.java))
         }
-        
 
         sharedPreferences = getSharedPreferences("com.example.studymentor.session", Context.MODE_PRIVATE)
         studentApiService = RetrofitClient.studentService
@@ -69,25 +67,28 @@ class StudentProfileEditActivity : AppCompatActivity() {
         etNameP = findViewById(R.id.etNameP)
         etLastNameP = findViewById(R.id.etLastNameP)
         etEmailP = findViewById(R.id.etEmailP)
-        etPhoneP = findViewById(R.id.etPhoneP)
-        etGenreName = findViewById(R.id.etGenre)
-        etCode = findViewById(R.id.etCode)
-        etPassword = findViewById(R.id.etPassword)
-        etBirthday = findViewById(R.id.etBirthday)
-        etImageURL = findViewById(R.id.etImageURL)
+        etPhoneP = findViewById(R.id.etPhonePED)
+        etGenreName = findViewById(R.id.etGenrePED)
+        etCode = findViewById(R.id.etCodePED)
+        etPassword = findViewById(R.id.etPasswordPED)
+        etBirthday = findViewById(R.id.etBirthdayPED)
+        etImageURL = findViewById(R.id.etImageURLPED)
+        imageView = findViewById(R.id.imageView) // ImageView para mostrar la imagen seleccionada
 
-        // Obtener el ID de usuario almacenado en SharedPreferences
         val userId = sharedPreferences.getInt("USER_ID", -1)
 
-        // Cargar los datos actuales del estudiante utilizando userId
         if (userId != -1) {
             loadStudentData(userId)
         } else {
             Toast.makeText(this, "Error: No se pudo obtener el ID de usuario", Toast.LENGTH_SHORT).show()
         }
 
+        val btnSaveProfile = findViewById<Button>(R.id.btnSaveProfilePED)
+        val btnChangeImage = findViewById<Button>(R.id.btnChangeImage) // Botón para cambiar la imagen
 
-        val btnSaveProfile = findViewById<Button>(R.id.btnSaveProfile)
+        btnChangeImage.setOnClickListener {
+            openGallery()
+        }
 
         btnSaveProfile.setOnClickListener {
             val name = etNameP.text.toString().trim()
@@ -98,9 +99,8 @@ class StudentProfileEditActivity : AppCompatActivity() {
             val genreCode = etCode.text.toString().trim()
             val password = etPassword.text.toString().trim()
             val birthday = etBirthday.text.toString().trim()
-            val imageUrl = etImageURL.text.toString().trim()  // Obtener la URL de la imagen desde el EditText
+            val imageUrl = etImageURL.text.toString().trim()
 
-            // Crear instancia de StudentRequestPE con los valores actuales para los campos no modificados
             val studentRequest = StudentRequestPE(
                 name = name.takeIf { it.isNotEmpty() },
                 lastName = lastName.takeIf { it.isNotEmpty() },
@@ -112,12 +112,27 @@ class StudentProfileEditActivity : AppCompatActivity() {
                 image = imageUrl.takeIf { it.isNotEmpty() }
             )
 
-            // Verificar que userId esté definido y no sea -1 (valor por defecto)
             if (userId != -1) {
-                // Llamar a la función para actualizar el perfil
                 updateStudentProfile(userId, studentRequest)
             } else {
                 Toast.makeText(this, "Error: No se pudo obtener el ID de usuario", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            val imageUri: Uri? = data?.data
+            imageUri?.let {
+                imageView.setImageURI(it)
+                etImageURL.setText(it.toString()) // Convertir la URI en una cadena URL y establecerla en el EditText
             }
         }
     }
@@ -128,16 +143,14 @@ class StudentProfileEditActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val student = response.body()
 
-                    // Llenar los EditText con los datos del estudiante
                     etNameP.setText(student?.name ?: "")
-                    etLastNameP.setText(student?.lastName ?: "")
+                    etLastNameP.setText(student?.lastname ?: "")
                     etEmailP.setText(student?.email ?: "")
                     etPhoneP.setText(student?.cellphone ?: "")
                     etGenreName.setText(student?.genre?.nameGenre ?: "")
                     etCode.setText(student?.genre?.code ?: "")
                     etPassword.setText(student?.password ?: "")
                     etBirthday.setText(student?.birthday ?: "")
-                    // Aquí puedes llenar otros campos como género, fecha de nacimiento, etc., si es necesario
                 } else {
                     Toast.makeText(this@StudentProfileEditActivity, "Error al cargar datos del estudiante", Toast.LENGTH_SHORT).show()
                 }
@@ -163,6 +176,5 @@ class StudentProfileEditActivity : AppCompatActivity() {
                 Toast.makeText(this@StudentProfileEditActivity, "Error al actualizar perfil: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
-
     }
 }

@@ -1,8 +1,11 @@
 package com.example.studymentor.UI.Student
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -31,6 +34,9 @@ class StudentProfileActivity: AppCompatActivity(){
     private lateinit var tvEmailS: TextView
     private lateinit var tvCellphoneS: TextView
     private lateinit var imageView5: ImageView
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private var studentId: Int = -1
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +46,15 @@ class StudentProfileActivity: AppCompatActivity(){
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        sharedPreferences = getSharedPreferences("com.example.studymentor.session", Context.MODE_PRIVATE)
+        studentId = sharedPreferences.getInt("USER_ID", -1)
+
+        if (studentId == -1) {
+            Toast.makeText(this, "No se pudo obtener el ID del estudiante", Toast.LENGTH_SHORT).show()
+            finish() // Finaliza la actividad si no se encuentra el ID del estudiante
+            return
         }
 
         val btHome = findViewById<ImageButton>(R.id.btHome)
@@ -90,8 +105,6 @@ class StudentProfileActivity: AppCompatActivity(){
     }
 
     private fun fetchInfoStudent() {
-        val studentId = 26 //Reemplazar por el adecuado
-
         val service = RetrofitClient.studentService
         service.getStudentById(studentId).enqueue(object : Callback<Student> {
             override fun onResponse(call: Call<Student>, response: Response<Student>) {
@@ -103,9 +116,22 @@ class StudentProfileActivity: AppCompatActivity(){
                         tvEmailS.text = "Email: ${student.email}"
                         tvCellphoneS.text = "Telefono: ${student.cellphone}"
 
-                        Picasso.get()
-                            .load(student.image)
-                            .into(imageView5)
+                        if (!student.image.isNullOrEmpty()) {
+                            Picasso.get()
+                                .load(student.image)
+                                .into(imageView5, object : com.squareup.picasso.Callback {
+                                    override fun onSuccess() {
+                                        // Imagen cargada exitosamente
+                                    }
+
+                                    override fun onError(e: java.lang.Exception?) {
+                                        // Error al cargar la imagen, puedes ocultar el ImageView
+                                        imageView5.visibility = View.GONE
+                                    }
+                                })
+                        } else {
+                            imageView5.visibility = View.GONE
+                        }
                     }
                 } else {
                     Toast.makeText(this@StudentProfileActivity, "Error al obtener el estudiante", Toast.LENGTH_SHORT).show()

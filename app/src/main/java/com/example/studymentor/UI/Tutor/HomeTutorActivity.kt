@@ -40,6 +40,7 @@ HomeTutorActivity : AppCompatActivity() {
             val intent = Intent(this@HomeTutorActivity, TutorCalendarActivity::class.java)
             startActivity(intent)
         }
+
         ibCalificationsT.setOnClickListener{
             val intent = Intent(this@HomeTutorActivity, ScoreTutorActivity::class.java)
             startActivity(intent)

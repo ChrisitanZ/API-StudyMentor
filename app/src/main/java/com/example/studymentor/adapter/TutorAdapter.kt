@@ -32,7 +32,6 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
                 putExtra("TUTOR_NAME", tutor.name)
                 putExtra("TUTOR_EMAIL", tutor.email)
                 putExtra("TUTOR_SPECIALTY", tutor.specialty)
-                putExtra("TUTOR_COST", tutor.cost)
             }
             Log.d("TutorAdapter", "Tutor ID: ${tutor.tutorId}")
             context.startActivity(intent)
@@ -53,17 +52,14 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
             email.text = tutor.email
             specialty.text = tutor.specialty
 
-<<<<<<< Updated upstream
-            cost.text=tutor.cost.toString()
+            //cost.text=tutor.cost.toString()
             //Picasso.get().load(tutor.Photo).into(btimage)
             //cost.text=tutor.cost.toString()
 
             Picasso.get()
                 .load(tutor.image)
                 .into(btimage)
-=======
             Picasso.get().load(tutor.image).into(btimage)
->>>>>>> Stashed changes
         }
     }
 }

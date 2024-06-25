@@ -47,7 +47,7 @@ class ReviewAdapterTutor(private val reviews: List<Review>): RecyclerView.Adapte
                     if (response.isSuccessful) {
                         val student = response.body()
                         if (student != null) {
-                            name.text = student.name
+                            name.text = "${student.name} ${student.lastname}"
                             Picasso.get()
                                 .load(student.image)
                                 .into(image)

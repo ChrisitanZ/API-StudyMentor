@@ -8,6 +8,5 @@ data class Tutor(
     val password: String,
     val cellphone: String,
     val specialty: String,
-    val cost: Double,
     val image: String
 )

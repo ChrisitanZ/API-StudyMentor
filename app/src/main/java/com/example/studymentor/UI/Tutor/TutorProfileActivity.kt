@@ -2,8 +2,11 @@ package com.example.studymentor.UI.Tutor
 
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -30,6 +33,9 @@ class TutorProfileActivity : AppCompatActivity() {
     private lateinit var tvemail: TextView
     private lateinit var imageProfile: ImageView
 
+    private lateinit var sharedPreferences: SharedPreferences
+    private var tutorId: Int = -1
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +47,14 @@ class TutorProfileActivity : AppCompatActivity() {
             insets
         }
 
+        sharedPreferences = getSharedPreferences("com.example.studymentor.session", Context.MODE_PRIVATE)
+        tutorId = sharedPreferences.getInt("USER_ID", -1)
+
+        if (tutorId == -1) {
+            Toast.makeText(this, "No se pudo obtener el ID del tutor", Toast.LENGTH_SHORT).show()
+            finish() // Finaliza la actividad si no se encuentra el ID del tutor
+            return
+        }
 
         val btHome = findViewById<ImageButton>(R.id.btHomeT)
         val btCalendar = findViewById<ImageButton>(R.id.btCalendarT)
@@ -90,8 +104,6 @@ class TutorProfileActivity : AppCompatActivity() {
     }
 
     private fun fetchInfoTutor() {
-        val tutorId = 3 //Reemplazar por el adecuado
-
         val service = RetrofitClient.tutorService
         service.getTutorById(tutorId).enqueue(object : Callback<Tutor> {
             override fun onResponse(call: Call<Tutor>, response: Response<Tutor>) {
@@ -103,10 +115,22 @@ class TutorProfileActivity : AppCompatActivity() {
                         tvcourse.text = "Curso: ${tutor.specialty}"
                         tvCellphone.text = "Telefono: ${tutor.cellphone}"
 
+                        if (!tutor.image.isNullOrEmpty()) {
+                            Picasso.get()
+                                .load(tutor.image)
+                                .into(imageProfile, object : com.squareup.picasso.Callback {
+                                    override fun onSuccess() {
+                                        // Imagen cargada exitosamente
+                                    }
 
-                        Picasso.get()
-                            .load(tutor.image)
-                            .into(imageProfile)
+                                    override fun onError(e: java.lang.Exception?) {
+                                        // Error al cargar la imagen, puedes ocultar el ImageView
+                                        imageProfile.visibility = View.GONE
+                                    }
+                                })
+                        } else {
+                            imageProfile.visibility = View.GONE
+                        }
                     } else {
                         Toast.makeText(this@TutorProfileActivity, "Error al obtener el tutor", Toast.LENGTH_SHORT).show()
                     }

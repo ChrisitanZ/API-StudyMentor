@@ -4,6 +4,8 @@
     package="com.example.studymentor">
     <!-- Permiso para acceso a internet -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -82,15 +84,16 @@
         <activity
             android:name=".UI.RegisterActivity"
             android:exported="false" />
-<<<<<<< Updated upstream
-=======
+
         <activity
             android:name=".UI.TeacherRegisterActivity"
             android:exported="false" />
         <activity
             android:name=".UI.PaymentActivity"
             android:exported="false"/>
->>>>>>> Stashed changes
+        <activity
+            android:name=".UI.TeacherRegisterActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

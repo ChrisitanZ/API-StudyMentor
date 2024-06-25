@@ -1,8 +1,11 @@
 package com.example.studymentor.UI.Tutor
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -31,7 +34,9 @@ class TutorsReviewsListActivity : AppCompatActivity() {
     private lateinit var ivTutorInfo: ImageView
     private lateinit var tvScoreT: TextView
     //Reemplazar por el adecuado
-    private var tutorId: Int = 2
+    //private var tutorId: Int = 2
+    private lateinit var sharedPreferences: SharedPreferences
+    private var tutorId: Int = -1
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +47,15 @@ class TutorsReviewsListActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        sharedPreferences = getSharedPreferences("com.example.studymentor.session", Context.MODE_PRIVATE)
+        tutorId = sharedPreferences.getInt("USER_ID", -1)
+
+        if (tutorId == -1) {
+            Toast.makeText(this, "No se pudo obtener el ID del tutor", Toast.LENGTH_SHORT).show()
+            finish() // Finaliza la actividad si no se encuentra el ID del tutor
+            return
         }
 
         val btHomeT = findViewById<ImageButton>(R.id.btHomeT)
@@ -95,9 +109,23 @@ class TutorsReviewsListActivity : AppCompatActivity() {
                     val tutor = response.body()
                     if (tutor != null) {
                         tvTutorInfo.text = "${tutor.name} ${tutor.lastname}"
-                        Picasso.get()
-                            .load(tutor.image)
-                            .into(ivTutorInfo)
+
+                        if (!tutor.image.isNullOrEmpty()) {
+                            Picasso.get()
+                                .load(tutor.image)
+                                .into(ivTutorInfo, object : com.squareup.picasso.Callback {
+                                    override fun onSuccess() {
+                                        // Imagen cargada exitosamente
+                                    }
+
+                                    override fun onError(e: java.lang.Exception?) {
+                                        // Error al cargar la imagen, puedes ocultar el ImageView
+                                        ivTutorInfo.visibility = View.GONE
+                                    }
+                                })
+                        } else {
+                            ivTutorInfo.visibility = View.GONE
+                        }
 
                         fetchReviewsTutor()
                     }
