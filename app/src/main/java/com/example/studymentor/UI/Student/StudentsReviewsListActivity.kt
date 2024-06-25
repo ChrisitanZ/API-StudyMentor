@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -113,9 +114,22 @@ class StudentsReviewsListActivity : AppCompatActivity() {
                     val student = response.body()
                     if (student != null) {
                         tvStudentInfo.text = "${student.name} ${student.lastname}"
-                        Picasso.get()
-                            .load(student.image)
-                            .into(ivStudentInfo)
+                        if (!student.image.isNullOrEmpty()) {
+                            Picasso.get()
+                                .load(student.image)
+                                .into(ivStudentInfo, object : com.squareup.picasso.Callback {
+                                    override fun onSuccess() {
+                                        // Imagen cargada exitosamente
+                                    }
+
+                                    override fun onError(e: java.lang.Exception?) {
+                                        // Error al cargar la imagen, puedes ocultar el ImageView
+                                        ivStudentInfo.visibility = View.GONE
+                                    }
+                                })
+                        } else {
+                            ivStudentInfo.visibility = View.GONE
+                        }
 
                         fetchReviewsStudent()
                     }

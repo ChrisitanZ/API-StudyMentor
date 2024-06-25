@@ -1,20 +1,23 @@
 package com.example.studymentor.UI
 
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.studymentor.R
 import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.request.GenreRequest
 import com.example.studymentor.request.StudentRequest
-import com.example.studymentor.request.TutorRequestPE
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +30,9 @@ import java.util.TimeZone
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var editTextDateOfBirth: EditText
+    private lateinit var cbTerms: CheckBox
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -41,7 +46,16 @@ class RegisterActivity : AppCompatActivity() {
         btRegister.setOnClickListener {
             registerStudent()
         }
+
+        cbTerms = findViewById(R.id.cbterms)
+
+        val tvTerms = findViewById<TextView>(R.id.tvterms)
+        tvTerms.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.freeprivacypolicy.com/live/cbc35ede-0172-41f7-8691-354f81e83331"))
+            startActivity(intent)
+        }
     }
+    //https://www.freeprivacypolicy.com/live/cbc35ede-0172-41f7-8691-354f81e83331 -> link T&C
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -69,6 +83,11 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerStudent() {
+        if (!cbTerms.isChecked) {
+            Toast.makeText(this, "Debes aceptar los términos y condiciones para registrarte", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val studentService = RetrofitClient.studentService
 
         val editTextName = findViewById<EditText>(R.id.etNameP)
