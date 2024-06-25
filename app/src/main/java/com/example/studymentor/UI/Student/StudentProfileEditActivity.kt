@@ -53,12 +53,10 @@ class StudentProfileEditActivity : AppCompatActivity() {
 
 
         btStudents.setOnClickListener {
-            // Redirigir a la pantalla de estudiantes (StudentsActivity)
             startActivity(Intent(this, TutorListActivity::class.java))
         }
 
         btProfileT.setOnClickListener {
-            // Redirigir a la pantalla de perfil (ProfileActivity)
             startActivity(Intent(this, StudentProfileActivity::class.java))
         }
         
@@ -76,10 +74,10 @@ class StudentProfileEditActivity : AppCompatActivity() {
         etBirthday = findViewById(R.id.etBirthdayPE)
         etImageURL = findViewById(R.id.etImageURLPE)
 
-        // Obtener el ID de usuario almacenado en SharedPreferences
+
         val userId = sharedPreferences.getInt("USER_ID", -1)
 
-        // Cargar los datos actuales del estudiante utilizando userId
+
         if (userId != -1) {
             loadStudentData(userId)
         } else {
@@ -98,9 +96,8 @@ class StudentProfileEditActivity : AppCompatActivity() {
             val genreCode = etCode.text.toString().trim()
             val password = etPassword.text.toString().trim()
             val birthday = etBirthday.text.toString().trim()
-            val imageUrl = etImageURL.text.toString().trim()  // Obtener la URL de la imagen desde el EditText
+            val imageUrl = etImageURL.text.toString().trim()
 
-            // Crear instancia de StudentRequestPE con los valores actuales para los campos no modificados
             val studentRequest = StudentRequestPE(
                 name = name.takeIf { it.isNotEmpty() },
                 lastName = lastName.takeIf { it.isNotEmpty() },
@@ -112,9 +109,8 @@ class StudentProfileEditActivity : AppCompatActivity() {
                 image = imageUrl.takeIf { it.isNotEmpty() }
             )
 
-            // Verificar que userId esté definido y no sea -1 (valor por defecto)
+
             if (userId != -1) {
-                // Llamar a la función para actualizar el perfil
                 updateStudentProfile(userId, studentRequest)
             } else {
                 Toast.makeText(this, "Error: No se pudo obtener el ID de usuario", Toast.LENGTH_SHORT).show()
@@ -128,7 +124,7 @@ class StudentProfileEditActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val student = response.body()
 
-                    // Llenar los EditText con los datos del estudiante
+
                     etNameP.setText(student?.name ?: "")
                     etLastNameP.setText(student?.lastname ?: "")
                     etEmailP.setText(student?.email ?: "")
@@ -137,7 +133,6 @@ class StudentProfileEditActivity : AppCompatActivity() {
                     etCode.setText(student?.genre?.code ?: "")
                     etPassword.setText(student?.password ?: "")
                     etBirthday.setText(student?.birthday ?: "")
-                    // Aquí puedes llenar otros campos como género, fecha de nacimiento, etc., si es necesario
                 } else {
                     Toast.makeText(this@StudentProfileEditActivity, "Error al cargar datos del estudiante", Toast.LENGTH_SHORT).show()
                 }

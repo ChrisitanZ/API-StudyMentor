@@ -45,8 +45,12 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btRegisterLogin.setOnClickListener {
-            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-            startActivity(intent)
+            val intent = when (userType) {
+                "student" -> Intent(this@LoginActivity, RegisterActivity::class.java)
+                "teacher" -> Intent(this@LoginActivity, TeacherRegisterActivity::class.java)
+                else -> null
+            }
+            intent?.let { startActivity(it) }
         }
     }
 

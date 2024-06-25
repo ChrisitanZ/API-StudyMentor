@@ -36,7 +36,6 @@ class TutorAdapter(private val tutors: List<Tutor>) : RecyclerView.Adapter<Tutor
                 putExtra("TUTOR_NAME", tutor.name)
                 putExtra("TUTOR_EMAIL", tutor.email)
                 putExtra("TUTOR_SPECIALTY", tutor.specialty)
-                putExtra("TUTOR_COST", tutor.cost)
             }
             Log.d("TutorAdapter", "Tutor ID: ${tutor.id}")
             context.startActivity(intent)

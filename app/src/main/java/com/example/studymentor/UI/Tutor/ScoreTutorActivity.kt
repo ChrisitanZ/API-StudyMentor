@@ -1,5 +1,7 @@
 package com.example.studymentor.UI.Tutor
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,11 +33,19 @@ class ScoreTutorActivity : AppCompatActivity() {
     private lateinit var scoreAdapter: ScoreAdapter
     private lateinit var spinnerTutors: Spinner
     private var studentList: List<Student> = emptyList()
-
+    private lateinit var sharedPreferences: SharedPreferences
+    private var tutorId: Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_score_teacher)
+        sharedPreferences = getSharedPreferences("com.example.studymentor.session", Context.MODE_PRIVATE)
+        tutorId = sharedPreferences.getInt("USER_ID", -1)
 
+        if (tutorId == -1) {
+            Toast.makeText(this, "No se pudo obtener el ID del tutor", Toast.LENGTH_SHORT).show()
+            finish() // Finaliza la actividad si no se encuentra el ID del tutor
+            return
+        }
         recyclerView = findViewById(R.id.recyclerViewNotes)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -75,7 +85,7 @@ class ScoreTutorActivity : AppCompatActivity() {
         spinnerTutors.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedStudentId = studentList[position].id
-                loadScores(selectedStudentId, 2)  // Asumiendo que el tutor con ID 2 es el que queremos
+                loadScores(selectedStudentId, tutorId)  // Asumiendo
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -142,7 +152,7 @@ class ScoreTutorActivity : AppCompatActivity() {
                     scoreValue = scoreValue,
                     status = scoreStatus,
                     studentId = selectedStudentId,
-                    tutorId = 2  // Asumiendo que el tutor con ID 2 es el que queremos
+                    tutorId = tutorId  // Asumiendo
                 )
                 saveScore(scoreRequest)
                 alertDialog.dismiss()

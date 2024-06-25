@@ -14,6 +14,7 @@ import com.example.studymentor.R
 import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.request.GenreRequest
 import com.example.studymentor.request.StudentRequest
+import com.example.studymentor.request.TutorRequestPE
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -125,7 +126,6 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
     }
-
     private fun navigateToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
