@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -114,10 +115,22 @@ class TutorProfileActivity : AppCompatActivity() {
                         tvcourse.text = "Curso: ${tutor.specialty}"
                         tvCellphone.text = "Telefono: ${tutor.cellphone}"
 
+                        if (!tutor.image.isNullOrEmpty()) {
+                            Picasso.get()
+                                .load(tutor.image)
+                                .into(imageProfile, object : com.squareup.picasso.Callback {
+                                    override fun onSuccess() {
+                                        // Imagen cargada exitosamente
+                                    }
 
-                        Picasso.get()
-                            .load(tutor.image)
-                            .into(imageProfile)
+                                    override fun onError(e: java.lang.Exception?) {
+                                        // Error al cargar la imagen, puedes ocultar el ImageView
+                                        imageProfile.visibility = View.GONE
+                                    }
+                                })
+                        } else {
+                            imageProfile.visibility = View.GONE
+                        }
                     } else {
                         Toast.makeText(this@TutorProfileActivity, "Error al obtener el tutor", Toast.LENGTH_SHORT).show()
                     }

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -108,9 +109,23 @@ class TutorsReviewsListActivity : AppCompatActivity() {
                     val tutor = response.body()
                     if (tutor != null) {
                         tvTutorInfo.text = "${tutor.name} ${tutor.lastname}"
-                        Picasso.get()
-                            .load(tutor.image)
-                            .into(ivTutorInfo)
+
+                        if (!tutor.image.isNullOrEmpty()) {
+                            Picasso.get()
+                                .load(tutor.image)
+                                .into(ivTutorInfo, object : com.squareup.picasso.Callback {
+                                    override fun onSuccess() {
+                                        // Imagen cargada exitosamente
+                                    }
+
+                                    override fun onError(e: java.lang.Exception?) {
+                                        // Error al cargar la imagen, puedes ocultar el ImageView
+                                        ivTutorInfo.visibility = View.GONE
+                                    }
+                                })
+                        } else {
+                            ivTutorInfo.visibility = View.GONE
+                        }
 
                         fetchReviewsTutor()
                     }
