@@ -2,6 +2,7 @@ package com.example.studymentor.UI.Student
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
@@ -72,6 +73,8 @@ class TutorListActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<Tutor>>, response: Response<List<Tutor>>) {
                 if (response.isSuccessful) {
                     val tutors = response.body() ?: emptyList()
+                    Log.d("TutorListActivity", "Response JSON: ${response.body().toString()}")
+                    tutors.forEach { tutor -> Log.d("TutorListActivity", "Tutor: $tutor") }
                     tutorAdapter = TutorAdapter(tutors)
                     rvTutors.adapter = tutorAdapter
                     rvTutors.layoutManager = LinearLayoutManager(this@TutorListActivity)

@@ -146,7 +146,7 @@
         android:id="@+id/ivCardType"
         android:layout_width="105dp"
         android:layout_height="105dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="176dp"
         android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="@+id/tvStudyMentor"
         app:layout_constraintTop_toBottomOf="@+id/tvStudyMentor"
@@ -157,13 +157,15 @@
         android:id="@+id/tvAmount"
         android:layout_width="83dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="Total amount"
         android:textColor="#004330"
         android:textSize="12sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cbSaveCardDetails"
         app:layout_constraintStart_toStartOf="@+id/etDate"
         app:layout_constraintTop_toBottomOf="@+id/etDate"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="TextSizeCheck,TextContrastCheck" />
 
     <TextView
@@ -173,6 +175,7 @@
         android:layout_marginTop="10dp"
         android:textColor="#004330"
         android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/cbSaveCardDetails"
         app:layout_constraintStart_toStartOf="@+id/etDate"
         app:layout_constraintTop_toBottomOf="@+id/tvAmount"
         tools:ignore="SmallSp,TextContrastCheck"
@@ -183,13 +186,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="40dp"
         android:buttonTint="#004330"
         android:text="Guardar datos para futuras compras"
         android:textColor="#004330"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayout"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SmallSp,TextContrastCheck" />
 
@@ -199,13 +202,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#004330"
         android:text="Pagar"
         android:textColor="#DDFBF2"
         app:cornerRadius="2sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomOptionsLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toEndOf="@+id/cbSaveCardDetails" />
 
     <ImageView

@@ -82,6 +82,15 @@
         <activity
             android:name=".UI.RegisterActivity"
             android:exported="false" />
+<<<<<<< Updated upstream
+=======
+        <activity
+            android:name=".UI.TeacherRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.PaymentActivity"
+            android:exported="false"/>
+>>>>>>> Stashed changes
     </application>
 
 </manifest>

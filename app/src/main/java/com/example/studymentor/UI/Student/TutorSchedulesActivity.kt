@@ -23,6 +23,7 @@ class TutorSchedulesActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var scheduleAdapter: ScheduleAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -64,12 +65,11 @@ class TutorSchedulesActivity : AppCompatActivity() {
         val extras = intent.extras ?: Bundle()
         Log.d("TutorSchedulesActivity", "Received extras: $extras")
 
-
-        val tutorId = intent.getIntExtra("TUTOR_ID", 1)
-        if (tutorId != 0){
+        val tutorId = intent.getIntExtra("TUTOR_ID", -1)
+        if (tutorId != -1){
             fetchSchedulesByTutor(tutorId)
         } else {
-            fetchSchedulesByTutor(13)
+            fetchSchedulesByTutor(tutorId)
             Log.e("TutorSchedulesActivity", "No tutor ID found in Intent extras")
         }
     }
@@ -87,7 +87,7 @@ class TutorSchedulesActivity : AppCompatActivity() {
 
                     // Verificar que haya horarios disponibles
                     if (availableSchedules.isNotEmpty()) {
-                        scheduleAdapter = ScheduleAdapter(availableSchedules)
+                        scheduleAdapter = ScheduleAdapter(this@TutorSchedulesActivity, availableSchedules)
                         recyclerView.adapter = scheduleAdapter
                     } else {
                         Log.e("TutorSchedulesActivity", "No available schedules found")
@@ -102,5 +102,4 @@ class TutorSchedulesActivity : AppCompatActivity() {
             }
         })
     }
-
 }

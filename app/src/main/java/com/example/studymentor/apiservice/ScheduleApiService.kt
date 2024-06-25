@@ -17,6 +17,9 @@ interface ScheduleApiService {
     @GET("api/Schedule/ByTutor/{id}")
     fun getSchedulesByTutor(@Path("id") tutorId: Int): Call<List<Schedule>>
 
+    @GET("api/Schedule/ByStudent/{id}")
+    fun getSchedulesByStudent(@Path("id") tutorId: Int): Call<List<Schedule>>
+
     @GET("api/Schedule/{id}")
     fun getScheduleById(@Path("id") id: Int): Call<Schedule>
 

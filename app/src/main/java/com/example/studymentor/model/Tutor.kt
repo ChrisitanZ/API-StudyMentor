@@ -1,7 +1,7 @@
 package com.example.studymentor.model
 
 data class Tutor(
-    val id: Int,
+    val tutorId: Int,
     val name: String,
     val lastname: String,
     val email: String,

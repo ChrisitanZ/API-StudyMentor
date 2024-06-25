@@ -23,6 +23,11 @@ import com.example.studymentor.UI.PaymentActivity
 import com.example.studymentor.UI.Student.HomeStudentActivity
 import com.example.studymentor.UI.Student.StudentProfileActivity
 import com.example.studymentor.UI.Student.TutorListActivity
+import com.example.studymentor.apiservice.RetrofitClient
+import com.example.studymentor.model.Schedule
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -33,13 +38,7 @@ class StudentCalendarActivity : AppCompatActivity() {
     private lateinit var calendarGrid: GridLayout
     private val calendar = Calendar.getInstance()
     private val dateFormat = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
-
-    //datos de ejemplo momentaneos
-    private val scheduledClasses = mapOf(
-        Pair(4, "10:00"),
-        Pair(17, "14:00"),
-        Pair(21, "13:00")
-    )
+    private  val scheduledClasses = mutableMapOf<Int, String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +54,10 @@ class StudentCalendarActivity : AppCompatActivity() {
         calendarGrid = findViewById(R.id.calendar_grid)
 
         setupMonthSpinner()
-        setupCalendar()
+
+        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val userId = sharedPreferences.getInt("StudentId", 1)
+        fetchSchedulesFromApi(userId)
 
         val btHome = findViewById<ImageButton>(R.id.btHome)
         val btPerfil = findViewById<ImageButton>(R.id.btPerfilEstudiante)
@@ -76,6 +78,32 @@ class StudentCalendarActivity : AppCompatActivity() {
             val intent = Intent(this@StudentCalendarActivity, TutorListActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun fetchSchedulesFromApi(studentId: Int) {
+        RetrofitClient.scheduleService.getSchedulesByStudent(studentId).enqueue(object :
+            Callback<List<Schedule>> {
+            override fun onResponse(call: Call<List<Schedule>>, response: Response<List<Schedule>>) {
+                if (response.isSuccessful) {
+                    val schedules = response.body()
+                    schedules?.let {
+                        for (schedule in it) {
+                            if (!schedule.isAvailable) {
+                                val day = Calendar.getInstance().apply {
+                                    time = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(schedule.day)
+                                }.get(Calendar.DAY_OF_MONTH)
+                                scheduledClasses[day] = schedule.startingHour
+                            }
+                        }
+                        setupCalendar()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<Schedule>>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
     }
 
     private fun setupMonthSpinner(){

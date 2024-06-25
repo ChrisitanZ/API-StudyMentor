@@ -39,7 +39,7 @@ class RatingTeacherActivity : AppCompatActivity() {
             val rating = ratingBar.rating.toInt()
             val content = reviewText.text.toString()
             val studentId = 25
-            val tutorId = tutorList[tutorSpinner.selectedItemPosition].id
+            val tutorId = tutorList[tutorSpinner.selectedItemPosition].tutorId
 
             if (content.isEmpty()) {
                 Toast.makeText(this, "Completa la reseña antes de publicar", Toast.LENGTH_SHORT).show()
