@@ -11,11 +11,19 @@ object RetrofitClient {
 
     private const val BASE_URL = "https://restful-api-studymentor.up.railway.app/" // Endpoint del Swagger
 
-    // Lazy initialization para servicios específicos
+    private val gson: Gson = GsonBuilder()
+        .registerTypeAdapter(Date::class.java, DateAdapter())
+        .create()
+
+    // Initializing Retrofit instance
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create(gson)).build()
 
     val paymentService: PaymentApiService by lazy {
         createService(PaymentApiService::class.java)
     }
+
 
     val reviewService: ReviewApiService by lazy {
         createService(ReviewApiService::class.java)

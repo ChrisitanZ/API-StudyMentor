@@ -27,6 +27,7 @@ class HomeStudentActivity : AppCompatActivity() {
         val btTutor = findViewById<ImageButton>(R.id.btTutors)
         val btCalendar = findViewById<ImageButton>(R.id.btCalendar)
         val tvRating = findViewById<ImageButton>(R.id.ibCalifications)
+        val tvReviews = findViewById<ImageButton>(R.id.ibTutor)
 
 
         btTutor.setOnClickListener {
@@ -44,7 +45,11 @@ class HomeStudentActivity : AppCompatActivity() {
             startActivity(intent)
         }
         tvRating.setOnClickListener {
-            val intent = Intent(this@HomeStudentActivity, RatingTeacherActivity::class.java)
+            val intent = Intent(this@HomeStudentActivity, ScoreActivity::class.java)
+            startActivity(intent)
+        }
+        tvReviews.setOnClickListener{
+            val intent = Intent(this@HomeStudentActivity, StudentsReviewsListActivity::class.java)
             startActivity(intent)
         }
     }

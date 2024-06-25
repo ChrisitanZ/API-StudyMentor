@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="#009688">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etxNameTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Name"
+        android:padding="8dp"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etxLastnameTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Lastname"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etxEmailTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etxPasswordTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etxCellphoneTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cellphone"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etxSpecialtyTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Specialty"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etxImageTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Image URL"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal">
+
+        <CheckBox
+            android:id="@+id/cbTermsTeacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/tvTermsTeacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Términos y Condiciones"
+            android:textColor="#FFFFFF"
+            android:paddingStart="8dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btRegisterTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:background="#009688"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

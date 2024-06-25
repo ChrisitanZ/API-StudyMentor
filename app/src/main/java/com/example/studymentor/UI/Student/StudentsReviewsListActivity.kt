@@ -1,8 +1,12 @@
 package com.example.studymentor.UI.Student
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -33,8 +37,11 @@ class StudentsReviewsListActivity : AppCompatActivity() {
     private lateinit var tvStudentInfo: TextView
     private lateinit var tvScoreS: TextView
     //Reemplazar por el adecuado
-    private val studentId: Int = 26
+    //private val studentId: Int = 26
+    private lateinit var sharedPreferences: SharedPreferences
+    private var studentId: Int = -1
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -45,11 +52,21 @@ class StudentsReviewsListActivity : AppCompatActivity() {
             insets
         }
 
+        sharedPreferences = getSharedPreferences("com.example.studymentor.session", Context.MODE_PRIVATE)
+        studentId = sharedPreferences.getInt("USER_ID", -1)
+
+        if (studentId == -1) {
+            Toast.makeText(this, "No se pudo obtener el ID del estudiante", Toast.LENGTH_SHORT).show()
+            finish() // Finaliza la actividad si no se encuentra el ID del estudiante
+            return
+        }
+
         val btHome = findViewById<ImageButton>(R.id.btHome)
         val btTutorList = findViewById<ImageButton>(R.id.btTutors)
         val btCalendar = findViewById<ImageButton>(R.id.btCalendar)
         val btPerfil = findViewById<ImageButton>(R.id.btPerfilEstudiante)
         val btSeeReviewsS = findViewById<Button>(R.id.btSeeReviewsS)
+        val btMakeReview = findViewById<Button>(R.id.btMakeReview)
         tvStudentInfo = findViewById(R.id.tvStudentInfo)
         ivStudentInfo = findViewById(R.id.ivStudentInfo)
         tvScoreS = findViewById(R.id.tvScoreS)
@@ -81,6 +98,11 @@ class StudentsReviewsListActivity : AppCompatActivity() {
             fetchReviewsStudent()
         }
 
+        btMakeReview.setOnClickListener {
+            val intent = Intent(this@StudentsReviewsListActivity, RatingTeacherActivity::class.java)
+            startActivity(intent)
+        }
+
         fetchStudentName()
     }
 
@@ -92,9 +114,22 @@ class StudentsReviewsListActivity : AppCompatActivity() {
                     val student = response.body()
                     if (student != null) {
                         tvStudentInfo.text = "${student.name} ${student.lastname}"
-                        Picasso.get()
-                            .load(student.image)
-                            .into(ivStudentInfo)
+                        if (!student.image.isNullOrEmpty()) {
+                            Picasso.get()
+                                .load(student.image)
+                                .into(ivStudentInfo, object : com.squareup.picasso.Callback {
+                                    override fun onSuccess() {
+                                        // Imagen cargada exitosamente
+                                    }
+
+                                    override fun onError(e: java.lang.Exception?) {
+                                        // Error al cargar la imagen, puedes ocultar el ImageView
+                                        ivStudentInfo.visibility = View.GONE
+                                    }
+                                })
+                        } else {
+                            ivStudentInfo.visibility = View.GONE
+                        }
 
                         fetchReviewsStudent()
                     }

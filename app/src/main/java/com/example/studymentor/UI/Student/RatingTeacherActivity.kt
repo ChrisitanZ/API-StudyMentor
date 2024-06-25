@@ -23,6 +23,7 @@ class RatingTeacherActivity : AppCompatActivity() {
     private lateinit var reviewText: EditText
     private lateinit var publishButton: Button
     private var tutorList: List<Tutor> = emptyList()
+    private lateinit var btReturn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +33,14 @@ class RatingTeacherActivity : AppCompatActivity() {
         ratingBar = findViewById(R.id.rating_bar)
         reviewText = findViewById(R.id.review_text)
         publishButton = findViewById(R.id.publish_button)
+        btReturn = findViewById(R.id.btReturn)
 
         fetchTutors()
+
+        btReturn.setOnClickListener {
+            val intent = Intent(this@RatingTeacherActivity, StudentsReviewsListActivity::class.java)
+            startActivity(intent)
+        }
 
         publishButton.setOnClickListener {
             val rating = ratingBar.rating.toInt()
