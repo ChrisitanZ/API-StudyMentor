@@ -1,9 +1,12 @@
 package com.example.studymentor.UI.Tutor
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -15,7 +18,6 @@ import com.example.studymentor.UI.Tutor.StudentListActivity
 import com.example.studymentor.UI.Tutor.TutorProfileActivity
 import com.example.studymentor.apiservice.RetrofitClient
 import com.example.studymentor.apiservice.TutorApiService
-
 import com.example.studymentor.model.Tutor
 import com.example.studymentor.request.TutorRequestPE
 import retrofit2.Call
@@ -34,6 +36,9 @@ class TutorProfileEditActivity : AppCompatActivity() {
     private lateinit var etSpecialtyT: EditText
     private lateinit var etPasswordT: EditText
     private lateinit var etImageURLT: EditText
+
+    private val PICK_IMAGE_REQUEST = 1
+    private var imageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +98,7 @@ class TutorProfileEditActivity : AppCompatActivity() {
                 cellphone = phone.takeIf { it.isNotEmpty() },
                 specialty = specialty.takeIf { it.isNotEmpty() },
                 password = password.takeIf { it.isNotEmpty() },
-                image = imageUrl.takeIf { it.isNotEmpty() }
+                image = imageUrl.takeIf { it.isNotEmpty() } ?: imageUri.toString() // Use selected image URL if available
             )
 
             if (userId != -1) {
@@ -101,6 +106,25 @@ class TutorProfileEditActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Error: No se pudo obtener el ID de usuario", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        val btnSelectImage = findViewById<Button>(R.id.btnSelectImage)
+        btnSelectImage.setOnClickListener {
+            openGallery()
+        }
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            imageUri = data.data
+            etImageURLT.setText(imageUri.toString())
         }
     }
 

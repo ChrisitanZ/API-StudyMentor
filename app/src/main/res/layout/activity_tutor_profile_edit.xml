@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#009688"
-    tools:context="com.example.studymentor.UI.Teacher.TutorProfileEditActivity">
+    tools:context="com.example.studymentor.UI.Tutor.TutorProfileEditActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -86,6 +86,7 @@
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword" />
+
             <EditText
                 android:id="@+id/etImageURLT"
                 android:layout_width="match_parent"
@@ -94,6 +95,14 @@
                 android:ems="10"
                 android:hint="Image URL"
                 android:inputType="text" />
+
+            <Button
+                android:id="@+id/btnSelectImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Seleccionar Imagen"
+                android:onClick="selectImageFromGallery" />
 
             <Button
                 android:id="@+id/btnSaveProfileT"

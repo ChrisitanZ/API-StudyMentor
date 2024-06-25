@@ -39,7 +39,7 @@
 
         <!-- EditText para el Teléfono -->
         <EditText
-            android:id="@+id/etPhonePE"
+            android:id="@+id/etPhonePED"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone"
@@ -48,7 +48,7 @@
 
         <!-- EditText para el Género (invisible por defecto) -->
         <EditText
-            android:id="@+id/etGenrePE"
+            android:id="@+id/etGenrePED"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Genre"
@@ -58,7 +58,7 @@
 
         <!-- EditText para el Código (invisible por defecto) -->
         <EditText
-            android:id="@+id/etCodePE"
+            android:id="@+id/etCodePED"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Code"
@@ -68,7 +68,7 @@
 
         <!-- EditText para la Contraseña (invisible por defecto) -->
         <EditText
-            android:id="@+id/etPasswordPE"
+            android:id="@+id/etPasswordPED"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -79,7 +79,7 @@
 
         <!-- EditText para la Fecha de Nacimiento -->
         <EditText
-            android:id="@+id/etBirthdayPE"
+            android:id="@+id/etBirthdayPED"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Birthday"
@@ -89,7 +89,7 @@
 
         <!-- EditText para la URL de la Imagen -->
         <EditText
-            android:id="@+id/etImageURLPE"
+            android:id="@+id/etImageURLPED"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Image URL"
@@ -97,9 +97,27 @@
             android:inputType="text"
             android:layout_marginBottom="8dp"/>
 
+        <!-- ImageView para mostrar la imagen seleccionada -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            android:background="#e0e0e0"
+            android:contentDescription="Selected Image" />
+
+        <!-- Botón para cambiar la imagen -->
+        <Button
+            android:id="@+id/btnChangeImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Image"
+            android:layout_marginBottom="8dp" />
+
         <!-- Botón para Guardar el Perfil -->
         <Button
-            android:id="@+id/btnSaveProfilePE"
+            android:id="@+id/btnSaveProfilePED"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Profile"
